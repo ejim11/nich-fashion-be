@@ -1,17 +1,18 @@
 import { Injectable, RequestTimeoutException } from '@nestjs/common';
-import { CreateUsersProvider } from './create-users.providers';
+import { CreateUsersProvider } from './create-users.provider';
 import { CreateUserDto } from '../dtos/create-user.dto';
 import { FindOneUserByEmailProvider } from './find-one-user-by-email.provider';
 import { StoreOtpAndExpireProvider } from './store-otp-and-expire.provider';
 import { User } from '../user.entity';
-import { FindUserByResetOtpAndExpiryTimeProvider } from './find-user-by-reset-otp-and-expiry-time.provider';
-import { ChangeUserPasswordProvider } from './change-user-password.provider';
+import { FindUserByOtpAndExpiryTimeProvider } from './find-user-by-reset-otp-and-expiry-time.provider';
+
 import { FindOneByIdProvider } from './find-one-by-id.provider';
 import { GetUsersDto } from '../dtos/get-user.dto';
 import { Paginated } from 'src/common/pagination/interfaces/paginated.interface';
 import { PaginationProvider } from 'src/common/pagination/providers/pagination.provider';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
+import { ClearOtpAndExpiryTimeProvider } from './clear-otp-and-expiry-time.provider';
 
 /**
  * service provider for the user module
@@ -49,12 +50,7 @@ export class UsersService {
     /**
      * injecting the find user by reset otp and expires provider
      */
-    private readonly findUserByResetOtpAndExpiresProvider: FindUserByResetOtpAndExpiryTimeProvider,
-
-    /**
-     * injecting the change user password provider
-     */
-    private readonly changeUserPasswordProvider: ChangeUserPasswordProvider,
+    private readonly findUserByOtpAndExpiresProvider: FindUserByOtpAndExpiryTimeProvider,
 
     /**
      * injecting the find one by id provider
@@ -71,6 +67,11 @@ export class UsersService {
      */
     @InjectRepository(User)
     private readonly usersRepository: Repository<User>,
+
+    /**
+     * injecting the clear otp and expiry time provider
+     */
+    private readonly clearOtpAndExpiryTimeProvider: ClearOtpAndExpiryTimeProvider,
   ) {}
 
   /**
@@ -107,22 +108,18 @@ export class UsersService {
    * @returns the user based on the stored reset token and expiry date
    */
   public async findUserByResetOtpAndExpiryTime(otp: string) {
-    return await this.findUserByResetOtpAndExpiresProvider.findUserByResetOtpAndExpiryTime(
+    return await this.findUserByOtpAndExpiresProvider.findUserByOtpAndExpiryTime(
       otp,
     );
   }
 
   /**
-   * function for changing user password
+   * function for clearing otp after login
    * @param user
-   * @param newPassword
-   * @returns the user with changed password
+   * @returns user
    */
-  public async changeUserPassword(user: User, newPassword: string) {
-    return await this.changeUserPasswordProvider.changeUserPassword(
-      user,
-      newPassword,
-    );
+  public async clearOtpAndExpiryTime(user: User) {
+    return await this.clearOtpAndExpiryTimeProvider.clearOtpAndExpiryTime(user);
   }
 
   /**
