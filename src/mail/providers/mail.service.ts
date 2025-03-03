@@ -33,7 +33,25 @@ export class MailService {
       subject: `🔐 Reset Your Password – Let's Get You Back on Track!`,
       template: path.join(ROOT_PATH, '/src/mail/templates/resetOtp.ejs'),
       context: {
-        fullname: user.fullname,
+        // fullname: user.fullname,
+        email: user.email,
+        otp: otp,
+      },
+    });
+  }
+
+  /**
+   * function for sending reset otp mail to user
+   * @param user
+   * @param otp
+   */
+  public async sendLoginOtp(user: User, otp: string): Promise<void> {
+    await this.mailerService.sendMail({
+      to: user.email,
+      from: `Nich Fashion - Team  <${'admininvestor@brackifi-investor.io'}>`,
+      subject: `🔐 Login to Nich Fashion- Get your best wears`,
+      template: path.join(ROOT_PATH, '/src/mail/templates/loginOtp.ejs'),
+      context: {
         email: user.email,
         otp: otp,
       },
