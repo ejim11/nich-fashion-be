@@ -31,7 +31,7 @@ import { EjsAdapter } from '@nestjs-modules/mailer/dist/adapters/ejs.adapter';
             // tls: { rejectUnauthorized: false },
           },
           default: {
-            from: `TicketHive <${'team@ticket-hive.com'}>`,
+            from: `Nich Fashion <${'support@brackifi-investor.io'}>`,
           },
           template: {
             dir: join(__dirname, 'templates'),
