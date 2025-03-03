@@ -3,12 +3,12 @@ import {
   Inject,
   Injectable,
   RequestTimeoutException,
-  UnauthorizedException,
 } from '@nestjs/common';
 import { SignInDto } from '../dtos/sign-in.dto';
 import { UsersService } from 'src/users/providers/users.service';
-import { HashingProvider } from './hashing.provider';
-import { GenerateTokensProvider } from './generate-tokens.provider';
+import { randomInt } from 'crypto';
+import * as crypto from 'crypto';
+import { MailService } from 'src/mail/providers/mail.service';
 
 /**
  * provider for sigining in users
@@ -29,14 +29,9 @@ export class SignInProvider {
     private readonly usersService: UsersService,
 
     /**
-     * Injecting the hashing provider
+     * injecting the mail service
      */
-    private readonly hashingProvider: HashingProvider,
-
-    /**
-     * injecting the generate token provider
-     */
-    private readonly generateTokenProvider: GenerateTokensProvider,
+    private readonly mailService: MailService,
   ) {}
 
   /**
@@ -47,38 +42,39 @@ export class SignInProvider {
   public async signIn(signInDto: SignInDto) {
     // find  the user using the email ID
     // throw an exception if the user does not exist
-    const user: any = await this.usersService.findOneByEmail(signInDto.email);
 
-    // compare the password to the hash
-    let isEqual: boolean = false;
+    let user: any;
+    user = await this.usersService.findOneByEmail(signInDto.email);
 
-    try {
-      isEqual = await this.hashingProvider.comparePassword(
-        signInDto.password,
-        user.password,
-      );
-    } catch (error) {
-      throw new RequestTimeoutException(error, {
-        description: 'Could not compare passwords',
+    // if user does not exist already, create user
+    if (!user) {
+      user = await this.usersService.createUser({
+        email: signInDto.email,
+        role: signInDto.role,
       });
     }
 
-    if (!isEqual) {
-      throw new UnauthorizedException('Incorrect email or password');
+    // generate otp
+    const otp = randomInt(1000, 1000000);
+
+    const hashedOtp = crypto
+      .createHash('sha256')
+      .update(otp.toString())
+      .digest('hex');
+
+    // store the otp in the db
+    await this.usersService.storeTokenOtpAndOtpExpire(user, hashedOtp);
+
+    try {
+      await this.mailService.sendLoginOtp(user, otp.toString());
+    } catch (error) {
+      console.log(error);
+      throw new RequestTimeoutException(error);
     }
 
-    // generate an access token
-    const { accessToken, refreshToken } =
-      await this.generateTokenProvider.generateTokens(user);
-
     return {
-      accessToken,
-      refreshToken,
       user: {
         id: user.id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        accountType: user.accountType,
         role: user.role,
         email: user.email,
       },
