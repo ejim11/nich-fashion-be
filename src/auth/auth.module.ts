@@ -2,29 +2,23 @@ import { forwardRef, Module } from '@nestjs/common';
 import { AuthService } from './providers/auth.service';
 import { AuthController } from './auth.controller';
 import { UsersModule } from 'src/users/users.module';
-import { HashingProvider } from './providers/hashing.provider';
-import { BcryptProvider } from './providers/bcrypt.provider';
 import { SignInProvider } from './providers/sign-in.provider';
 import { GenerateTokensProvider } from './providers/generate-tokens.provider';
 import { ConfigModule } from '@nestjs/config';
 import jwtConfig from './config/jwt.config';
 import { JwtModule } from '@nestjs/jwt';
-import { ForgotPasswordProvider } from './providers/forgot-password.provider';
-import { ResetPasswordProvider } from './providers/reset-password.provider';
 import { RefreshTokenProvider } from './providers/refresh-token.provider';
+import { OtpSigninProvider } from './providers/otp-signin.provider';
 
 @Module({
   providers: [
     AuthService,
-    {
-      provide: HashingProvider,
-      useClass: BcryptProvider,
-    },
+
     SignInProvider,
     GenerateTokensProvider,
-    ForgotPasswordProvider,
-    ResetPasswordProvider,
+
     RefreshTokenProvider,
+    OtpSigninProvider,
   ],
   controllers: [AuthController],
   imports: [
@@ -33,6 +27,6 @@ import { RefreshTokenProvider } from './providers/refresh-token.provider';
     // for asynchrousnously registering the jwt module and passing the config to the module
     JwtModule.registerAsync(jwtConfig.asProvider()),
   ],
-  exports: [HashingProvider],
+  exports: [],
 })
 export class AuthModule {}
