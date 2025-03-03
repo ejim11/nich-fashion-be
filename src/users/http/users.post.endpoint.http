@@ -1,9 +1,0 @@
-POST http://localhost:3002/api/v1/users
-Content-Type: application/json
-
-{
-    "fullname": "Ejim favour",
-    "email": "fejim188@gmail.com",
-    "password": "@Password1",
-    "role": "user"
-}
