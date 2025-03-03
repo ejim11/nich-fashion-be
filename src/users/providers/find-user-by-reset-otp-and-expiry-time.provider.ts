@@ -35,8 +35,8 @@ export class FindUserByResetOtpAndExpiryTimeProvider {
     try {
       user = await this.usersRepository.find({
         where: {
-          resetOtp: otp,
-          resetOtpExpire: MoreThan(new Date()),
+          otp: otp,
+          otpExpire: MoreThan(new Date()),
         },
       });
     } catch (error) {
