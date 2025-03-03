@@ -11,7 +11,7 @@ import { InjectRepository } from '@nestjs/typeorm';
  * provider class for finding user based on stored reset token and expiry time
  */
 @Injectable()
-export class FindUserByResetOtpAndExpiryTimeProvider {
+export class FindUserByOtpAndExpiryTimeProvider {
   /**
    * constructor
    * @param usersRepository
@@ -29,7 +29,7 @@ export class FindUserByResetOtpAndExpiryTimeProvider {
    * @param otp
    * @returns user
    */
-  public async findUserByResetOtpAndExpiryTime(otp: string) {
+  public async findUserByOtpAndExpiryTime(otp: string) {
     let user;
 
     try {
