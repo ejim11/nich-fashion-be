@@ -1,4 +1,3 @@
-import { Exclude } from 'class-transformer';
 import { Role } from 'src/auth/enums/role-type.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 // import { Event } from 'src/events/event.entity';
@@ -17,25 +16,9 @@ export class User {
     type: 'varchar',
     length: 96,
     nullable: false,
-  })
-  fullname: string;
-
-  @Column({
-    type: 'varchar',
-    length: 96,
-    nullable: false,
     unique: true,
   })
   email: string;
-
-  @Column({
-    type: 'varchar',
-    length: 96,
-    nullable: true,
-    select: false,
-  })
-  @Exclude()
-  password?: string;
 
   @Column({
     type: 'enum',
@@ -49,13 +32,13 @@ export class User {
     length: 96,
     nullable: true,
   })
-  resetOtp?: string;
+  otp?: string;
 
   @Column({
     type: 'timestamp',
     nullable: true,
   })
-  resetOtpExpire?: Date;
+  otpExpire?: Date;
 
   // @OneToMany(() => Event, (event) => event.owner)
   // events: Event[];
