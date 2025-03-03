@@ -27,8 +27,8 @@ export class StoreOtpAndExpireProvider {
    * @returns user
    */
   public async storeOtpAndExpire(user: User, otp: string) {
-    const resetExpires = new Date(Date.now() + 10 * 60 * 1000);
-    const newUserObj = { ...user, resetOtp: otp, resetOtpExpire: resetExpires };
+    const resetExpires = new Date(Date.now() + 5 * 60 * 1000);
+    const newUserObj = { ...user, otp: otp, otpExpire: resetExpires };
     try {
       return await this.usersRepository.save(newUserObj);
     } catch (error) {
