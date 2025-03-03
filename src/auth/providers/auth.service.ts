@@ -1,12 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { SignInDto } from 'src/auth/dtos/sign-in.dto';
 import { SignInProvider } from './sign-in.provider';
-import { ForgotPassswordDto } from 'src/auth/dtos/forgot-password.dto';
-import { ForgotPasswordProvider } from './forgot-password.provider';
-import { ResetPasswordProvider } from './reset-password.provider';
-import { ResetPasswordDto } from 'src/auth/dtos/reset-password.dto';
 import { RefreshTokenDto } from 'src/auth/dtos/refresh-token.dto';
 import { RefreshTokenProvider } from './refresh-token.provider';
+import { OtpSigninDto } from '../dtos/otpSignin.dto';
+import { OtpSigninProvider } from './otp-signin.provider';
 
 /**
  * auth service for the auth module
@@ -27,14 +25,9 @@ export class AuthService {
     private readonly signInProvider: SignInProvider,
 
     /**
-     * injecting the forgotPasswordProvider
+     * injecting the otp sign in provider
      */
-    private readonly forgotPasswordProvider: ForgotPasswordProvider,
-
-    /**
-     * injecting the resetPasswordProvider
-     */
-    private readonly resetPasswordProvider: ResetPasswordProvider,
+    private readonly otpSigninProvider: OtpSigninProvider,
 
     /**
      * injecting the refresh token provider
@@ -52,21 +45,12 @@ export class AuthService {
   }
 
   /**
-   * function for getting the otp email
-   * @param forgotPasswordDto
-   * @returns null
-   */
-  public async forgotPassword(forgotPasswordDto: ForgotPassswordDto) {
-    return await this.forgotPasswordProvider.forgotPassword(forgotPasswordDto);
-  }
-
-  /**
    * function for resetting password
    * @param resetPasswordDto
    * @returns user
    */
-  public async resetPassword(resetPasswordDto: ResetPasswordDto) {
-    return await this.resetPasswordProvider.resetPassword(resetPasswordDto);
+  public async otpSignin(otpSigninDto: OtpSigninDto) {
+    return await this.otpSigninProvider.signInWithOtp(otpSigninDto);
   }
 
   /**
