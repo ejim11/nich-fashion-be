@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome Email</title>
+  </head>
+  <style>
+    .container {
+      max-width: 600px;
+      width: 100%;
+      border-radius: 10px;
+      background-color: white;
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
+  <body>
+    <div
+      style="
+        width: 100%;
+        padding: 20px;
+        background-color: #f1f3f5;
+        display: block;
+      "
+    >
+      <div class="container">
+        <div
+          style="padding: 10px; border-bottom: 1px solid #f1f3f5; width: 100%"
+        >
+          <img
+            src="https://i.ibb.co/rG9vdr57/nich-logo.png"
+            alt="logo-image"
+            width="85"
+            height="45"
+          />
+        </div>
+        <div
+          style="
+            font-family: Arial, sans-serif;
+            padding: 15px 10px;
+            color: #333333;
+            font-size: 16px;
+          "
+        >
+          <p>
+            Welcome to Nich Fashion! 🎟️ We're thrilled to have you on board. Get
+            your best wears.
+          </p>
+          <p>Use the code below to login into your account.</p>
+          <p>This code expires in 5 minutes.</p>
+          <p
+            style="
+              padding: 15px;
+              border-radius: 15px;
+              text-align: center;
+              font-size: 18px;
+              background-color: #ced4da;
+              font-weight: 600;
+            "
+          >
+            <%= otp %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
