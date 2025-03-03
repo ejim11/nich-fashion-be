@@ -1,7 +1,7 @@
 import {
   Injectable,
   RequestTimeoutException,
-  UnauthorizedException,
+  // UnauthorizedException,
 } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { User } from '../user.entity';
@@ -35,7 +35,7 @@ export class FindOneUserByEmailProvider {
     try {
       user = await this.usersRepository.findOne({
         where: { email: email },
-        select: ['id', 'fullname', 'password', 'email', 'role'],
+        select: ['id', 'email', 'role'],
       });
     } catch (error) {
       throw new RequestTimeoutException(error, {
@@ -43,9 +43,9 @@ export class FindOneUserByEmailProvider {
       });
     }
 
-    if (!user) {
-      throw new UnauthorizedException('User does not exist');
-    }
+    // if (!user) {
+    //   throw new UnauthorizedException('User does not exist');
+    // }
 
     return user;
   }
