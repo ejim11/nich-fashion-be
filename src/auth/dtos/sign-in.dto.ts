@@ -1,29 +1,31 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
+import { IsEmail, IsEnum, IsNotEmpty, MaxLength } from 'class-validator';
+import { Role } from '../enums/role-type.enum';
 
 /**
  * sign in dto
  */
 export class SignInDto {
   /**
-   * email address
+   * user email address
    */
   @ApiProperty({
     description: 'This is the email of the user',
     example: 'Favour@gmail.com',
   })
   @IsEmail()
+  @MaxLength(96)
   @IsNotEmpty()
   email: string;
 
   /**
-   * password
+   * user role
    */
   @ApiProperty({
-    description: 'This is the password of the user',
-    example: '@Favour233',
+    description: 'This is the role of the user',
+    example: 'Admin',
   })
+  @IsEnum(Role)
   @IsNotEmpty()
-  @IsString()
-  password: string;
+  role: Role;
 }
