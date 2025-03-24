@@ -17,6 +17,11 @@ import { RolesGuard } from './auth/guards/roles/roles.guard';
 import { AccessTokenGuard } from './auth/guards/access-token/access-token.guard';
 import jwtConfig from './auth/config/jwt.config';
 import { JwtModule } from '@nestjs/jwt';
+import { ProductsModule } from './products/products.module';
+import { ProductVariantsModule } from './product-variants/product-variants.module';
+import { ProductImagesModule } from './product-images/product-images.module';
+
+import { ReviewsModule } from './reviews/reviews.module';
 
 /**
  * app environment
@@ -62,6 +67,10 @@ const ENV = process.env.NODE_ENV;
     ConfigModule.forFeature(jwtConfig),
     // for asynchrousnously registering the jwt module and passing the config to the module
     JwtModule.registerAsync(jwtConfig.asProvider()),
+    ProductsModule,
+    ProductVariantsModule,
+    ProductImagesModule,
+    ReviewsModule,
   ],
   controllers: [AppController],
   providers: [
