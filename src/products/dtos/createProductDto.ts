@@ -48,7 +48,7 @@ export class CreateProductDto {
 
   @IsString()
   @IsNotEmpty()
-  longDescription: string[];
+  longDescription: string;
 
   @IsArray()
   @IsNotEmpty()
