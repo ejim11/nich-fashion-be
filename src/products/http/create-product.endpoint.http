@@ -1,0 +1,84 @@
+POST http://localhost:3002/api/v1/products
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEzLCJlbWFpbCI6ImZlamltMTg4QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0Mjg5NDMxMiwiZXhwIjoxNzQyODk3OTEyLCJhdWQiOiJsb2NhbGhvc3Q6MzAwMSIsImlzcyI6ImxvY2FsaG9zdDozMDAxIn0.6MGyfPJKOoX7o9B-1-5J1qnVSJA60QPY-1oxi_6Bnnw
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="name"
+
+Nike Sportswear T-Shirt
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="price"
+
+59
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="discount"
+
+10
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="category"
+
+Clothing
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="dressStyle"
+
+Casual
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="clothType"
+
+T-Shirt
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="material"
+
+Cotton
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="brand"
+
+Nike
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="shortDescription"
+
+Comfortable and stylish Nike t-shirt for everyday wear
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="longDescription"
+
+A premium cotton t-shirt from Nike, perfect for casual outings. Soft, breathable, and designed for comfort.
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[0][color]"
+
+Black
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[0][size]"
+
+M
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[0][quantity]"
+
+50
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[0][images]"; filename="test-image-3.png"
+Content-Type: image/png
+
+< ./test-image-3.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[0][images]"; filename="test-image-2.png"
+Content-Type: image/png
+
+< ./test-image-2.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[1][color]"
+
+White
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[1][size]"
+
+L
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[1][quantity]"
+
+30
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[1][images]"; filename="test-image.png"
+Content-Type: image/png
+
+< ./test-image.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
