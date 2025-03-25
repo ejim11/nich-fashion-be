@@ -2,6 +2,6 @@ POST http://localhost:3002/api/v1/auth/sign-in
 Content-Type: application/json
 
 {
-"email": "favourejim56@gmail.com",
-"role": "user"
+"email": "fejim188@gmail.com",
+"role": "admin"
 }
