@@ -42,12 +42,12 @@ export class Product {
   shortDescription: string;
 
   @Column('text', { array: true })
-  longDescription: string[];
+  longDescription: string;
 
   @OneToMany(() => ProductVariant, (variant) => variant.product, {
     cascade: true,
   })
-  variants: ProductVariant[];
+  variants?: ProductVariant[];
 
   @OneToMany(() => Review, (review) => review.product)
   reviews?: Review[];
