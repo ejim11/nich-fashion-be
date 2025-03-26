@@ -22,6 +22,7 @@ import { ProductVariantsModule } from './product-variants/product-variants.modul
 import { ProductImagesModule } from './product-images/product-images.module';
 
 import { ReviewsModule } from './reviews/reviews.module';
+import { UploadsModule } from './uploads/uploads.module';
 
 /**
  * app environment
@@ -71,6 +72,7 @@ const ENV = process.env.NODE_ENV;
     ProductVariantsModule,
     ProductImagesModule,
     ReviewsModule,
+    UploadsModule,
   ],
   controllers: [AppController],
   providers: [
