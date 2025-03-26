@@ -2,7 +2,8 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-// import { ConfigService } from '@nestjs/config';
+import { ConfigService } from '@nestjs/config';
+import { config } from 'aws-sdk';
 
 /**
  * the boostrap nest function
@@ -56,14 +57,14 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document);
 
   // setup aws sdk
-  // const configService = app.get(ConfigService);
-  // config.update({
-  //   credentials: {
-  //     accessKeyId: configService.get('appConfig.awsAccessKeyId'),
-  //     secretAccessKey: configService.get('appConfig.awsSecretAccessKey'),
-  //   },
-  //   region: configService.get('appConfig.awsRegion'),
-  // });
+  const configService = app.get(ConfigService);
+  config.update({
+    credentials: {
+      accessKeyId: configService.get('appConfig.awsAccessKeyId'),
+      secretAccessKey: configService.get('appConfig.awsSecretAccessKey'),
+    },
+    region: configService.get('appConfig.awsRegion'),
+  });
 
   // enable cors
   app.enableCors();
