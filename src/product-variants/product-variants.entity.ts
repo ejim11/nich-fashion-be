@@ -3,6 +3,7 @@ import { Product } from 'src/products/product.entity';
 import {
   Column,
   Entity,
+  JoinColumn,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -25,11 +26,14 @@ export class ProductVariant {
   @Column({ default: false })
   soldOut: boolean;
 
-  @ManyToOne(() => Product, (product) => product.variants)
+  @ManyToOne(() => Product, (product) => product.variants, {
+    onDelete: 'CASCADE',
+  })
+  @JoinColumn()
   product: Product;
 
   @OneToMany(() => ProductImage, (image) => image.productVariant, {
     cascade: true,
   })
-  images: ProductImage[];
+  images?: ProductImage[];
 }
