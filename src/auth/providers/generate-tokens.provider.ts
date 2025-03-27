@@ -35,7 +35,7 @@ export class GenerateTokensProvider {
    * @param payload
    * @returns the object containing payload when a user signs in
    */
-  public async signToken<T>(userId: number, expiresIn: number, payload?: T) {
+  public async signToken<T>(userId: string, expiresIn: number, payload?: T) {
     return await this.jwtService.signAsync(
       {
         sub: userId,

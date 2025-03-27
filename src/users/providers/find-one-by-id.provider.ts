@@ -29,12 +29,13 @@ export class FindOneByIdProvider {
    * @param id
    * @returns user
    */
-  public async findById(id: number) {
+  public async findById(id: string) {
     let user;
     try {
       user = await this.usersRepository.findOneBy({
         id,
       });
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err: any) {
       throw new RequestTimeoutException(
         'Unable to process your request at the moment, please try later',
