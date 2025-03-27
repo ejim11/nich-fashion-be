@@ -1,0 +1,7 @@
+PATCH  http://localhost:3002/api/v1/users
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0YzIyMjdmNS0zM2JlLTQ5NTQtODczMy1iYzJkZDlhYzBkMGQiLCJlbWFpbCI6ImZlamltMTg4QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0MzA2NzY1MCwiZXhwIjoxNzQzMDcxMjUwLCJhdWQiOiJsb2NhbGhvc3Q6MzAwMSIsImlzcyI6ImxvY2FsaG9zdDozMDAxIn0.FEymqGH54XiTicUepEeLV6ET9WU1s-_rTEKTQADRGhM
+
+{
+    "firstName": "Ejim"
+}
