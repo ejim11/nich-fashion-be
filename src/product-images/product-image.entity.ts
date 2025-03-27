@@ -1,5 +1,11 @@
 import { ProductVariant } from 'src/product-variants/product-variants.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class ProductImage {
@@ -12,6 +18,9 @@ export class ProductImage {
   @Column('int', { default: 0 })
   displayOrder: number;
 
-  @ManyToOne(() => ProductVariant, (variant) => variant.images)
+  @ManyToOne(() => ProductVariant, (variant) => variant.images, {
+    onDelete: 'CASCADE',
+  })
+  @JoinColumn()
   productVariant: ProductVariant;
 }
