@@ -8,6 +8,8 @@ import { Product } from '../product.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateProductDto } from '../dtos/createProductDto';
 import { UploadsService } from 'src/uploads/providers/uploads.service';
+import { ProductVariant } from 'src/product-variants/product-variants.entity';
+import { ProductImage } from 'src/product-images/product-image.entity';
 
 @Injectable()
 export class CreateProductProvider {
@@ -41,37 +43,92 @@ export class CreateProductProvider {
       await queryRunner.connect();
       // start transaction
       await queryRunner.startTransaction();
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       throw new RequestTimeoutException('Could not connect to datasource');
     }
 
-    // create the product
     try {
-      // const product = queryRunner.manager.create(Product, {
-      //   ...createProductDto,
-      // });
+      // create the product
+      const product = queryRunner.manager.create(Product, {
+        ...createProductDto,
+        variants: [],
+      });
+
+      // save the product
+      const savedProduct = await queryRunner.manager.save(product);
 
       // upload the images in the variants
-
-      console.log(createProductDto.variants);
-
       const variantsImages = [];
 
-      Object.entries(images).map(async ([key, fileArray]) => {
-        console.log(fileArray);
-        // loop through the array of files and upload them
-        const storedImagesUrls = await Promise.all(
-          fileArray.map((file: Express.Multer.File) =>
-            this.uploadsService.uploadFile(file),
+      Object.entries(images).forEach(
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        ([key, fileArray]) => {
+          variantsImages.push(fileArray);
+        },
+      );
+
+      const storedImagesUrls = [];
+
+      // loop through the array of files and upload them
+
+      for (let i = 0; i < variantsImages.length; i++) {
+        const urls = await Promise.all(
+          variantsImages[i].map(
+            async (file) => await this.uploadsService.uploadFile(file),
           ),
         );
+        storedImagesUrls.push(urls);
+      }
 
-        console.log(storedImagesUrls);
+      // loop through the product variants and create product variants
 
-        // add the array of image urls to the publicly scoped array
-        console.log(key);
-        console.log(fileArray);
-      });
+      const savedVariants = [];
+
+      for (const variant of createProductDto.variants) {
+        /**
+         * param
+         * entity
+         * dto
+         */
+        const prVariant = queryRunner.manager.create(ProductVariant, {
+          ...variant,
+          product: savedProduct,
+        });
+
+        const vr = await queryRunner.manager.save(prVariant);
+        savedVariants.push(vr);
+      }
+      // const savedVariants = await Promise.all(
+      //   createProductDto.variants.map(async (variant) => {
+      //     const prVariant = queryRunner.manager.create(ProductVariant, {
+      //       ...variant,
+      //       product: savedProduct,
+      //     });
+
+      //     return await queryRunner.manager.save(prVariant);
+      //   }),
+      // );
+
+      // loop through the images and create a product image
+      const productImages = storedImagesUrls
+        .map((imgUrls: string[], urlsIndex) =>
+          imgUrls.map((imgUrl, index) =>
+            queryRunner.manager.create(ProductImage, {
+              imagePath: imgUrl,
+              displayOrder: index,
+              productVariant: savedVariants[urlsIndex],
+            }),
+          ),
+        )
+        .flat();
+
+      productImages.map(async (image) => await queryRunner.manager.save(image));
+
+      // if successful commit
+      // ensures the txn is committed to the db
+      await queryRunner.commitTransaction();
+      return { product: savedProduct };
     } catch (error) {
       // if unsuccessful rollback
       // we rollback the txn here if it is not successful
