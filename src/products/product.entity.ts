@@ -41,7 +41,7 @@ export class Product {
   @Column()
   shortDescription: string;
 
-  @Column('text', { array: true })
+  @Column()
   longDescription: string;
 
   @OneToMany(() => ProductVariant, (variant) => variant.product, {
