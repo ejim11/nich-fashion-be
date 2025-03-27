@@ -1,4 +1,8 @@
-import { Injectable, RequestTimeoutException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  RequestTimeoutException,
+} from '@nestjs/common';
 import { CreateUsersProvider } from './create-users.provider';
 import { CreateUserDto } from '../dtos/create-user.dto';
 import { FindOneUserByEmailProvider } from './find-one-user-by-email.provider';
@@ -13,6 +17,7 @@ import { PaginationProvider } from 'src/common/pagination/providers/pagination.p
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ClearOtpAndExpiryTimeProvider } from './clear-otp-and-expiry-time.provider';
+import { PatchUserDto } from '../dtos/patch-user.dto';
 
 /**
  * service provider for the user module
@@ -127,7 +132,7 @@ export class UsersService {
    * @param id
    * @returns user based on the user id
    */
-  public async findOneById(id: number) {
+  public async findOneById(id: string) {
     return await this.findOneByIdProvider.findById(id);
   }
 
@@ -160,7 +165,7 @@ export class UsersService {
    * @param userId
    * @returns a message on successful deletion
    */
-  public async deleteUser(userId: number) {
+  public async deleteUser(userId: string) {
     try {
       await this.usersRepository.delete(userId);
       return {
@@ -169,5 +174,35 @@ export class UsersService {
     } catch (error) {
       throw new RequestTimeoutException(error);
     }
+  }
+
+  public async updateUser(id: string, patchUserDto: PatchUserDto) {
+    let user;
+    // find the user
+    try {
+      user = await this.usersRepository.findOneBy({
+        id: id,
+      });
+    } catch (err) {
+      throw new RequestTimeoutException(err);
+    }
+    if (!user) {
+      throw new BadRequestException('User does not exist');
+    }
+    // update user
+    user = { ...user, ...patchUserDto };
+
+    try {
+      await this.usersRepository.save(user);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error: any) {
+      throw new RequestTimeoutException(
+        'Unable to process your request at the moment, please try later',
+        {
+          description: 'Error connecting to the database',
+        },
+      );
+    }
+    return user;
   }
 }
