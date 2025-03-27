@@ -5,7 +5,7 @@ export interface ActiveUserData {
   /**
    * id for user
    */
-  sub: number;
+  sub: string;
 
   /**
    * user email
