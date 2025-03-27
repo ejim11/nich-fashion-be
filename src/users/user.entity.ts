@@ -9,8 +9,62 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
  */
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
+
+  @Column({
+    type: 'varchar',
+    length: 96,
+    nullable: true,
+  })
+  firstName?: string;
+
+  @Column({
+    type: 'varchar',
+    length: 96,
+    nullable: true,
+  })
+  lastName?: string;
+
+  @Column({
+    type: 'varchar',
+    length: 20,
+    nullable: true,
+  })
+  phoneNumber?: string;
+
+  @Column({
+    type: 'varchar',
+    length: 96,
+    nullable: true,
+  })
+  country?: string;
+
+  @Column({
+    type: 'varchar',
+    length: 96,
+    nullable: true,
+  })
+  state?: string;
+
+  @Column({
+    type: 'varchar',
+    length: 96,
+    nullable: true,
+  })
+  city?: string;
+
+  @Column({
+    type: 'varchar',
+    length: 96,
+    nullable: true,
+  })
+  streetAddress?: string;
+
+  @Column({
+    nullable: true,
+  })
+  zipCode?: number;
 
   @Column({
     type: 'varchar',
