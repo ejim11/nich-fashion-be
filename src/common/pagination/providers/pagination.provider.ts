@@ -37,14 +37,16 @@ export class PaginationProvider {
     options?: any,
   ): Promise<Paginated<T>> {
     const results = await repository.find({
-      // no of posts to skip in one query
+      // no of items to skip in one query
       skip: (paginationQuery.page - 1) * paginationQuery.limit,
-      // the no of posts to take in one query
+      // the no items to take in one query
       take: paginationQuery.limit,
       relations: options.relations,
       select: options.select,
       where: options.where,
     });
+
+    console.log('results: ', results);
 
     /**
      * Create the request URLS
