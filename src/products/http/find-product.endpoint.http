@@ -1,0 +1,2 @@
+GET http://localhost:3002/api/v1/products/99d79ed3-4750-44fb-830d-3325a0f13fcc
+Content-Type: application/json
