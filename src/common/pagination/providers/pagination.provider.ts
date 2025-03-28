@@ -46,8 +46,6 @@ export class PaginationProvider {
       where: options.where,
     });
 
-    console.log('results: ', results);
-
     /**
      * Create the request URLS
      */
