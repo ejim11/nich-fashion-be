@@ -91,22 +91,25 @@ export class ProductsService {
           : undefined,
         price: productQuery['price']
           ? Between(
-              parseFloat(productQuery['price'].split('-')[0]),
-              parseFloat(productQuery['price'].split('-')[1]),
+              parseFloat(productQuery['price'].slice().split('-')[0]),
+              parseFloat(productQuery['price'].slice().split('-')[1]),
             )
           : undefined,
         clothType: productQuery['clothType']
-          ? In(productQuery['clothType'].split(','))
+          ? In(productQuery['clothType'].slice().split(','))
+          : undefined,
+        dressStyle: productQuery['dressStyle']
+          ? In(productQuery['dressStyle'].slice().split(','))
           : undefined,
         name: productQuery['name']
-          ? Like(`%${productQuery['name'].split('-').join(' ')}%`)
+          ? Like(`%${productQuery['name'].slice().split('-').join(' ')}%`)
           : undefined,
         variants: {
           color: productQuery['colors']
-            ? In(productQuery['colors'].split(','))
+            ? In(productQuery['colors'].slice().split(','))
             : undefined,
           size: productQuery['sizes']
-            ? In(productQuery['sizes'].split(','))
+            ? In(productQuery['sizes'].slice().split(','))
             : undefined,
         },
       };
@@ -126,53 +129,14 @@ export class ProductsService {
       );
 
       whereOptions.push(filteredConditions);
-
-      // if (whereOptions.length === 0) {
-      //   whereOptions = [
-      //     {
-      //       category: productQuery['category']
-      //         ? In(productQuery['category'].slice().split(','))
-      //         : null,
-      //       price: productQuery['price']
-      //         ? In(productQuery['price'].slice().split(','))
-      //         : null,
-      //       clothType: productQuery['clothType']
-      //         ? In(productQuery['clothType'].slice().split(','))
-      //         : null,
-      //       name: productQuery['name']
-      //         ? productQuery['name'].slice().split('-').join(' ')
-      //         : null,
-      //     },
-      //   ];
-      // } else {
-      //   whereOptions = whereOptions.map((item) => ({
-      //     ...item,
-      //     category: productQuery['category']
-      //       ? In(productQuery['category'].slice().split(','))
-      //       : null,
-      //     priceType: productQuery['price']
-      //       ? In(productQuery['price'].slice().split(','))
-      //       : null,
-      //     attendanceMode: productQuery['attendance']
-      //       ? In(productQuery['attendance'].slice().split(','))
-      //       : null,
-      //     name: productQuery['name']
-      //       ? productQuery['name'].slice().split('-').join(' ')
-      //       : null,
-      //   }));
-      // }
     });
 
     const checkWhereOptions = Object.keys(whereOptions).length;
-
-    console.log(checkWhereOptions);
 
     const options = {
       where: checkWhereOptions ? whereOptions : null,
       relations: ['variants', 'variants.images'],
     };
-
-    console.log(options);
 
     try {
       const products = await this.paginationprovider.paginationQuery(
@@ -183,8 +147,6 @@ export class ProductsService {
         this.productRepository,
         options,
       );
-
-      console.log(products);
 
       return products;
     } catch (error) {
