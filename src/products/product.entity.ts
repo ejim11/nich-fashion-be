@@ -1,6 +1,8 @@
 import { ProductVariant } from 'src/product-variants/product-variants.entity';
 import { Review } from 'src/reviews/reviews.entity';
 import {
+  BeforeInsert,
+  BeforeUpdate,
   Column,
   CreateDateColumn,
   Entity,
@@ -58,4 +60,21 @@ export class Product {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @BeforeInsert()
+  @BeforeUpdate()
+  transformToLowercase() {
+    if (this.name) {
+      this.name = this.name.toLowerCase();
+    }
+    if (this.category) {
+      this.category = this.category.toLowerCase();
+    }
+    if (this.dressStyle) {
+      this.dressStyle = this.dressStyle.toLowerCase();
+    }
+    if (this.clothType) {
+      this.clothType = this.clothType.toLowerCase();
+    }
+  }
 }
