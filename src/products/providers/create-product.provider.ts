@@ -71,7 +71,6 @@ export class CreateProductProvider {
       const storedImagesUrls = [];
 
       // loop through the array of files and upload them
-
       for (let i = 0; i < variantsImages.length; i++) {
         const urls = await Promise.all(
           variantsImages[i].map(
@@ -82,7 +81,6 @@ export class CreateProductProvider {
       }
 
       // loop through the product variants and create product variants
-
       const savedVariants = [];
 
       for (const variant of createProductDto.variants) {
@@ -99,16 +97,6 @@ export class CreateProductProvider {
         const vr = await queryRunner.manager.save(prVariant);
         savedVariants.push(vr);
       }
-      // const savedVariants = await Promise.all(
-      //   createProductDto.variants.map(async (variant) => {
-      //     const prVariant = queryRunner.manager.create(ProductVariant, {
-      //       ...variant,
-      //       product: savedProduct,
-      //     });
-
-      //     return await queryRunner.manager.save(prVariant);
-      //   }),
-      // );
 
       // loop through the images and create a product image
       const productImages = storedImagesUrls
