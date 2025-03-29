@@ -53,7 +53,7 @@ class GetProductsBaseDto {
    */
   @IsString()
   @IsOptional()
-  dressingStyle?: string;
+  dressStyle?: string;
 }
 
 /**
