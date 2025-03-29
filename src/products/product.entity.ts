@@ -46,6 +46,7 @@ export class Product {
 
   @OneToMany(() => ProductVariant, (variant) => variant.product, {
     cascade: true,
+    eager: true,
   })
   variants?: ProductVariant[];
 
