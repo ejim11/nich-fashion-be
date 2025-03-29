@@ -1,2 +1,2 @@
-GET http://localhost:3002/api/v1/products?name=Nike-Sportswear-T-Shirt
+GET http://localhost:3002/api/v1/products?price=50-90&dressStyle=formal
 Content-Type: application/json
