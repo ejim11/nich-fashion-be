@@ -24,5 +24,6 @@ import { UpdateProductProvider } from './providers/update-product.provider';
     FindAllProductsProvider,
     UpdateProductProvider,
   ],
+  exports: [ProductsService],
 })
 export class ProductsModule {}
