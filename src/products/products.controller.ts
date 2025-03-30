@@ -3,6 +3,7 @@ import {
   Controller,
   Get,
   Param,
+  Patch,
   Post,
   Query,
   UploadedFiles,
@@ -24,6 +25,7 @@ import { ProductsService } from './providers/products.service';
 import { AuthType } from 'src/auth/enums/auth-type.enum';
 import { Auth } from 'src/auth/decorator/auth.decorator';
 import { GetProductsDto } from './dtos/get-product.dto';
+import { PatchProductDto } from './dtos/patch-product.dto';
 
 @Controller('products')
 export class ProductsController {
@@ -127,5 +129,20 @@ export class ProductsController {
   @Get('')
   public findAllProducts(@Query() productQuery: GetProductsDto) {
     return this.productsService.findAll(productQuery);
+  }
+
+  /**
+   * @function updates a product
+   * @param productId
+   * @param patchProductDto
+   * @returns updated product
+   */
+  @Patch('/:productId')
+  @Roles(Role.ADMIN)
+  public patchProduct(
+    @Param('productId') productId: string,
+    @Body() patchProductDto: PatchProductDto,
+  ) {
+    return this.productsService.updateProduct(productId, patchProductDto);
   }
 }
