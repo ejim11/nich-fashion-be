@@ -1,5 +1,6 @@
 import { Product } from 'src/products/product.entity';
 import {
+  Check,
   Column,
   CreateDateColumn,
   Entity,
@@ -16,14 +17,18 @@ export class Review {
   reviewer: string;
 
   @Column('text')
-  comment: string;
+  review: string;
 
-  @Column()
+  @Column({ type: 'int' })
+  @Check('"stars" BETWEEN 1 AND 5') // This ad
   stars: number;
 
   @CreateDateColumn()
   dateCreated: Date;
 
-  @ManyToOne(() => Product, (product) => product.reviews)
+  @ManyToOne(() => Product, (product) => product.reviews, {
+    cascade: true,
+    eager: true,
+  })
   product: Product;
 }
