@@ -23,6 +23,9 @@ import { ProductImagesModule } from './product-images/product-images.module';
 
 import { ReviewsModule } from './reviews/reviews.module';
 import { UploadsModule } from './uploads/uploads.module';
+import { DiscountsModule } from './discounts/discounts.module';
+import { DiscountsUsageModule } from './discounts-usage/discounts-usage.module';
+import { DeliveryStatesModule } from './delivery-states/delivery-states.module';
 
 /**
  * app environment
@@ -73,6 +76,9 @@ const ENV = process.env.NODE_ENV;
     ProductImagesModule,
     ReviewsModule,
     UploadsModule,
+    DiscountsModule,
+    DiscountsUsageModule,
+    DeliveryStatesModule,
   ],
   controllers: [AppController],
   providers: [
