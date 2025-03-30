@@ -1,0 +1,7 @@
+PATCH http://localhost:3002/api/v1/delivery-states/6b6c62db-856a-4edc-aa2f-c2a62c0c79e9
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNWJjMzZiNC1mYTc2LTQxOTMtYjBhOC0zZmU2ZDExZjQ1Y2IiLCJlbWFpbCI6ImZlamltMTg4QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0MzM3MjkxOCwiZXhwIjoxNzQzMzc2NTE4LCJhdWQiOiJsb2NhbGhvc3Q6MzAwMSIsImlzcyI6ImxvY2FsaG9zdDozMDAxIn0.gBsS3d6mTkP8mwJhifk2uwKz0pxq1Tt27sIw74sSRek
+
+{
+    "fee":6000
+}
