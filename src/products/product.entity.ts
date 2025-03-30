@@ -52,7 +52,10 @@ export class Product {
   })
   variants?: ProductVariant[];
 
-  @OneToMany(() => Review, (review) => review.product)
+  @OneToMany(() => Review, (review) => review.product, {
+    cascade: true,
+    eager: true,
+  })
   reviews?: Review[];
 
   @CreateDateColumn()
