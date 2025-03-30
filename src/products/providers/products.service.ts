@@ -97,4 +97,20 @@ export class ProductsService {
   ): Promise<Product> {
     return await this.updateProductProvider.updateProduct(id, patchProductDto);
   }
+
+  /**
+   * @function deletes a product
+   * @param productId
+   * @returns a message that the item was successfully deleted
+   */
+  public async deleteProduct(productId: string): Promise<{ message: string }> {
+    try {
+      await this.productRepository.delete(productId);
+      return {
+        message: `Product ${productId}, was successfully deleted`,
+      };
+    } catch (error) {
+      throw new RequestTimeoutException(error);
+    }
+  }
 }
