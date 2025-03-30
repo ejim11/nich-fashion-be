@@ -1,0 +1,9 @@
+POST http://localhost:3002/api/v1/discounts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNWJjMzZiNC1mYTc2LTQxOTMtYjBhOC0zZmU2ZDExZjQ1Y2IiLCJlbWFpbCI6ImZlamltMTg4QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0MzM2NTA1OCwiZXhwIjoxNzQzMzY4NjU4LCJhdWQiOiJsb2NhbGhvc3Q6MzAwMSIsImlzcyI6ImxvY2FsaG9zdDozMDAxIn0.sbVOmIwGqapZL8ewUAFdQmKOS2f158s0yXRsXS6-ywo
+
+{
+    "code": "EKFNOWMD23K",
+    "percentOff": 30,
+    "validUntil": "12 May, 2025"
+}

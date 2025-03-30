@@ -1,0 +1,7 @@
+POST http://localhost:3002/api/v1/discounts/apply
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MmM4Y2ZlYi04OTdmLTQ2ZDctOGI3NS03YTdjNWJhMDFkYTEiLCJlbWFpbCI6ImZhdm91cmVqaW01NkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MzM2NzEzMywiZXhwIjoxNzQzMzcwNzMzLCJhdWQiOiJsb2NhbGhvc3Q6MzAwMSIsImlzcyI6ImxvY2FsaG9zdDozMDAxIn0.DKpipHWN0kIOIGxpG0h1rHq6EfwOH3N6rfshtZ4k6wY
+
+{
+    "code": "EKFNOWMD23K"
+}
