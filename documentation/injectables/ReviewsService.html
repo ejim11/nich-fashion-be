@@ -140,6 +140,11 @@
                                     <span class="modifier">Async</span>
                                 <a href="#createReview" >createReview</a>
                             </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#deleteReview" >deleteReview</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -158,12 +163,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(createReviewProvider: <a href="../injectables/CreateReviewProvider.html" target="_self">CreateReviewProvider</a>)</code>
+<code>constructor(createReviewProvider: <a href="../injectables/CreateReviewProvider.html" target="_self">CreateReviewProvider</a>, reviewsRepository: <a href="../entitys/Review.html" target="_self">Repository&lt;Review&gt;</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/reviews/providers/reviews.service.ts:6</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/reviews/providers/reviews.service.ts:9</a></div>
                             </td>
                         </tr>
 
@@ -185,6 +190,18 @@
                                                   
                                                         <td>
                                                                         <code><a href="../injectables/CreateReviewProvider.html" target="_self" >CreateReviewProvider</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>reviewsRepository</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../entitys/Review.html" target="_self" >Repository&lt;Review&gt;</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -229,8 +246,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="20"
-                                    class="link-to-prism">src/reviews/providers/reviews.service.ts:20</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="29"
+                                    class="link-to-prism">src/reviews/providers/reviews.service.ts:29</a></div>
                         </td>
                     </tr>
 
@@ -277,15 +294,89 @@
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteReview"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                        <span ><b>deleteReview</b></span>
+                        <a href="#deleteReview"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>deleteReview(reviewId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="45"
+                                    class="link-to-prism">src/reviews/providers/reviews.service.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>reviewId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;literal type&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>a message that the review was successfully deleted</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
 
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, RequestTimeoutException } from &#x27;@nestjs/common&#x27;;
 import { CreateReviewProvider } from &#x27;./create-review.provider&#x27;;
 import { CreateReviewDto } from &#x27;../dtos/create-review.dto&#x27;;
+import { Repository } from &#x27;typeorm&#x27;;
+import { Review } from &#x27;../reviews.entity&#x27;;
+import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
 
 @Injectable()
 export class ReviewsService {
@@ -294,6 +385,12 @@ export class ReviewsService {
      * injecting the create review provider
      */
     private readonly createReviewProvider: CreateReviewProvider,
+
+    /**
+     * injecting the reviews repository
+     */
+    @InjectRepository(Review)
+    private readonly reviewsRepository: Repository&lt;Review&gt;,
   ) {}
 
   /**
@@ -311,6 +408,22 @@ export class ReviewsService {
     product: string;
   }&gt; {
     return this.createReviewProvider.createReview(createReviewDto);
+  }
+
+  /**
+   * @function deletes a review
+   * @param reviewId
+   * @returns a message that the review was successfully deleted
+   */
+  public async deleteReview(reviewId: string): Promise&lt;{ message: string }&gt; {
+    try {
+      await this.reviewsRepository.delete(reviewId);
+      return {
+        message: &#x60;Product ${reviewId}, was successfully deleted&#x60;,
+      };
+    } catch (error) {
+      throw new RequestTimeoutException(error);
+    }
   }
 }
 </code></pre>

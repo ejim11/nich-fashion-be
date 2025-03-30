@@ -146,6 +146,13 @@
                                     <span class="modifier">Public</span>
                                 <a href="#createReview" >createReview</a>
                             </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#deleteProduct" >deleteProduct</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -194,8 +201,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="23"
-                                    class="link-to-prism">src/reviews/reviews.controller.ts:23</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="33"
+                                    class="link-to-prism">src/reviews/reviews.controller.ts:33</a></div>
                         </td>
                     </tr>
 
@@ -242,15 +249,105 @@
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteProduct"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>deleteProduct</b></span>
+                        <a href="#deleteProduct"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>deleteProduct(reviewId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Delete(&#x27;/:reviewId&#x27;)<br />@Roles(Role.ADMIN)<br />@HttpCode(HttpStatus.NO_CONTENT)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="52"
+                                    class="link-to-prism">src/reviews/reviews.controller.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>reviewId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;literal type&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>a message that the item was successfully deleted</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>    </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Body, Controller, Post } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Body,
+  Controller,
+  Delete,
+  HttpCode,
+  HttpStatus,
+  Param,
+  Post,
+} from &#x27;@nestjs/common&#x27;;
 import { ReviewsService } from &#x27;./providers/reviews.service&#x27;;
 import { CreateReviewDto } from &#x27;./dtos/create-review.dto&#x27;;
 import { Auth } from &#x27;src/auth/decorator/auth.decorator&#x27;;
 import { AuthType } from &#x27;src/auth/enums/auth-type.enum&#x27;;
+import { Roles } from &#x27;src/auth/decorator/role.decorator&#x27;;
+import { Role } from &#x27;src/auth/enums/role-type.enum&#x27;;
 
 @Controller(&#x27;reviews&#x27;)
 export class ReviewsController {
@@ -277,6 +374,20 @@ export class ReviewsController {
     product: string;
   }&gt; {
     return this.reviewsService.createReview(createReviewDto);
+  }
+
+  /**
+   * @function deletes a product
+   * @param productId
+   * @returns a message that the item was successfully deleted
+   */
+  @Delete(&#x27;/:reviewId&#x27;)
+  @Roles(Role.ADMIN)
+  @HttpCode(HttpStatus.NO_CONTENT) // This set
+  public deleteProduct(
+    @Param(&#x27;reviewId&#x27;) reviewId: string,
+  ): Promise&lt;{ message: string }&gt; {
+    return this.reviewsService.deleteReview(reviewId);
   }
 }
 </code></pre>
