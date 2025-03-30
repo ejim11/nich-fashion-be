@@ -1,0 +1,9 @@
+POST http://localhost:3002/api/v1/reviews
+Content-Type: application/json
+
+{
+    "reviewer": "Ejim Favour",
+    "review": "I really loved the product",
+    "stars": 4,
+    "productId": "0fbdbc3e-3046-412d-ab05-e1f5b0331239"
+}
