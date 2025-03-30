@@ -1,0 +1,16 @@
+PATCH http://localhost:3002/api/v1/products/58f79b60-a1f1-465c-a2b0-3b845bdd3762
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNWJjMzZiNC1mYTc2LTQxOTMtYjBhOC0zZmU2ZDExZjQ1Y2IiLCJlbWFpbCI6ImZlamltMTg4QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0MzMyNDQ0NSwiZXhwIjoxNzQzMzI4MDQ1LCJhdWQiOiJsb2NhbGhvc3Q6MzAwMSIsImlzcyI6ImxvY2FsaG9zdDozMDAxIn0.JnRDnXpbywBrsiHVPiY34xMvo8-jkeWUwvuQyfJ4KQo
+
+{
+     "variants": [
+        {
+        "id": "e3936203-c1c0-4a0d-84ea-7ed29dd55093",
+        "color": "black"
+        },
+        {
+                "id":"6631ad89-951d-4cb7-9d52-f6cfade3a263",
+                "color": "noir"
+        }
+        ]
+}
