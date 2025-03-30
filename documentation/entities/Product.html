@@ -348,7 +348,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/products/product.entity.ts:59</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/products/product.entity.ts:62</a></div>
                         </td>
                     </tr>
 
@@ -631,13 +631,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @OneToMany(undefined, review &#x3D;&gt; review.product)<br />
+                            @OneToMany(undefined, review &#x3D;&gt; review.product, {cascade: true, eager: true})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/products/product.entity.ts:56</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/products/product.entity.ts:59</a></div>
                         </td>
                     </tr>
 
@@ -709,7 +709,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/products/product.entity.ts:62</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/products/product.entity.ts:65</a></div>
                         </td>
                     </tr>
 
@@ -812,7 +812,10 @@ export class Product {
   })
   variants?: ProductVariant[];
 
-  @OneToMany(() &#x3D;&gt; Review, (review) &#x3D;&gt; review.product)
+  @OneToMany(() &#x3D;&gt; Review, (review) &#x3D;&gt; review.product, {
+    cascade: true,
+    eager: true,
+  })
   reviews?: Review[];
 
   @CreateDateColumn()

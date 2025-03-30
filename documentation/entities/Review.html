@@ -269,13 +269,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ManyToOne(undefined, product &#x3D;&gt; product.reviews, {cascade: true, eager: true})<br />
+                            @ManyToOne(undefined, product &#x3D;&gt; product.reviews)<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/reviews/reviews.entity.ts:33</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/reviews/reviews.entity.ts:30</a></div>
                         </td>
                     </tr>
 
@@ -424,10 +424,7 @@ export class Review {
   @CreateDateColumn()
   dateCreated: Date;
 
-  @ManyToOne(() &#x3D;&gt; Product, (product) &#x3D;&gt; product.reviews, {
-    cascade: true,
-    eager: true,
-  })
+  @ManyToOne(() &#x3D;&gt; Product, (product) &#x3D;&gt; product.reviews)
   product: Product;
 }
 </code></pre>
