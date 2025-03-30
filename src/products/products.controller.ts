@@ -1,7 +1,10 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
+  HttpCode,
+  HttpStatus,
   Param,
   Patch,
   Post,
@@ -144,5 +147,19 @@ export class ProductsController {
     @Body() patchProductDto: PatchProductDto,
   ) {
     return this.productsService.updateProduct(productId, patchProductDto);
+  }
+
+  /**
+   * @function deletes a product
+   * @param productId
+   * @returns a message that the item was successfully deleted
+   */
+  @Delete('/:productId')
+  @Roles(Role.ADMIN)
+  @HttpCode(HttpStatus.NO_CONTENT) // This set
+  public deleteProduct(
+    @Param('productId') productId: string,
+  ): Promise<{ message: string }> {
+    return this.productsService.deleteProduct(productId);
   }
 }
