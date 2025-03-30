@@ -13,6 +13,12 @@ export class ProductVariantsService {
     private readonly productVariantRepository: Repository<ProductVariant>,
   ) {}
 
+  /**
+   * @function finds a product variant by id
+   * @param variantId
+   * @param productId
+   * @returns a product variant
+   */
   public async findProductVariantById(
     variantId: string,
     productId: string,
@@ -30,6 +36,11 @@ export class ProductVariantsService {
     return variant;
   }
 
+  /**
+   * @function saves a variant
+   * @param variant
+   * @returns  a product variant
+   */
   public async saveProductVariant(
     variant: ProductVariant,
   ): Promise<ProductVariant> {
