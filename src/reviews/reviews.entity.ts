@@ -26,9 +26,6 @@ export class Review {
   @CreateDateColumn()
   dateCreated: Date;
 
-  @ManyToOne(() => Product, (product) => product.reviews, {
-    cascade: true,
-    eager: true,
-  })
+  @ManyToOne(() => Product, (product) => product.reviews)
   product: Product;
 }
