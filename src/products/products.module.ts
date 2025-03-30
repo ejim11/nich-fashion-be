@@ -6,14 +6,23 @@ import { Product } from './product.entity';
 import { CreateProductProvider } from './providers/create-product.provider';
 import { UploadsModule } from 'src/uploads/uploads.module';
 import { PaginationModule } from 'src/common/pagination/pagination.module';
+import { ProductVariantsModule } from 'src/product-variants/product-variants.module';
+import { FindAllProductsProvider } from './providers/find-all-products.provider';
+import { UpdateProductProvider } from './providers/update-product.provider';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([Product]),
     UploadsModule,
     PaginationModule,
+    ProductVariantsModule,
   ],
   controllers: [ProductsController],
-  providers: [ProductsService, CreateProductProvider],
+  providers: [
+    ProductsService,
+    CreateProductProvider,
+    FindAllProductsProvider,
+    UpdateProductProvider,
+  ],
 })
 export class ProductsModule {}
