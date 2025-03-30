@@ -3,9 +3,8 @@ import {
   Injectable,
   RequestTimeoutException,
 } from '@nestjs/common';
-import { DataSource, Repository } from 'typeorm';
+import { DataSource } from 'typeorm';
 import { Product } from '../product.entity';
-import { InjectRepository } from '@nestjs/typeorm';
 import { CreateProductDto } from '../dtos/createProductDto';
 import { UploadsService } from 'src/uploads/providers/uploads.service';
 import { ProductVariant } from 'src/product-variants/product-variants.entity';
@@ -14,12 +13,6 @@ import { ProductImage } from 'src/product-images/product-image.entity';
 @Injectable()
 export class CreateProductProvider {
   constructor(
-    /**
-     * injecting the product repository
-     */
-    @InjectRepository(Product)
-    private readonly productRepository: Repository<Product>,
-
     /**
      * Injecting datasource
      */
@@ -116,7 +109,9 @@ export class CreateProductProvider {
       // if successful commit
       // ensures the txn is committed to the db
       await queryRunner.commitTransaction();
-      return { product: savedProduct };
+
+      // return product
+      return savedProduct;
     } catch (error) {
       // if unsuccessful rollback
       // we rollback the txn here if it is not successful
@@ -135,9 +130,5 @@ export class CreateProductProvider {
         });
       }
     }
-
-    // create the product variants
-
-    // return the product
   }
 }
