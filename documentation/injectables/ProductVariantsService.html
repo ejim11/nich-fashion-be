@@ -239,8 +239,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="54"
-                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:54</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="60"
+                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:60</a></div>
                         </td>
                     </tr>
 
@@ -523,6 +523,12 @@ export class ProductVariantsService {
     return await this.productVariantRepository.save(variant);
   }
 
+  /**
+   * @function checks variant availability
+   * @param variantId
+   * @param productId
+   * @param quantity
+   */
   public async checkVariantAvailability(
     variantId: string,
     productId: string,
