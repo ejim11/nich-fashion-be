@@ -1,0 +1,44 @@
+POST http://localhost:3002/api/v1/paystack/initiate-payment
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MmM4Y2ZlYi04OTdmLTQ2ZDctOGI3NS03YTdjNWJhMDFkYTEiLCJlbWFpbCI6ImZhdm91cmVqaW01NkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MzQ1ODU5NSwiZXhwIjoxNzQzNDYyMTk1LCJhdWQiOiJsb2NhbGhvc3Q6MzAwMSIsImlzcyI6ImxvY2FsaG9zdDozMDAxIn0.5Ecz1Qa8eZrKrSkMIlfSV0rbSbcMZZ6XnADwyK8AC94
+
+{
+    "products": [
+        {
+            "productId": "0fbdbc3e-3046-412d-ab05-e1f5b0331239",
+            "price": 200,
+            "variants": [
+                {
+                    "id": "340f380d-3d81-4d76-acf9-15caf0b47ce2",
+                    "color": "Grey",
+                    "size": "L",
+                    "quantity": 4
+                },
+                 {
+                    "id": "823e9f00-a69b-4de8-b872-c97bf5f250a6",
+                    "color": "Green",
+                    "size": "L",
+                    "quantity": 5
+                }
+            ]
+        },
+        {
+            "productId": "0fbdbc3e-3046-412d-ab05-e1f5b0331239",
+            "price": 800,
+            "variants": [
+                {
+                    "id": "340f380d-3d81-4d76-acf9-15caf0b47ce2",
+                    "color": "Grey",
+                    "size": "L",
+                    "quantity": 1
+                },
+                 {
+                    "id": "823e9f00-a69b-4de8-b872-c97bf5f250a6",
+                    "color": "Green",
+                    "size": "L",
+                    "quantity": 3
+                }
+            ]
+        }
+    ]
+}
