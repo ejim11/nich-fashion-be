@@ -91,7 +91,7 @@
 
 <ol class="breadcrumb">
   <li class="breadcrumb-item">Injectables</li>
-  <li class="breadcrumb-item" >ProductVariantsService</li>
+  <li class="breadcrumb-item" >DiscountsUsageService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -115,7 +115,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/product-variants/providers/product-variants.service.ts</code>
+            <code>src/discounts-usage/providers/discounts-usage.service.ts</code>
         </p>
 
 
@@ -138,17 +138,7 @@
                             <li>
                                     <span class="modifier">Public</span>
                                     <span class="modifier">Async</span>
-                                <a href="#checkVariantAvailability" >checkVariantAvailability</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                    <span class="modifier">Async</span>
-                                <a href="#findProductVariantById" >findProductVariantById</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                    <span class="modifier">Async</span>
-                                <a href="#saveProductVariant" >saveProductVariant</a>
+                                <a href="#countDiscountUsage" >countDiscountUsage</a>
                             </li>
                         </ul>
                     </td>
@@ -168,12 +158,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(productVariantRepository: Repository<ProductVariant>)</code>
+<code>constructor(discountsUsageRepository: Repository<DiscountUsage>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/product-variants/providers/product-variants.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/discounts-usage/providers/discounts-usage.service.ts:7</a></div>
                             </td>
                         </tr>
 
@@ -191,10 +181,10 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>productVariantRepository</td>
+                                                        <td>discountsUsageRepository</td>
                                                   
                                                         <td>
-                                                                    <code>Repository&lt;ProductVariant&gt;</code>
+                                                                    <code>Repository&lt;DiscountUsage&gt;</code>
                                                         </td>
                                                   
                                                     <td>
@@ -220,27 +210,27 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="checkVariantAvailability"></a>
+                    <a name="countDiscountUsage"></a>
                     <span class="name">
                             <span class="modifier">Public</span>
                             <span class="modifier">Async</span>
-                        <span ><b>checkVariantAvailability</b></span>
-                        <a href="#checkVariantAvailability"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>countDiscountUsage</b></span>
+                        <a href="#countDiscountUsage"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>checkVariantAvailability(variantId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, productId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, quantity: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    <code>countDiscountUsage(discountId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="54"
-                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:54</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="22"
+                                    class="link-to-prism">src/discounts-usage/providers/discounts-usage.service.ts:22</a></div>
                         </td>
                     </tr>
 
@@ -261,7 +251,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>variantId</td>
+                                                <td>discountId</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -273,101 +263,7 @@
 
                                         </tr>
                                         <tr>
-                                                <td>productId</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>quantity</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="findProductVariantById"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                            <span class="modifier">Async</span>
-                        <span ><b>findProductVariantById</b></span>
-                        <a href="#findProductVariantById"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findProductVariantById(variantId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, productId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="26"
-                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:26</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>variantId</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>productId</td>
+                                                <td>userId</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -382,82 +278,11 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>Promise&lt;ProductVariant&gt;</code>
+                            <b>Returns : </b>    <code>unknown</code>
 
                         </div>
                             <div class="io-description">
-                                <p>a product variant</p>
-
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="saveProductVariant"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                            <span class="modifier">Async</span>
-                        <span ><b>saveProductVariant</b></span>
-                        <a href="#saveProductVariant"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>saveProductVariant(variant: <a href="../entitys/ProductVariant.html" target="_self">ProductVariant</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="48"
-                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:48</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>variant</td>
-                                            <td>
-                                                            <code><a href="../entitys/ProductVariant.html" target="_self" >ProductVariant</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>    <code>Promise&lt;ProductVariant&gt;</code>
-
-                        </div>
-                            <div class="io-description">
-                                <p>a product variant</p>
+                                <p>discount usage count by a user</p>
 
                             </div>
                 </td>
@@ -470,90 +295,48 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  BadRequestException,
-  Injectable,
-  NotFoundException,
-} from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, RequestTimeoutException } from &#x27;@nestjs/common&#x27;;
 import { Repository } from &#x27;typeorm&#x27;;
-import { ProductVariant } from &#x27;../product-variants.entity&#x27;;
+import { DiscountUsage } from &#x27;../discounts-usage.entity&#x27;;
 import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
 
 @Injectable()
-export class ProductVariantsService {
+export class DiscountsUsageService {
   constructor(
     /**
-     * injecting the product variant repository
+     * injecting the discounts usage repository
      */
-    @InjectRepository(ProductVariant)
-    private readonly productVariantRepository: Repository&lt;ProductVariant&gt;,
+    @InjectRepository(DiscountUsage)
+    private readonly discountsUsageRepository: Repository&lt;DiscountUsage&gt;,
   ) {}
 
   /**
-   * @function finds a product variant by id
-   * @param variantId
-   * @param productId
-   * @returns a product variant
+   * @function gets the discount usage count of a user
+   * @param discountId
+   * @param userId
+   * @returns discount usage count by a user
    */
-  public async findProductVariantById(
-    variantId: string,
-    productId: string,
-  ): Promise&lt;ProductVariant&gt; {
-    const variant &#x3D; await this.productVariantRepository.findOne({
-      where: { id: variantId, product: { id: productId } },
-    });
-
-    if (!variant) {
-      throw new NotFoundException(
-        &#x60;Variant with ID ${variantId} not found for product ${productId}&#x60;,
+  public async countDiscountUsage(discountId: string, userId: string) {
+    let usageCount;
+    try {
+      // Check usage limit
+      usageCount &#x3D; await this.discountsUsageRepository.count({
+        where: {
+          discount: { id: discountId },
+          user: { id: userId },
+        },
+      });
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      throw new RequestTimeoutException(
+        &#x27;Unable to process your request at the moment, please try later&#x27;,
+        {
+          description: &#x27;Error connecting to the database&#x27;,
+        },
       );
     }
 
-    return variant;
-  }
-
-  /**
-   * @function saves a variant
-   * @param variant
-   * @returns  a product variant
-   */
-  public async saveProductVariant(
-    variant: ProductVariant,
-  ): Promise&lt;ProductVariant&gt; {
-    return await this.productVariantRepository.save(variant);
-  }
-
-  public async checkVariantAvailability(
-    variantId: string,
-    productId: string,
-    quantity: number,
-  ) {
-    // Fetch the variant from the database, ensuring it belongs to the specified product
-    const variant &#x3D; await this.productVariantRepository.findOne({
-      where: { id: variantId, product: { id: productId } },
-      relations: [&#x27;product&#x27;], // Optional, for validation
-    });
-
-    // Check if the variant exists
-    if (!variant) {
-      throw new BadRequestException(
-        &#x60;Variant with ID ${variantId} not found for product ${productId}&#x60;,
-      );
-    }
-
-    // Check if the variant is sold out
-    if (variant.soldOut) {
-      throw new BadRequestException(
-        &#x60;Variant ${variantId} (color: ${variant.color}, size: ${variant.size}) is sold out&#x60;,
-      );
-    }
-
-    // Optional: Check if the requested quantity exceeds available stock
-    if (quantity &gt; variant.quantity) {
-      throw new BadRequestException(
-        &#x60;Requested quantity (${quantity}) for variant ${variantId} exceeds available stock (${variant.quantity})&#x60;,
-      );
-    }
+    return usageCount;
   }
 }
 </code></pre>
@@ -599,7 +382,7 @@ export class ProductVariantsService {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'ProductVariantsService.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'DiscountsUsageService.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

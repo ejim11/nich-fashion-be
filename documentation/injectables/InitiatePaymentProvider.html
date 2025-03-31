@@ -91,7 +91,7 @@
 
 <ol class="breadcrumb">
   <li class="breadcrumb-item">Injectables</li>
-  <li class="breadcrumb-item" >ProductVariantsService</li>
+  <li class="breadcrumb-item" >InitiatePaymentProvider</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -115,7 +115,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/product-variants/providers/product-variants.service.ts</code>
+            <code>src/paystack/providers/initiate-payment.provider.ts</code>
         </p>
 
 
@@ -136,19 +136,13 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Public</span>
-                                    <span class="modifier">Async</span>
-                                <a href="#checkVariantAvailability" >checkVariantAvailability</a>
+                                    <span class="modifier">Private</span>
+                                <a href="#getAuthHeader" >getAuthHeader</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
                                     <span class="modifier">Async</span>
-                                <a href="#findProductVariantById" >findProductVariantById</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                    <span class="modifier">Async</span>
-                                <a href="#saveProductVariant" >saveProductVariant</a>
+                                <a href="#initializePayment" >initializePayment</a>
                             </li>
                         </ul>
                     </td>
@@ -168,12 +162,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(productVariantRepository: Repository<ProductVariant>)</code>
+<code>constructor(paystackConfiguration: ConfigType<>, dataSource: DataSource, usersService: <a href="../injectables/UsersService.html" target="_self">UsersService</a>, configService: ConfigService, productVariantsService: <a href="../injectables/ProductVariantsService.html" target="_self">ProductVariantsService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/product-variants/providers/product-variants.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/paystack/providers/initiate-payment.provider.ts:20</a></div>
                             </td>
                         </tr>
 
@@ -191,10 +185,58 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>productVariantRepository</td>
+                                                        <td>paystackConfiguration</td>
                                                   
                                                         <td>
-                                                                    <code>Repository&lt;ProductVariant&gt;</code>
+                                                                    <code>ConfigType&lt;&gt;</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dataSource</td>
+                                                  
+                                                        <td>
+                                                                    <code>DataSource</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>usersService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UsersService.html" target="_self" >UsersService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>configService</td>
+                                                  
+                                                        <td>
+                                                                    <code>ConfigService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>productVariantsService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ProductVariantsService.html" target="_self" >ProductVariantsService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -220,173 +262,41 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="checkVariantAvailability"></a>
+                    <a name="getAuthHeader"></a>
                     <span class="name">
-                            <span class="modifier">Public</span>
-                            <span class="modifier">Async</span>
-                        <span ><b>checkVariantAvailability</b></span>
-                        <a href="#checkVariantAvailability"><span class="icon ion-ios-link"></span></a>
+                            <span class="modifier">Private</span>
+                        <span ><b>getAuthHeader</b></span>
+                        <a href="#getAuthHeader"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>checkVariantAvailability(variantId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, productId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, quantity: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    <code>getAuthHeader()</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="54"
-                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:54</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="53"
+                                    class="link-to-prism">src/paystack/providers/initiate-payment.provider.ts:53</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>function for getting the auth header</p>
+</div>
 
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>variantId</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>productId</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>quantity</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <b>Returns : </b>        <code><a href="../miscellaneous/variables.html#Auth" target="_self" >{ Authorization: string; }</a></code>
 
                         </div>
                             <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="findProductVariantById"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                            <span class="modifier">Async</span>
-                        <span ><b>findProductVariantById</b></span>
-                        <a href="#findProductVariantById"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findProductVariantById(variantId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, productId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="26"
-                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:26</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>variantId</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>productId</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>    <code>Promise&lt;ProductVariant&gt;</code>
-
-                        </div>
-                            <div class="io-description">
-                                <p>a product variant</p>
+                                <p>authorization header for paystack</p>
 
                             </div>
                 </td>
@@ -397,27 +307,27 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="saveProductVariant"></a>
+                    <a name="initializePayment"></a>
                     <span class="name">
                             <span class="modifier">Public</span>
                             <span class="modifier">Async</span>
-                        <span ><b>saveProductVariant</b></span>
-                        <a href="#saveProductVariant"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>initializePayment</b></span>
+                        <a href="#initializePayment"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>saveProductVariant(variant: <a href="../entitys/ProductVariant.html" target="_self">ProductVariant</a>)</code>
+                    <code>initializePayment(initiatePaymentDto: <a href="../classes/InitiatePaymentDto.html" target="_self">InitiatePaymentDto</a>, user: <a href="../interfaces/ActiveUserData.html" target="_self">ActiveUserData</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="48"
-                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:48</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="57"
+                                    class="link-to-prism">src/paystack/providers/initiate-payment.provider.ts:57</a></div>
                         </td>
                     </tr>
 
@@ -438,9 +348,21 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>variant</td>
+                                                <td>initiatePaymentDto</td>
                                             <td>
-                                                            <code><a href="../entitys/ProductVariant.html" target="_self" >ProductVariant</a></code>
+                                                            <code><a href="../classes/InitiatePaymentDto.html" target="_self" >InitiatePaymentDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>user</td>
+                                            <td>
+                                                            <code><a href="../interfaces/ActiveUserData.html" target="_self" >ActiveUserData</a></code>
                                             </td>
 
                                             <td>
@@ -453,12 +375,11 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>Promise&lt;ProductVariant&gt;</code>
+                            <b>Returns : </b>    <code>unknown</code>
 
                         </div>
                             <div class="io-description">
-                                <p>a product variant</p>
-
+                                
                             </div>
                 </td>
             </tr>
@@ -471,88 +392,179 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  BadRequestException,
+  ConflictException,
+  Inject,
   Injectable,
-  NotFoundException,
+  RequestTimeoutException,
 } from &#x27;@nestjs/common&#x27;;
-import { Repository } from &#x27;typeorm&#x27;;
-import { ProductVariant } from &#x27;../product-variants.entity&#x27;;
-import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
+import { InitiatePaymentDto } from &#x27;../dtos/initiate-payment.dto&#x27;;
+import { ActiveUserData } from &#x27;src/auth/interfaces/active-user-data.interface&#x27;;
+import paystackConfig from &#x27;../config/paystack.config&#x27;;
+import { ConfigService, ConfigType } from &#x27;@nestjs/config&#x27;;
+import { DataSource } from &#x27;typeorm&#x27;;
+import axios from &#x27;axios&#x27;;
+import { UsersService } from &#x27;src/users/providers/users.service&#x27;;
+import { Payment } from &#x27;src/payment/payment.entity&#x27;;
+import { paymentStatus } from &#x27;src/payment/enums/paymentStatus.enum&#x27;;
+import { User } from &#x27;src/users/user.entity&#x27;;
+import { ProductVariantsService } from &#x27;src/product-variants/providers/product-variants.service&#x27;;
 
 @Injectable()
-export class ProductVariantsService {
+export class InitiatePaymentProvider {
   constructor(
     /**
-     * injecting the product variant repository
+     * injecting the paystack config
      */
-    @InjectRepository(ProductVariant)
-    private readonly productVariantRepository: Repository&lt;ProductVariant&gt;,
+    @Inject(paystackConfig.KEY)
+    private readonly paystackConfiguration: ConfigType&lt;typeof paystackConfig&gt;,
+
+    /**
+     * Injecting datasource
+     */
+    private readonly dataSource: DataSource,
+
+    /**
+     * injecting the users service
+     */
+    private readonly usersService: UsersService,
+
+    /**
+     * injecting config service
+     */
+    private readonly configService: ConfigService,
+
+    /**
+     * injecting the product variants service
+     */
+    private readonly productVariantsService: ProductVariantsService,
   ) {}
 
   /**
-   * @function finds a product variant by id
-   * @param variantId
-   * @param productId
-   * @returns a product variant
+   * function for getting the auth header
+   * @returns authorization header for paystack
    */
-  public async findProductVariantById(
-    variantId: string,
-    productId: string,
-  ): Promise&lt;ProductVariant&gt; {
-    const variant &#x3D; await this.productVariantRepository.findOne({
-      where: { id: variantId, product: { id: productId } },
-    });
-
-    if (!variant) {
-      throw new NotFoundException(
-        &#x60;Variant with ID ${variantId} not found for product ${productId}&#x60;,
-      );
-    }
-
-    return variant;
+  private getAuthHeader() {
+    return { Authorization: &#x60;Bearer ${this.paystackConfiguration.secret}&#x60; };
   }
 
-  /**
-   * @function saves a variant
-   * @param variant
-   * @returns  a product variant
-   */
-  public async saveProductVariant(
-    variant: ProductVariant,
-  ): Promise&lt;ProductVariant&gt; {
-    return await this.productVariantRepository.save(variant);
-  }
-
-  public async checkVariantAvailability(
-    variantId: string,
-    productId: string,
-    quantity: number,
+  public async initializePayment(
+    initiatePaymentDto: InitiatePaymentDto,
+    user: ActiveUserData,
   ) {
-    // Fetch the variant from the database, ensuring it belongs to the specified product
-    const variant &#x3D; await this.productVariantRepository.findOne({
-      where: { id: variantId, product: { id: productId } },
-      relations: [&#x27;product&#x27;], // Optional, for validation
-    });
-
-    // Check if the variant exists
-    if (!variant) {
-      throw new BadRequestException(
-        &#x60;Variant with ID ${variantId} not found for product ${productId}&#x60;,
-      );
+    // start transaction
+    // create Query Runner instance
+    const queryRunner &#x3D; this.dataSource.createQueryRunner();
+    try {
+      // connect query runner to datasource
+      await queryRunner.connect();
+      // start transaction
+      await queryRunner.startTransaction();
+    } catch (error) {
+      console.log(error);
+      throw new RequestTimeoutException(&#x27;Could not connect to datasource&#x27;);
     }
 
-    // Check if the variant is sold out
-    if (variant.soldOut) {
-      throw new BadRequestException(
-        &#x60;Variant ${variantId} (color: ${variant.color}, size: ${variant.size}) is sold out&#x60;,
-      );
+    // user, discount info, delivery address info, product info
+
+    // find the user
+    const buyer: User &#x3D; await this.usersService.findOneById(user.sub);
+
+    // user info should have details about address but if there is a set delivery address then use that
+    const deliveryAddress &#x3D;
+      initiatePaymentDto.deliveryAddress ??
+      &#x60;${buyer.streetAddress}, ${buyer.city}, ${buyer.state}&#x60;;
+
+    const deliveryPicker &#x3D;
+      initiatePaymentDto.deliveryPicker ??
+      &#x60;${buyer.firstName} ${buyer.lastName}&#x60;;
+
+    // Iterate through each product in the request
+    for (const product of initiatePaymentDto.products) {
+      const { productId, variants } &#x3D; product;
+
+      // Iterate through each variant the user wants to buy
+      for (const variantDto of variants) {
+        const { id: variantId, quantity } &#x3D; variantDto;
+
+        await this.productVariantsService.checkVariantAvailability(
+          variantId,
+          productId,
+          quantity,
+        );
+      }
     }
 
-    // Optional: Check if the requested quantity exceeds available stock
-    if (quantity &gt; variant.quantity) {
-      throw new BadRequestException(
-        &#x60;Requested quantity (${quantity}) for variant ${variantId} exceeds available stock (${variant.quantity})&#x60;,
+    console.log(&#x27;abi&#x27;);
+
+    let totalAmount &#x3D; initiatePaymentDto.products
+      .map((prd) &#x3D;&gt; {
+        // loop through inner variants
+        const totalQty &#x3D; prd.variants
+          .map((vr) &#x3D;&gt; vr.quantity)
+          .reduce((acc, cur) &#x3D;&gt; cur + acc, 0);
+
+        return prd.price * totalQty;
+      })
+      .reduce((acc, cur) &#x3D;&gt; acc + cur, 0);
+
+    totalAmount &#x3D; initiatePaymentDto.discount
+      ? (initiatePaymentDto.discount.percentOff / 100) * totalAmount
+      : totalAmount;
+
+    console.log(totalAmount);
+
+    // initialize payment
+    let response;
+    try {
+      response &#x3D; await axios.post(
+        &#x60;${this.paystackConfiguration.baseUrl}/transaction/initialize&#x60;,
+        {
+          email: buyer.email,
+          metadata: {
+            products: initiatePaymentDto.products,
+            user: buyer,
+            deliveryAddress,
+            deliveryPicker,
+            totalAmount,
+            discount: initiatePaymentDto.discount ?? {},
+          },
+          amount: totalAmount * 100,
+          callback_url: &#x60;${this.configService.get(&#x27;appConfig.host&#x27;)}/collections?success&#x3D;yes&#x60;,
+        }, // Paystack accepts amounts in kobo
+        { headers: this.getAuthHeader() },
       );
+
+      // Create payment record
+      await queryRunner.manager.save(Payment, {
+        userId: buyer.id,
+        amount: totalAmount,
+        provider: &#x27;paystack&#x27;,
+        providerReference: response.data.data.reference,
+        status: paymentStatus.PENDING,
+        authorizationUrl: response.data.data.authorization_url,
+      });
+
+      // if successful commit
+      // ensures the txn is committed to the db
+      await queryRunner.commitTransaction();
+
+      return response.data;
+    } catch (error) {
+      // we rollback the txn here if it is not successful
+      await queryRunner.rollbackTransaction();
+      throw new ConflictException(&#x27;Could not complete the transaction&#x27;, {
+        description: String(error),
+      });
+    } finally {
+      // relsease the connection
+      // release connection whether it was successful or not
+      try {
+        await queryRunner.release();
+      } catch (error) {
+        throw new RequestTimeoutException(&#x27;Could not release the connection&#x27;, {
+          description: String(error),
+        });
+      }
     }
   }
 }
@@ -599,7 +611,7 @@ export class ProductVariantsService {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'ProductVariantsService.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'InitiatePaymentProvider.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

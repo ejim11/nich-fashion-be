@@ -79,19 +79,16 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content injectable">
+               <div class="content controller">
                    <div class="content-data">
 
 
 
 
 
-
-
-
 <ol class="breadcrumb">
-  <li class="breadcrumb-item">Injectables</li>
-  <li class="breadcrumb-item" >ProductVariantsService</li>
+  <li class="breadcrumb-item">Controllers</li>
+  <li class="breadcrumb-item" >DeliveryStatesController</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -115,8 +112,16 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/product-variants/providers/product-variants.service.ts</code>
+            <code>src/delivery-states/delivery-states.controller.ts</code>
         </p>
+
+            <p class="comment">
+                <h3>Prefix</h3>
+            </p>
+            <p class="comment">
+                <code>delivery-states</code>
+            </p>
+
 
 
 
@@ -136,19 +141,22 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Public</span>
-                                    <span class="modifier">Async</span>
-                                <a href="#checkVariantAvailability" >checkVariantAvailability</a>
+                                <a href="#createDeliveryState" >createDeliveryState</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Public</span>
-                                    <span class="modifier">Async</span>
-                                <a href="#findProductVariantById" >findProductVariantById</a>
+                                <a href="#findDeliveryStateByState" >findDeliveryStateByState</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Public</span>
-                                    <span class="modifier">Async</span>
-                                <a href="#saveProductVariant" >saveProductVariant</a>
+                                <a href="#updateDeliveryState" >updateDeliveryState</a>
                             </li>
                         </ul>
                     </td>
@@ -162,55 +170,6 @@
     </table>
 </section>
 
-            <section data-compodoc="block-constructor">
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor(productVariantRepository: Repository<ProductVariant>)</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/product-variants/providers/product-variants.service.ts:11</a></div>
-                            </td>
-                        </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>productVariantRepository</td>
-                                                  
-                                                        <td>
-                                                                    <code>Repository&lt;ProductVariant&gt;</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-</section>
-
             <section data-compodoc="block-methods">
     
     <h3 id="methods">
@@ -220,27 +179,35 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="checkVariantAvailability"></a>
+                    <a name="createDeliveryState"></a>
                     <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
                             <span class="modifier">Public</span>
-                            <span class="modifier">Async</span>
-                        <span ><b>checkVariantAvailability</b></span>
-                        <a href="#checkVariantAvailability"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>createDeliveryState</b></span>
+                        <a href="#createDeliveryState"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>checkVariantAvailability(variantId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, productId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, quantity: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    <code>createDeliveryState(createDeliveryStateDto: <a href="../classes/CreateDeliveryStateDto.html" target="_self">CreateDeliveryStateDto</a>)</code>
                 </td>
             </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Post()<br />@Roles(Role.ADMIN)<br /></code>
+                </td>
+            </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="54"
-                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:54</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="25"
+                                    class="link-to-prism">src/delivery-states/delivery-states.controller.ts:25</a></div>
                         </td>
                     </tr>
 
@@ -261,33 +228,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>variantId</td>
+                                                <td>createDeliveryStateDto</td>
                                             <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>productId</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>quantity</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                            <code><a href="../classes/CreateDeliveryStateDto.html" target="_self" >CreateDeliveryStateDto</a></code>
                                             </td>
 
                                             <td>
@@ -314,27 +257,35 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="findProductVariantById"></a>
+                    <a name="findDeliveryStateByState"></a>
                     <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
                             <span class="modifier">Public</span>
-                            <span class="modifier">Async</span>
-                        <span ><b>findProductVariantById</b></span>
-                        <a href="#findProductVariantById"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>findDeliveryStateByState</b></span>
+                        <a href="#findDeliveryStateByState"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findProductVariantById(variantId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, productId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>findDeliveryStateByState(state: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Auth(AuthType.None)<br />@Get(&#x27;/:state&#x27;)<br /></code>
+                </td>
+            </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="26"
-                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:26</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="40"
+                                    class="link-to-prism">src/delivery-states/delivery-states.controller.ts:40</a></div>
                         </td>
                     </tr>
 
@@ -355,19 +306,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>variantId</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>productId</td>
+                                                <td>state</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -382,11 +321,11 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>Promise&lt;ProductVariant&gt;</code>
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                         </div>
                             <div class="io-description">
-                                <p>a product variant</p>
+                                <p>delivery state</p>
 
                             </div>
                 </td>
@@ -397,27 +336,35 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="saveProductVariant"></a>
+                    <a name="updateDeliveryState"></a>
                     <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
                             <span class="modifier">Public</span>
-                            <span class="modifier">Async</span>
-                        <span ><b>saveProductVariant</b></span>
-                        <a href="#saveProductVariant"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>updateDeliveryState</b></span>
+                        <a href="#updateDeliveryState"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>saveProductVariant(variant: <a href="../entitys/ProductVariant.html" target="_self">ProductVariant</a>)</code>
+                    <code>updateDeliveryState(stateId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateDeliveryStateDto: <a href="../classes/UpdateDeliveryStateDto.html" target="_self">UpdateDeliveryStateDto</a>)</code>
                 </td>
             </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Roles(Role.ADMIN)<br />@Patch(&#x27;/:stateId&#x27;)<br /></code>
+                </td>
+            </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="48"
-                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:48</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="51"
+                                    class="link-to-prism">src/delivery-states/delivery-states.controller.ts:51</a></div>
                         </td>
                     </tr>
 
@@ -438,9 +385,21 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>variant</td>
+                                                <td>stateId</td>
                                             <td>
-                                                            <code><a href="../entitys/ProductVariant.html" target="_self" >ProductVariant</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>updateDeliveryStateDto</td>
+                                            <td>
+                                                            <code><a href="../classes/UpdateDeliveryStateDto.html" target="_self" >UpdateDeliveryStateDto</a></code>
                                             </td>
 
                                             <td>
@@ -453,113 +412,87 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>Promise&lt;ProductVariant&gt;</code>
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                         </div>
                             <div class="io-description">
-                                <p>a product variant</p>
+                                <p>updated delivery state</p>
 
                             </div>
                 </td>
             </tr>
         </tbody>
     </table>
-</section>
-
-    </div>
+</section>    </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  BadRequestException,
-  Injectable,
-  NotFoundException,
-} from &#x27;@nestjs/common&#x27;;
-import { Repository } from &#x27;typeorm&#x27;;
-import { ProductVariant } from &#x27;../product-variants.entity&#x27;;
-import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Body, Controller, Get, Param, Patch, Post } from &#x27;@nestjs/common&#x27;;
+import { DeliveryStatesService } from &#x27;./providers/delivery-states.service&#x27;;
+import { CreateDeliveryStateDto } from &#x27;./dtos/create-delivery-state.dto&#x27;;
+import { Roles } from &#x27;src/auth/decorator/role.decorator&#x27;;
+import { Role } from &#x27;src/auth/enums/role-type.enum&#x27;;
+import { Auth } from &#x27;src/auth/decorator/auth.decorator&#x27;;
+import { AuthType } from &#x27;src/auth/enums/auth-type.enum&#x27;;
+import { UpdateDeliveryStateDto } from &#x27;./dtos/update-delivery-state.dto&#x27;;
 
-@Injectable()
-export class ProductVariantsService {
+@Controller(&#x27;delivery-states&#x27;)
+export class DeliveryStatesController {
   constructor(
     /**
-     * injecting the product variant repository
+     * injecting the delivery states service
      */
-    @InjectRepository(ProductVariant)
-    private readonly productVariantRepository: Repository&lt;ProductVariant&gt;,
+    private readonly deliveryStatesService: DeliveryStatesService,
   ) {}
 
   /**
-   * @function finds a product variant by id
-   * @param variantId
-   * @param productId
-   * @returns a product variant
+   * @function creates a delivery state
+   * @param createDeliveryStateDto
    */
-  public async findProductVariantById(
-    variantId: string,
-    productId: string,
-  ): Promise&lt;ProductVariant&gt; {
-    const variant &#x3D; await this.productVariantRepository.findOne({
-      where: { id: variantId, product: { id: productId } },
-    });
-
-    if (!variant) {
-      throw new NotFoundException(
-        &#x60;Variant with ID ${variantId} not found for product ${productId}&#x60;,
-      );
-    }
-
-    return variant;
+  @Post()
+  @Roles(Role.ADMIN)
+  public createDeliveryState(
+    @Body() createDeliveryStateDto: CreateDeliveryStateDto,
+  ) {
+    return this.deliveryStatesService.createDeliveryState(
+      createDeliveryStateDto,
+    );
   }
 
   /**
-   * @function saves a variant
-   * @param variant
-   * @returns  a product variant
+   * @function finds a delivery state by name
+   * @param state
+   * @returns delivery state
    */
-  public async saveProductVariant(
-    variant: ProductVariant,
-  ): Promise&lt;ProductVariant&gt; {
-    return await this.productVariantRepository.save(variant);
+  @Auth(AuthType.None)
+  @Get(&#x27;/:state&#x27;)
+  public findDeliveryStateByState(@Param(&#x27;state&#x27;) state: string) {
+    return this.deliveryStatesService.findDeliveryStateByName(state);
   }
 
-  public async checkVariantAvailability(
-    variantId: string,
-    productId: string,
-    quantity: number,
+  /**
+   * @function updates a delivery state
+   * @param updateDeliveryStateDto
+   * @returns updated delivery state
+   */
+  @Roles(Role.ADMIN)
+  @Patch(&#x27;/:stateId&#x27;)
+  public updateDeliveryState(
+    @Param(&#x27;stateId&#x27;) stateId: string,
+    @Body() updateDeliveryStateDto: UpdateDeliveryStateDto,
   ) {
-    // Fetch the variant from the database, ensuring it belongs to the specified product
-    const variant &#x3D; await this.productVariantRepository.findOne({
-      where: { id: variantId, product: { id: productId } },
-      relations: [&#x27;product&#x27;], // Optional, for validation
-    });
-
-    // Check if the variant exists
-    if (!variant) {
-      throw new BadRequestException(
-        &#x60;Variant with ID ${variantId} not found for product ${productId}&#x60;,
-      );
-    }
-
-    // Check if the variant is sold out
-    if (variant.soldOut) {
-      throw new BadRequestException(
-        &#x60;Variant ${variantId} (color: ${variant.color}, size: ${variant.size}) is sold out&#x60;,
-      );
-    }
-
-    // Optional: Check if the requested quantity exceeds available stock
-    if (quantity &gt; variant.quantity) {
-      throw new BadRequestException(
-        &#x60;Requested quantity (${quantity}) for variant ${variantId} exceeds available stock (${variant.quantity})&#x60;,
-      );
-    }
+    return this.deliveryStatesService.updateDeliveryState(
+      stateId,
+      updateDeliveryStateDto,
+    );
   }
 }
 </code></pre>
     </div>
-
 </div>
+
+
+
 
 
 
@@ -598,8 +531,8 @@ export class ProductVariantsService {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'ProductVariantsService.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'controller';
+            var COMPODOC_CURRENT_PAGE_URL = 'DeliveryStatesController.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
