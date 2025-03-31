@@ -26,6 +26,8 @@ import { UploadsModule } from './uploads/uploads.module';
 import { DiscountsModule } from './discounts/discounts.module';
 import { DiscountsUsageModule } from './discounts-usage/discounts-usage.module';
 import { DeliveryStatesModule } from './delivery-states/delivery-states.module';
+import { PaystackModule } from './paystack/paystack.module';
+import { PaymentModule } from './payment/payment.module';
 
 /**
  * app environment
@@ -79,6 +81,8 @@ const ENV = process.env.NODE_ENV;
     DiscountsModule,
     DiscountsUsageModule,
     DeliveryStatesModule,
+    PaystackModule,
+    PaymentModule,
   ],
   controllers: [AppController],
   providers: [
