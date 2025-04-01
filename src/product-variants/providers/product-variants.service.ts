@@ -25,10 +25,10 @@ export class ProductVariantsService {
    */
   public async findProductVariantById(
     variantId: string,
-    productId: string,
+    productId?: string,
   ): Promise<ProductVariant> {
     const variant = await this.productVariantRepository.findOne({
-      where: { id: variantId, product: { id: productId } },
+      where: { id: variantId, product: productId ? { id: productId } : null },
     });
 
     if (!variant) {
