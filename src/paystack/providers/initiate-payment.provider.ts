@@ -101,7 +101,15 @@ export class InitiatePaymentProvider {
       }
     }
 
-    console.log('abi');
+    const prdVariants = await Promise.all(
+      initiatePaymentDto.products
+        .map((prd) => prd.variants)
+        .flat()
+        .map(
+          async (vr) =>
+            await this.productVariantsService.findProductVariantById(vr.id),
+        ),
+    );
 
     let totalAmount = initiatePaymentDto.products
       .map((prd) => {
@@ -117,8 +125,6 @@ export class InitiatePaymentProvider {
     totalAmount = initiatePaymentDto.discount
       ? (initiatePaymentDto.discount.percentOff / 100) * totalAmount
       : totalAmount;
-
-    console.log(totalAmount);
 
     // initialize payment
     let response;
@@ -149,6 +155,7 @@ export class InitiatePaymentProvider {
         providerReference: response.data.data.reference,
         status: paymentStatus.PENDING,
         authorizationUrl: response.data.data.authorization_url,
+        variants: prdVariants,
       });
 
       // if successful commit
