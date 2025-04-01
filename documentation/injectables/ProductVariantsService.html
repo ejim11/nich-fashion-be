@@ -326,7 +326,7 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findProductVariantById(variantId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, productId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>findProductVariantById(variantId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, productId?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -373,7 +373,7 @@
                                             </td>
 
                                             <td>
-                                                    No
+                                                    Yes
                                             </td>
 
 
@@ -497,10 +497,10 @@ export class ProductVariantsService {
    */
   public async findProductVariantById(
     variantId: string,
-    productId: string,
+    productId?: string,
   ): Promise&lt;ProductVariant&gt; {
     const variant &#x3D; await this.productVariantRepository.findOne({
-      where: { id: variantId, product: { id: productId } },
+      where: { id: variantId, product: productId ? { id: productId } : null },
     });
 
     if (!variant) {

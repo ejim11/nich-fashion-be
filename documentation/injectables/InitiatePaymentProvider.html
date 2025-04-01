@@ -494,7 +494,15 @@ export class InitiatePaymentProvider {
       }
     }
 
-    console.log(&#x27;abi&#x27;);
+    const prdVariants &#x3D; await Promise.all(
+      initiatePaymentDto.products
+        .map((prd) &#x3D;&gt; prd.variants)
+        .flat()
+        .map(
+          async (vr) &#x3D;&gt;
+            await this.productVariantsService.findProductVariantById(vr.id),
+        ),
+    );
 
     let totalAmount &#x3D; initiatePaymentDto.products
       .map((prd) &#x3D;&gt; {
@@ -510,8 +518,6 @@ export class InitiatePaymentProvider {
     totalAmount &#x3D; initiatePaymentDto.discount
       ? (initiatePaymentDto.discount.percentOff / 100) * totalAmount
       : totalAmount;
-
-    console.log(totalAmount);
 
     // initialize payment
     let response;
@@ -542,6 +548,7 @@ export class InitiatePaymentProvider {
         providerReference: response.data.data.reference,
         status: paymentStatus.PENDING,
         authorizationUrl: response.data.data.authorization_url,
+        variants: prdVariants,
       });
 
       // if successful commit
