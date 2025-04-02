@@ -15,6 +15,8 @@ import { Payment } from 'src/payment/payment.entity';
 import { paymentStatus } from 'src/payment/enums/paymentStatus.enum';
 import { User } from 'src/users/user.entity';
 import { ProductVariantsService } from 'src/product-variants/providers/product-variants.service';
+import { Discount } from 'src/discounts/discounts.entity';
+import { Product } from 'src/products/product.entity';
 
 @Injectable()
 export class InitiatePaymentProvider {
@@ -64,6 +66,7 @@ export class InitiatePaymentProvider {
     try {
       // connect query runner to datasource
       await queryRunner.connect();
+
       // start transaction
       await queryRunner.startTransaction();
     } catch (error) {
@@ -71,10 +74,16 @@ export class InitiatePaymentProvider {
       throw new RequestTimeoutException('Could not connect to datasource');
     }
 
-    // user, discount info, delivery address info, product info
-
     // find the user
     const buyer: User = await this.usersService.findOneById(user.sub);
+
+    let discount: Discount;
+    // find the discount if there is one
+    if (initiatePaymentDto.discountId) {
+      discount = await queryRunner.manager.findOne(Discount, {
+        where: { id: initiatePaymentDto.discountId },
+      });
+    }
 
     // user info should have details about address but if there is a set delivery address then use that
     const deliveryAddress =
@@ -93,7 +102,9 @@ export class InitiatePaymentProvider {
       for (const variantDto of variants) {
         const { id: variantId, quantity } = variantDto;
 
+        // check availability
         await this.productVariantsService.checkVariantAvailability(
+          queryRunner.manager,
           variantId,
           productId,
           quantity,
@@ -101,6 +112,7 @@ export class InitiatePaymentProvider {
       }
     }
 
+    // get all product variants
     const prdVariants = await Promise.all(
       initiatePaymentDto.products
         .map((prd) => prd.variants)
@@ -111,6 +123,7 @@ export class InitiatePaymentProvider {
         ),
     );
 
+    // calculate the total amount
     let totalAmount = initiatePaymentDto.products
       .map((prd) => {
         // loop through inner variants
@@ -122,9 +135,20 @@ export class InitiatePaymentProvider {
       })
       .reduce((acc, cur) => acc + cur, 0);
 
-    totalAmount = initiatePaymentDto.discount
-      ? (initiatePaymentDto.discount.percentOff / 100) * totalAmount
+    totalAmount = initiatePaymentDto.discountId
+      ? totalAmount - (discount.percentOff / 100) * totalAmount
       : totalAmount;
+
+    const products = await Promise.all(
+      initiatePaymentDto.products
+        .map((prd) => prd.productId)
+        .map(
+          async (prdId) =>
+            await queryRunner.manager.findOne(Product, {
+              where: { id: prdId },
+            }),
+        ),
+    );
 
     // initialize payment
     let response;
@@ -134,12 +158,12 @@ export class InitiatePaymentProvider {
         {
           email: buyer.email,
           metadata: {
-            products: initiatePaymentDto.products,
+            products: products,
             user: buyer,
             deliveryAddress,
             deliveryPicker,
             totalAmount,
-            discount: initiatePaymentDto.discount ?? {},
+            discount: discount ?? {},
           },
           amount: totalAmount * 100,
           callback_url: `${this.configService.get('appConfig.host')}/collections?success=yes`,
