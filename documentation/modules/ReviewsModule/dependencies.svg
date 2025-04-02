@@ -24,55 +24,55 @@
 <title>cluster_ReviewsModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-70 8,-195 534,-195 534,-70 8,-70"/>
 </g>
-<g id="clust6" class="cluster">
-<title>cluster_ReviewsModule_providers</title>
-<polygon fill="none" stroke="black" points="148,-78 148,-130 526,-130 526,-78 148,-78"/>
-</g>
 <g id="clust3" class="cluster">
 <title>cluster_ReviewsModule_imports</title>
-<polygon fill="none" stroke="black" points="16,-78 16,-130 140,-130 140,-78 16,-78"/>
+<polygon fill="none" stroke="black" points="402,-78 402,-130 526,-130 526,-78 402,-78"/>
+</g>
+<g id="clust6" class="cluster">
+<title>cluster_ReviewsModule_providers</title>
+<polygon fill="none" stroke="black" points="16,-78 16,-130 394,-130 394,-78 16,-78"/>
 </g>
 <!-- ProductsModule -->
 <g id="node1" class="node">
 <title>ProductsModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="132.04,-122 129.04,-126 108.04,-126 105.04,-122 23.96,-122 23.96,-86 132.04,-86 132.04,-122"/>
-<text text-anchor="middle" x="78" y="-99.8" font-family="Times,serif" font-size="14.00">ProductsModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="518.04,-122 515.04,-126 494.04,-126 491.04,-122 409.96,-122 409.96,-86 518.04,-86 518.04,-122"/>
+<text text-anchor="middle" x="464" y="-99.8" font-family="Times,serif" font-size="14.00">ProductsModule</text>
 </g>
 <!-- ReviewsModule -->
 <g id="node2" class="node">
 <title>ReviewsModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="282.76,-187 279.76,-191 258.76,-191 255.76,-187 175.24,-187 175.24,-151 282.76,-151 282.76,-187"/>
-<text text-anchor="middle" x="229" y="-164.8" font-family="Times,serif" font-size="14.00">ReviewsModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="340.76,-187 337.76,-191 316.76,-191 313.76,-187 233.24,-187 233.24,-151 340.76,-151 340.76,-187"/>
+<text text-anchor="middle" x="287" y="-164.8" font-family="Times,serif" font-size="14.00">ReviewsModule</text>
 </g>
 <!-- ProductsModule&#45;&gt;ReviewsModule -->
 <g id="edge1" class="edge">
 <title>ProductsModule&#45;&gt;ReviewsModule</title>
-<path fill="none" stroke="black" d="M78,-122.11C78,-141.34 78,-169 78,-169 78,-169 164.91,-169 164.91,-169"/>
-<polygon fill="black" stroke="black" points="164.91,-172.5 174.91,-169 164.91,-165.5 164.91,-172.5"/>
+<path fill="none" stroke="black" d="M464,-122.11C464,-141.34 464,-169 464,-169 464,-169 351.07,-169 351.07,-169"/>
+<polygon fill="black" stroke="black" points="351.07,-165.5 341.07,-169 351.07,-172.5 351.07,-165.5"/>
 </g>
 <!-- CreateReviewProvider -->
 <g id="node3" class="node">
 <title>CreateReviewProvider</title>
-<ellipse fill="#fdb462" stroke="black" cx="419" cy="-104" rx="98.97" ry="18"/>
-<text text-anchor="middle" x="419" y="-99.8" font-family="Times,serif" font-size="14.00">CreateReviewProvider</text>
+<ellipse fill="#fdb462" stroke="black" cx="287" cy="-104" rx="98.97" ry="18"/>
+<text text-anchor="middle" x="287" y="-99.8" font-family="Times,serif" font-size="14.00">CreateReviewProvider</text>
 </g>
 <!-- CreateReviewProvider&#45;&gt;ReviewsModule -->
 <g id="edge2" class="edge">
 <title>CreateReviewProvider&#45;&gt;ReviewsModule</title>
-<path fill="none" stroke="black" d="M419,-122.11C419,-141.34 419,-169 419,-169 419,-169 292.94,-169 292.94,-169"/>
-<polygon fill="black" stroke="black" points="292.94,-165.5 282.94,-169 292.94,-172.5 292.94,-165.5"/>
+<path fill="none" stroke="black" d="M287,-122.11C287,-122.11 287,-140.99 287,-140.99"/>
+<polygon fill="black" stroke="black" points="283.5,-140.99 287,-150.99 290.5,-140.99 283.5,-140.99"/>
 </g>
 <!-- ReviewsService -->
 <g id="node4" class="node">
 <title>ReviewsService</title>
-<ellipse fill="#fdb462" stroke="black" cx="229" cy="-104" rx="73.49" ry="18"/>
-<text text-anchor="middle" x="229" y="-99.8" font-family="Times,serif" font-size="14.00">ReviewsService</text>
+<ellipse fill="#fdb462" stroke="black" cx="97" cy="-104" rx="73.49" ry="18"/>
+<text text-anchor="middle" x="97" y="-99.8" font-family="Times,serif" font-size="14.00">ReviewsService</text>
 </g>
 <!-- ReviewsService&#45;&gt;ReviewsModule -->
 <g id="edge3" class="edge">
 <title>ReviewsService&#45;&gt;ReviewsModule</title>
-<path fill="none" stroke="black" d="M229,-122.11C229,-122.11 229,-140.99 229,-140.99"/>
-<polygon fill="black" stroke="black" points="225.5,-140.99 229,-150.99 232.5,-140.99 225.5,-140.99"/>
+<path fill="none" stroke="black" d="M97,-122.11C97,-141.34 97,-169 97,-169 97,-169 223.06,-169 223.06,-169"/>
+<polygon fill="black" stroke="black" points="223.06,-172.5 233.06,-169 223.06,-165.5 223.06,-172.5"/>
 </g>
 </g>
 </svg>
