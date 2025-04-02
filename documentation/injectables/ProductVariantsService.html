@@ -146,6 +146,10 @@
                                 <a href="#findProductVariantById" >findProductVariantById</a>
                             </li>
                             <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#rollbackStock" >rollbackStock</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Public</span>
                                     <span class="modifier">Async</span>
                                 <a href="#saveProductVariant" >saveProductVariant</a>
@@ -232,7 +236,7 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>checkVariantAvailability(variantId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, productId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, quantity: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    <code>checkVariantAvailability(manager: EntityManager, variantId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, productId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, quantity: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
@@ -260,6 +264,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <tr>
+                                                <td>manager</td>
+                                            <td>
+                                                        <code>EntityManager</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
                                         <tr>
                                                 <td>variantId</td>
                                             <td>
@@ -397,6 +413,111 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="rollbackStock"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>rollbackStock</b></span>
+                        <a href="#rollbackStock"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>rollbackStock(variantId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, productId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, quantity: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, manager: EntityManager)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="110"
+                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:110</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>variantId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>productId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>quantity</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>manager</td>
+                                            <td>
+                                                        <code>EntityManager</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="saveProductVariant"></a>
                     <span class="name">
                             <span class="modifier">Public</span>
@@ -475,7 +596,7 @@
   Injectable,
   NotFoundException,
 } from &#x27;@nestjs/common&#x27;;
-import { Repository } from &#x27;typeorm&#x27;;
+import { EntityManager, Repository } from &#x27;typeorm&#x27;;
 import { ProductVariant } from &#x27;../product-variants.entity&#x27;;
 import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
 
@@ -522,23 +643,29 @@ export class ProductVariantsService {
   ): Promise&lt;ProductVariant&gt; {
     return await this.productVariantRepository.save(variant);
   }
-
   /**
    * @function checks variant availability
+   * @param manager
    * @param variantId
    * @param productId
    * @param quantity
    */
   public async checkVariantAvailability(
+    manager: EntityManager,
     variantId: string,
     productId: string,
     quantity: number,
   ) {
     // Fetch the variant from the database, ensuring it belongs to the specified product
-    const variant &#x3D; await this.productVariantRepository.findOne({
-      where: { id: variantId, product: { id: productId } },
-      relations: [&#x27;product&#x27;], // Optional, for validation
-    });
+    // Fetch the variant with a pessimistic lock to prevent concurrent access
+    const variant &#x3D; await manager
+      .createQueryBuilder(ProductVariant, &#x27;variant&#x27;)
+      .setLock(&#x27;pessimistic_write&#x27;) // Lock the row
+      .where(&#x27;variant.id &#x3D; :id AND variant.productId &#x3D; :productId&#x27;, {
+        id: variantId,
+        productId,
+      })
+      .getOne();
 
     // Check if the variant exists
     if (!variant) {
@@ -559,6 +686,41 @@ export class ProductVariantsService {
       throw new BadRequestException(
         &#x60;Requested quantity (${quantity}) for variant ${variantId} exceeds available stock (${variant.quantity})&#x60;,
       );
+    }
+
+    // Reserve the stock by decrementing the quantity
+    variant.quantity -&#x3D; quantity;
+
+    if (variant.quantity &lt;&#x3D; 0) {
+      variant.soldOut &#x3D; true;
+    }
+
+    // Save the updated variant (within the transaction)
+    await manager.save(variant);
+  }
+
+  // Roll back the stock reservation if payment fails
+  async rollbackStock(
+    variantId: string,
+    productId: string,
+    quantity: number,
+    manager: EntityManager,
+  ): Promise&lt;void&gt; {
+    // Fetch the variant with a lock
+    const variant &#x3D; await manager
+      .createQueryBuilder(ProductVariant, &#x27;variant&#x27;)
+      .setLock(&#x27;pessimistic_write&#x27;)
+      .where(&#x27;variant.id &#x3D; :id AND variant.productId &#x3D; :productId&#x27;, {
+        id: variantId,
+        productId,
+      })
+      .getOne();
+
+    if (variant) {
+      // Restore the quantity
+      variant.quantity +&#x3D; quantity;
+      variant.soldOut &#x3D; false; // Reset soldOut if quantity becomes positive
+      await manager.save(variant);
     }
   }
 }

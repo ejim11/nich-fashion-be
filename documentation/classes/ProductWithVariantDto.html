@@ -205,7 +205,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/paystack/dtos/initiate-payment.dto.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/paystack/dtos/initiate-payment.dto.ts:21</a></div>
                         </td>
                     </tr>
 
@@ -242,7 +242,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/paystack/dtos/initiate-payment.dto.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/paystack/dtos/initiate-payment.dto.ts:17</a></div>
                         </td>
                     </tr>
 
@@ -281,7 +281,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/paystack/dtos/initiate-payment.dto.ts:28</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/paystack/dtos/initiate-payment.dto.ts:27</a></div>
                         </td>
                     </tr>
 
@@ -309,7 +309,6 @@ import {
   IsString,
   ValidateNested,
 } from &#x27;class-validator&#x27;;
-import { Discount } from &#x27;src/discounts/discounts.entity&#x27;;
 import { PatchProductVariantDto } from &#x27;src/product-variants/dto/patch-product-variant.dto&#x27;;
 
 class ProductWithVariantDto {
@@ -339,7 +338,7 @@ export class InitiatePaymentDto {
 
   @IsString()
   @IsOptional()
-  discount?: Discount;
+  discountId?: string;
 
   @IsArray()
   @IsNotEmpty()

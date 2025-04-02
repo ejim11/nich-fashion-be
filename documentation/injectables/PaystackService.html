@@ -140,6 +140,11 @@
                                     <span class="modifier">Async</span>
                                 <a href="#initiatePayment" >initiatePayment</a>
                             </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#verifyPayment" >verifyPayment</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -158,12 +163,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(initiatePaymentProvider: <a href="../injectables/InitiatePaymentProvider.html" target="_self">InitiatePaymentProvider</a>)</code>
+<code>constructor(initiatePaymentProvider: <a href="../injectables/InitiatePaymentProvider.html" target="_self">InitiatePaymentProvider</a>, verifyPaymentProvider: <a href="../entitys/Payment.html" target="_self">VerifyPaymentProvider</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/paystack/providers/paystack.service.ts:7</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/paystack/providers/paystack.service.ts:8</a></div>
                             </td>
                         </tr>
 
@@ -185,6 +190,18 @@
                                                   
                                                         <td>
                                                                         <code><a href="../injectables/InitiatePaymentProvider.html" target="_self" >InitiatePaymentProvider</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>verifyPaymentProvider</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../entitys/Payment.html" target="_self" >VerifyPaymentProvider</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -229,8 +246,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="15"
-                                    class="link-to-prism">src/paystack/providers/paystack.service.ts:15</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="21"
+                                    class="link-to-prism">src/paystack/providers/paystack.service.ts:21</a></div>
                         </td>
                     </tr>
 
@@ -288,6 +305,100 @@
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="verifyPayment"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                        <span ><b>verifyPayment</b></span>
+                        <a href="#verifyPayment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>verifyPayment(body: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, signature: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, req: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="31"
+                                    class="link-to-prism">src/paystack/providers/paystack.service.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>body</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>signature</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>req</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
 
     </div>
@@ -298,6 +409,7 @@
 import { InitiatePaymentProvider } from &#x27;./initiate-payment.provider&#x27;;
 import { InitiatePaymentDto } from &#x27;../dtos/initiate-payment.dto&#x27;;
 import { ActiveUserData } from &#x27;src/auth/interfaces/active-user-data.interface&#x27;;
+import { VerifyPaymentProvider } from &#x27;./verify-payment.provider&#x27;;
 
 @Injectable()
 export class PaystackService {
@@ -306,6 +418,11 @@ export class PaystackService {
      * injecting the initiate payment provider
      */
     private readonly initiatePaymentProvider: InitiatePaymentProvider,
+
+    /**
+     * injecting the verify payment provider
+     */
+    private readonly verifyPaymentProvider: VerifyPaymentProvider,
   ) {}
 
   public async initiatePayment(
@@ -315,6 +432,14 @@ export class PaystackService {
     return await this.initiatePaymentProvider.initializePayment(
       initiatePaymentDto,
       user,
+    );
+  }
+
+  public async verifyPayment(body: any, signature: string, req: any) {
+    return await this.verifyPaymentProvider.paymentWebhook(
+      body,
+      signature,
+      req,
     );
   }
 }

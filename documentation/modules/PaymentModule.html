@@ -132,9 +132,11 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Module } from &#x27;@nestjs/common&#x27;;
 import { TypeOrmModule } from &#x27;@nestjs/typeorm&#x27;;
 import { Payment } from &#x27;./payment.entity&#x27;;
+import { PaymentController } from &#x27;./payment.controller&#x27;;
 
 @Module({
   imports: [TypeOrmModule.forFeature([Payment])],
+  controllers: [PaymentController],
 })
 export class PaymentModule {}
 </code></pre>

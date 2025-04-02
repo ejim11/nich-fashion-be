@@ -150,6 +150,11 @@
                             <li>
                                     <span class="modifier">Public</span>
                                     <span class="modifier">Async</span>
+                                <a href="#sendProductPurchaseMail" >sendProductPurchaseMail</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
                                 <a href="#sendResetOtp" >sendResetOtp</a>
                             </li>
                             <li>
@@ -180,7 +185,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/mail/providers/mail.service.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/mail/providers/mail.service.ts:13</a></div>
                             </td>
                         </tr>
 
@@ -248,8 +253,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="48"
-                                    class="link-to-prism">src/mail/providers/mail.service.ts:48</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="49"
+                                    class="link-to-prism">src/mail/providers/mail.service.ts:49</a></div>
                         </td>
                     </tr>
 
@@ -313,6 +318,88 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="sendProductPurchaseMail"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                        <span ><b>sendProductPurchaseMail</b></span>
+                        <a href="#sendProductPurchaseMail"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>sendProductPurchaseMail(user: <a href="../entitys/User.html" target="_self">User</a>, products: <a href="../entitys/Product.html" target="_self">Product[]</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="62"
+                                    class="link-to-prism">src/mail/providers/mail.service.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>user</td>
+                                            <td>
+                                                            <code><a href="../entitys/User.html" target="_self" >User</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>products</td>
+                                            <td>
+                                                            <code><a href="../entitys/Product.html" target="_self" >Product[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="sendResetOtp"></a>
                     <span class="name">
                             <span class="modifier">Public</span>
@@ -332,8 +419,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="29"
-                                    class="link-to-prism">src/mail/providers/mail.service.ts:29</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="30"
+                                    class="link-to-prism">src/mail/providers/mail.service.ts:30</a></div>
                         </td>
                     </tr>
 
@@ -416,8 +503,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="65"
-                                    class="link-to-prism">src/mail/providers/mail.service.ts:65</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="83"
+                                    class="link-to-prism">src/mail/providers/mail.service.ts:83</a></div>
                         </td>
                     </tr>
 
@@ -475,6 +562,7 @@
 import { MailerService } from &#x27;@nestjs-modules/mailer&#x27;;
 import { Injectable } from &#x27;@nestjs/common&#x27;;
 import * as path from &#x27;path&#x27;;
+import { Product } from &#x27;src/products/product.entity&#x27;;
 import { Subscriber } from &#x27;src/subscribers/subscriber.entity&#x27;;
 import { User } from &#x27;src/users/user.entity&#x27;;
 
@@ -527,6 +615,23 @@ export class MailService {
       context: {
         email: user.email,
         otp: otp,
+      },
+    });
+  }
+
+  public async sendProductPurchaseMail(
+    user: User,
+    products: Product[],
+  ): Promise&lt;void&gt; {
+    await this.mailerService.sendMail({
+      to: user.email,
+      from: &#x60;Nich Fashion - Team  &lt;${&#x27;admininvestor@brackifi-investor.io&#x27;}&gt;&#x60;,
+      subject: &#x60;🎟️ Your Product(s) Purchase Confirmation – Nich Fashion&#x60;,
+      template: path.join(ROOT_PATH, &#x27;/src/mail/templates/productBought.ejs&#x27;),
+      context: {
+        firstName: user.firstName,
+        email: user.email,
+        products: products,
       },
     });
   }

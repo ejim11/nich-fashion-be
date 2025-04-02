@@ -373,8 +373,6 @@ export class ApplyForDiscountProvider {
       user.sub,
     );
 
-    console.log(usageCount);
-
     if (usageCount &gt;&#x3D; discount.usageLimit) {
       return null;
     }

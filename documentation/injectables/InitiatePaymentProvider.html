@@ -167,7 +167,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/paystack/providers/initiate-payment.provider.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/paystack/providers/initiate-payment.provider.ts:22</a></div>
                             </td>
                         </tr>
 
@@ -280,8 +280,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="53"
-                                    class="link-to-prism">src/paystack/providers/initiate-payment.provider.ts:53</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="55"
+                                    class="link-to-prism">src/paystack/providers/initiate-payment.provider.ts:55</a></div>
                         </td>
                     </tr>
 
@@ -326,8 +326,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="57"
-                                    class="link-to-prism">src/paystack/providers/initiate-payment.provider.ts:57</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="59"
+                                    class="link-to-prism">src/paystack/providers/initiate-payment.provider.ts:59</a></div>
                         </td>
                     </tr>
 
@@ -408,6 +408,8 @@ import { Payment } from &#x27;src/payment/payment.entity&#x27;;
 import { paymentStatus } from &#x27;src/payment/enums/paymentStatus.enum&#x27;;
 import { User } from &#x27;src/users/user.entity&#x27;;
 import { ProductVariantsService } from &#x27;src/product-variants/providers/product-variants.service&#x27;;
+import { Discount } from &#x27;src/discounts/discounts.entity&#x27;;
+import { Product } from &#x27;src/products/product.entity&#x27;;
 
 @Injectable()
 export class InitiatePaymentProvider {
@@ -457,6 +459,7 @@ export class InitiatePaymentProvider {
     try {
       // connect query runner to datasource
       await queryRunner.connect();
+
       // start transaction
       await queryRunner.startTransaction();
     } catch (error) {
@@ -464,10 +467,16 @@ export class InitiatePaymentProvider {
       throw new RequestTimeoutException(&#x27;Could not connect to datasource&#x27;);
     }
 
-    // user, discount info, delivery address info, product info
-
     // find the user
     const buyer: User &#x3D; await this.usersService.findOneById(user.sub);
+
+    let discount: Discount;
+    // find the discount if there is one
+    if (initiatePaymentDto.discountId) {
+      discount &#x3D; await queryRunner.manager.findOne(Discount, {
+        where: { id: initiatePaymentDto.discountId },
+      });
+    }
 
     // user info should have details about address but if there is a set delivery address then use that
     const deliveryAddress &#x3D;
@@ -486,7 +495,9 @@ export class InitiatePaymentProvider {
       for (const variantDto of variants) {
         const { id: variantId, quantity } &#x3D; variantDto;
 
+        // check availability
         await this.productVariantsService.checkVariantAvailability(
+          queryRunner.manager,
           variantId,
           productId,
           quantity,
@@ -494,6 +505,7 @@ export class InitiatePaymentProvider {
       }
     }
 
+    // get all product variants
     const prdVariants &#x3D; await Promise.all(
       initiatePaymentDto.products
         .map((prd) &#x3D;&gt; prd.variants)
@@ -504,6 +516,7 @@ export class InitiatePaymentProvider {
         ),
     );
 
+    // calculate the total amount
     let totalAmount &#x3D; initiatePaymentDto.products
       .map((prd) &#x3D;&gt; {
         // loop through inner variants
@@ -515,9 +528,20 @@ export class InitiatePaymentProvider {
       })
       .reduce((acc, cur) &#x3D;&gt; acc + cur, 0);
 
-    totalAmount &#x3D; initiatePaymentDto.discount
-      ? (initiatePaymentDto.discount.percentOff / 100) * totalAmount
+    totalAmount &#x3D; initiatePaymentDto.discountId
+      ? totalAmount - (discount.percentOff / 100) * totalAmount
       : totalAmount;
+
+    const products &#x3D; await Promise.all(
+      initiatePaymentDto.products
+        .map((prd) &#x3D;&gt; prd.productId)
+        .map(
+          async (prdId) &#x3D;&gt;
+            await queryRunner.manager.findOne(Product, {
+              where: { id: prdId },
+            }),
+        ),
+    );
 
     // initialize payment
     let response;
@@ -527,12 +551,12 @@ export class InitiatePaymentProvider {
         {
           email: buyer.email,
           metadata: {
-            products: initiatePaymentDto.products,
+            products: products,
             user: buyer,
             deliveryAddress,
             deliveryPicker,
             totalAmount,
-            discount: initiatePaymentDto.discount ?? {},
+            discount: discount ?? {},
           },
           amount: totalAmount * 100,
           callback_url: &#x60;${this.configService.get(&#x27;appConfig.host&#x27;)}/collections?success&#x3D;yes&#x60;,
