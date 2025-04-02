@@ -1,9 +1,12 @@
 import { Discount } from 'src/discounts/discounts.entity';
+import { Order } from 'src/orders/order.entity';
 import { User } from 'src/users/user.entity';
 import {
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -18,8 +21,9 @@ export class DiscountUsage {
   @ManyToOne(() => Discount)
   discount: Discount;
 
-  //   @ManyToOne(() => Order)
-  //   order: Order;
+  @OneToOne(() => Order, (order) => order.discountUsage, { nullable: true })
+  @JoinColumn()
+  order: Order;
 
   @CreateDateColumn()
   usedAt: Date;
