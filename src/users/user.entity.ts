@@ -1,8 +1,5 @@
 import { Role } from 'src/auth/enums/role-type.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-// import { Event } from 'src/events/event.entity';
-// import { accountType } from './enums/account-type.enum';
-// import { Role } from 'src/auth/enums/role-type.enum';
 
 /**
  * user entity for user table in the database
@@ -93,7 +90,4 @@ export class User {
     nullable: true,
   })
   otpExpire?: Date;
-
-  // @OneToMany(() => Event, (event) => event.owner)
-  // events: Event[];
 }
