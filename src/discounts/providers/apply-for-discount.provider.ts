@@ -64,8 +64,6 @@ export class ApplyForDiscountProvider {
       user.sub,
     );
 
-    console.log(usageCount);
-
     if (usageCount >= discount.usageLimit) {
       return null;
     }
