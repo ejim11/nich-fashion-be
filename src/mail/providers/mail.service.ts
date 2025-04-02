@@ -2,6 +2,7 @@ import { ROOT_PATH } from '../../config/paths.config';
 import { MailerService } from '@nestjs-modules/mailer';
 import { Injectable } from '@nestjs/common';
 import * as path from 'path';
+import { Product } from 'src/products/product.entity';
 import { Subscriber } from 'src/subscribers/subscriber.entity';
 import { User } from 'src/users/user.entity';
 
@@ -54,6 +55,23 @@ export class MailService {
       context: {
         email: user.email,
         otp: otp,
+      },
+    });
+  }
+
+  public async sendProductPurchaseMail(
+    user: User,
+    products: Product[],
+  ): Promise<void> {
+    await this.mailerService.sendMail({
+      to: user.email,
+      from: `Nich Fashion - Team  <${'admininvestor@brackifi-investor.io'}>`,
+      subject: `🎟️ Your Product(s) Purchase Confirmation – Nich Fashion`,
+      template: path.join(ROOT_PATH, '/src/mail/templates/productBought.ejs'),
+      context: {
+        firstName: user.firstName,
+        email: user.email,
+        products: products,
       },
     });
   }
