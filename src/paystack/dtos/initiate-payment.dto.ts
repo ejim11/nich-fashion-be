@@ -9,7 +9,6 @@ import {
   IsString,
   ValidateNested,
 } from 'class-validator';
-import { Discount } from 'src/discounts/discounts.entity';
 import { PatchProductVariantDto } from 'src/product-variants/dto/patch-product-variant.dto';
 
 class ProductWithVariantDto {
@@ -39,7 +38,7 @@ export class InitiatePaymentDto {
 
   @IsString()
   @IsOptional()
-  discount?: Discount;
+  discountId?: string;
 
   @IsArray()
   @IsNotEmpty()
