@@ -16,7 +16,6 @@ import { paymentStatus } from 'src/payment/enums/paymentStatus.enum';
 import { User } from 'src/users/user.entity';
 import { ProductVariantsService } from 'src/product-variants/providers/product-variants.service';
 import { Discount } from 'src/discounts/discounts.entity';
-import { Product } from 'src/products/product.entity';
 
 @Injectable()
 export class InitiatePaymentProvider {
@@ -139,17 +138,6 @@ export class InitiatePaymentProvider {
       ? totalAmount - (discount.percentOff / 100) * totalAmount
       : totalAmount;
 
-    const products = await Promise.all(
-      initiatePaymentDto.products
-        .map((prd) => prd.productId)
-        .map(
-          async (prdId) =>
-            await queryRunner.manager.findOne(Product, {
-              where: { id: prdId },
-            }),
-        ),
-    );
-
     // initialize payment
     let response;
     try {
@@ -158,7 +146,7 @@ export class InitiatePaymentProvider {
         {
           email: buyer.email,
           metadata: {
-            products: products,
+            products: initiatePaymentDto.products,
             user: buyer,
             deliveryAddress,
             deliveryPicker,
