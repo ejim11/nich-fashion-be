@@ -1,6 +1,6 @@
 POST http://localhost:3002/api/v1/paystack/initiate-payment
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MmM4Y2ZlYi04OTdmLTQ2ZDctOGI3NS03YTdjNWJhMDFkYTEiLCJlbWFpbCI6ImZhdm91cmVqaW01NkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MzYzMzg1NSwiZXhwIjoxNzQzNjM3NDU1LCJhdWQiOiJsb2NhbGhvc3Q6MzAwMSIsImlzcyI6ImxvY2FsaG9zdDozMDAxIn0.vOvXnZpw8ktxu8-L2B3kYSp0W7nOIKPeutf2OYlchIA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MmM4Y2ZlYi04OTdmLTQ2ZDctOGI3NS03YTdjNWJhMDFkYTEiLCJlbWFpbCI6ImZhdm91cmVqaW01NkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc0MzY3NTgwOCwiZXhwIjoxNzQzNjc5NDA4LCJhdWQiOiJsb2NhbGhvc3Q6MzAwMSIsImlzcyI6ImxvY2FsaG9zdDozMDAxIn0.huKGQ8On7xEunz4JJ2rXJivv6EoqA2ov-DMQkTbCS84
 
 {
     "deliveryPicker": "Ejim Favour",
@@ -21,7 +21,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MmM4Y2ZlY
                     "id": "823e9f00-a69b-4de8-b872-c97bf5f250a6",
                     "color": "Green",
                     "size": "L",
-                    "quantity": 1
+                    "quantity": 2
                 }
             ]
         },
@@ -33,13 +33,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MmM4Y2ZlY
                     "id": "a60202f2-fa73-40db-b9a5-48dbb847a273",
                     "color": "Grey",
                     "size": "L",
-                    "quantity": 1
+                    "quantity": 2
                 },
                  {
                     "id": "d60fa9bb-67a4-4f70-a361-b9b20f5a68b9",
                     "color": "red",
                     "size": "XL",
-                    "quantity": 1
+                    "quantity": 3
                 }
             ]
         }
