@@ -24,13 +24,13 @@
 <title>cluster_UploadsModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="50,-70 50,-268 446,-268 446,-70 50,-70"/>
 </g>
-<g id="clust6" class="cluster">
-<title>cluster_UploadsModule_providers</title>
-<polygon fill="none" stroke="black" points="58,-78 58,-130 438,-130 438,-78 58,-78"/>
-</g>
 <g id="clust4" class="cluster">
 <title>cluster_UploadsModule_exports</title>
 <polygon fill="none" stroke="black" points="171,-208 171,-260 295,-260 295,-208 171,-208"/>
+</g>
+<g id="clust6" class="cluster">
+<title>cluster_UploadsModule_providers</title>
+<polygon fill="none" stroke="black" points="58,-78 58,-130 438,-130 438,-78 58,-78"/>
 </g>
 <!-- UploadsService  -->
 <g id="node1" class="node">

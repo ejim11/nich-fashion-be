@@ -532,6 +532,8 @@ export class InitiatePaymentProvider {
       ? totalAmount - (discount.percentOff / 100) * totalAmount
       : totalAmount;
 
+    console.log(&#x27;dtoPrds: -&#x27;, initiatePaymentDto.products);
+
     const products &#x3D; await Promise.all(
       initiatePaymentDto.products
         .map((prd) &#x3D;&gt; prd.productId)
@@ -543,6 +545,8 @@ export class InitiatePaymentProvider {
         ),
     );
 
+    console.log(&#x27;gottenprds: -&#x27;, products);
+
     // initialize payment
     let response;
     try {
@@ -551,7 +555,7 @@ export class InitiatePaymentProvider {
         {
           email: buyer.email,
           metadata: {
-            products: products,
+            products: initiatePaymentDto.products,
             user: buyer,
             deliveryAddress,
             deliveryPicker,
