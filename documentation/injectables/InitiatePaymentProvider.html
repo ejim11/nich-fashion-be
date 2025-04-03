@@ -167,7 +167,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/paystack/providers/initiate-payment.provider.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/paystack/providers/initiate-payment.provider.ts:21</a></div>
                             </td>
                         </tr>
 
@@ -280,8 +280,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="55"
-                                    class="link-to-prism">src/paystack/providers/initiate-payment.provider.ts:55</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="54"
+                                    class="link-to-prism">src/paystack/providers/initiate-payment.provider.ts:54</a></div>
                         </td>
                     </tr>
 
@@ -326,8 +326,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="59"
-                                    class="link-to-prism">src/paystack/providers/initiate-payment.provider.ts:59</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="58"
+                                    class="link-to-prism">src/paystack/providers/initiate-payment.provider.ts:58</a></div>
                         </td>
                     </tr>
 
@@ -409,7 +409,6 @@ import { paymentStatus } from &#x27;src/payment/enums/paymentStatus.enum&#x27;;
 import { User } from &#x27;src/users/user.entity&#x27;;
 import { ProductVariantsService } from &#x27;src/product-variants/providers/product-variants.service&#x27;;
 import { Discount } from &#x27;src/discounts/discounts.entity&#x27;;
-import { Product } from &#x27;src/products/product.entity&#x27;;
 
 @Injectable()
 export class InitiatePaymentProvider {
@@ -531,21 +530,6 @@ export class InitiatePaymentProvider {
     totalAmount &#x3D; initiatePaymentDto.discountId
       ? totalAmount - (discount.percentOff / 100) * totalAmount
       : totalAmount;
-
-    console.log(&#x27;dtoPrds: -&#x27;, initiatePaymentDto.products);
-
-    const products &#x3D; await Promise.all(
-      initiatePaymentDto.products
-        .map((prd) &#x3D;&gt; prd.productId)
-        .map(
-          async (prdId) &#x3D;&gt;
-            await queryRunner.manager.findOne(Product, {
-              where: { id: prdId },
-            }),
-        ),
-    );
-
-    console.log(&#x27;gottenprds: -&#x27;, products);
 
     // initialize payment
     let response;
