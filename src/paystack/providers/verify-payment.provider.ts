@@ -113,6 +113,7 @@ export class VerifyPaymentProvider {
         // Update payment status
         payment.status = paymentStatus.SUCCESS;
 
+        console.log('createing order');
         // create order
         const order = await queryRunner.manager.save(Order, {
           userId: user.id,
@@ -171,8 +172,7 @@ export class VerifyPaymentProvider {
 
       // send a mail to the user
       try {
-        console.log(user.firstName);
-        await this.mailService.sendProductPurchaseMail(user, products);
+        await this.mailService.sendProductPurchaseMail(user, prdsDb);
       } catch (err) {
         throw new ConflictException(err);
       }
