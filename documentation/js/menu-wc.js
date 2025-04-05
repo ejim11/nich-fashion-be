@@ -232,6 +232,37 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                             </li>
                             <li class="link">
+                                <a href="modules/OrdersModule.html" data-type="entity-link" >OrdersModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
+                                            'data-bs-target="#controllers-links-module-OrdersModule-d8b161fde06e9b67ed0086c22486446c087f47eeda7b3e50c1d9277f6f87d7da6abc00437ba3ef80ab82ffe1e09fa90ea7e08fd3817878c9fb4837d803879a6d"' : 'data-bs-target="#xs-controllers-links-module-OrdersModule-d8b161fde06e9b67ed0086c22486446c087f47eeda7b3e50c1d9277f6f87d7da6abc00437ba3ef80ab82ffe1e09fa90ea7e08fd3817878c9fb4837d803879a6d"' }>
+                                            <span class="icon ion-md-swap"></span>
+                                            <span>Controllers</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-OrdersModule-d8b161fde06e9b67ed0086c22486446c087f47eeda7b3e50c1d9277f6f87d7da6abc00437ba3ef80ab82ffe1e09fa90ea7e08fd3817878c9fb4837d803879a6d"' :
+                                            'id="xs-controllers-links-module-OrdersModule-d8b161fde06e9b67ed0086c22486446c087f47eeda7b3e50c1d9277f6f87d7da6abc00437ba3ef80ab82ffe1e09fa90ea7e08fd3817878c9fb4837d803879a6d"' }>
+                                            <li class="link">
+                                                <a href="controllers/OrdersController.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >OrdersController</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                <li class="chapter inner">
+                                    <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
+                                        'data-bs-target="#injectables-links-module-OrdersModule-d8b161fde06e9b67ed0086c22486446c087f47eeda7b3e50c1d9277f6f87d7da6abc00437ba3ef80ab82ffe1e09fa90ea7e08fd3817878c9fb4837d803879a6d"' : 'data-bs-target="#xs-injectables-links-module-OrdersModule-d8b161fde06e9b67ed0086c22486446c087f47eeda7b3e50c1d9277f6f87d7da6abc00437ba3ef80ab82ffe1e09fa90ea7e08fd3817878c9fb4837d803879a6d"' }>
+                                        <span class="icon ion-md-arrow-round-down"></span>
+                                        <span>Injectables</span>
+                                        <span class="icon ion-ios-arrow-down"></span>
+                                    </div>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-OrdersModule-d8b161fde06e9b67ed0086c22486446c087f47eeda7b3e50c1d9277f6f87d7da6abc00437ba3ef80ab82ffe1e09fa90ea7e08fd3817878c9fb4837d803879a6d"' :
+                                        'id="xs-injectables-links-module-OrdersModule-d8b161fde06e9b67ed0086c22486446c087f47eeda7b3e50c1d9277f6f87d7da6abc00437ba3ef80ab82ffe1e09fa90ea7e08fd3817878c9fb4837d803879a6d"' }>
+                                        <li class="link">
+                                            <a href="injectables/OrdersService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >OrdersService</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </li>
+                            <li class="link">
                                 <a href="modules/PaginationModule.html" data-type="entity-link" >PaginationModule</a>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
@@ -250,6 +281,20 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="modules/PaymentModule.html" data-type="entity-link" >PaymentModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
+                                            'data-bs-target="#controllers-links-module-PaymentModule-9e2751be5325d348746694c600b094a5ed5d389bdb9de2f4a5551c1081bd84749aaab266e3541f2454a10b38cc69c46605dce9037184e5f7595bbb3b56db1956"' : 'data-bs-target="#xs-controllers-links-module-PaymentModule-9e2751be5325d348746694c600b094a5ed5d389bdb9de2f4a5551c1081bd84749aaab266e3541f2454a10b38cc69c46605dce9037184e5f7595bbb3b56db1956"' }>
+                                            <span class="icon ion-md-swap"></span>
+                                            <span>Controllers</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-PaymentModule-9e2751be5325d348746694c600b094a5ed5d389bdb9de2f4a5551c1081bd84749aaab266e3541f2454a10b38cc69c46605dce9037184e5f7595bbb3b56db1956"' :
+                                            'id="xs-controllers-links-module-PaymentModule-9e2751be5325d348746694c600b094a5ed5d389bdb9de2f4a5551c1081bd84749aaab266e3541f2454a10b38cc69c46605dce9037184e5f7595bbb3b56db1956"' }>
+                                            <li class="link">
+                                                <a href="controllers/PaymentController.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >PaymentController</a>
+                                            </li>
+                                        </ul>
+                                    </li>
                             </li>
                             <li class="link">
                                 <a href="modules/PaystackModule.html" data-type="entity-link" >PaystackModule</a>
@@ -281,6 +326,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                         </li>
                                         <li class="link">
                                             <a href="injectables/PaystackService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >PaystackService</a>
+                                        </li>
+                                        <li class="link">
+                                            <a href="injectables/VerifyPaymentProvider.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >VerifyPaymentProvider</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -513,6 +561,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="entities/DiscountUsage.html" data-type="entity-link" >DiscountUsage</a>
                                 </li>
                                 <li class="link">
+                                    <a href="entities/Order.html" data-type="entity-link" >Order</a>
+                                </li>
+                                <li class="link">
                                     <a href="entities/Payment.html" data-type="entity-link" >Payment</a>
                                 </li>
                                 <li class="link">
@@ -678,9 +729,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                         </ul>
                     </li>
-                        <li class="chapter">
-                            <a data-type="chapter-link" href="routes.html"><span class="icon ion-ios-git-branch"></span>Routes</a>
-                        </li>
                     <li class="chapter">
                         <a data-type="chapter-link" href="coverage.html"><span class="icon ion-ios-stats"></span>Documentation coverage</a>
                     </li>

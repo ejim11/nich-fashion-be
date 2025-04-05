@@ -79,80 +79,66 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content module">
+               <div class="content controller">
                    <div class="content-data">
 
 
 
+
+
 <ol class="breadcrumb">
-    <li class="breadcrumb-item">Modules</li>
-    <li class="breadcrumb-item" >PaymentModule</li>
+  <li class="breadcrumb-item">Controllers</li>
+  <li class="breadcrumb-item" >PaymentController</li>
 </ol>
 
-
 <ul class="nav nav-tabs" role="tablist">
-    <li class="nav-item">
-        <a href="#info" 
-            class="nav-link"
-            class="nav-link active"
-            role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
-    </li>
-    <li class="nav-item">
-        <a href="#source" 
-            class="nav-link"
-            
-            role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
-    </li>
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
 </ul>
 
 <div class="tab-content">
     <div class="tab-pane fade active in" id="info">
-
         <p class="comment">
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/payment/payment.module.ts</code>
+            <code>src/payment/payment.controller.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Prefix</h3>
+            </p>
+            <p class="comment">
+                <code>payment</code>
+            </p>
 
 
 
 
-        <div class="container-fluid module">
-            <div class="row">
-                <div class="col-sm-3">
-                    <h3>Controllers<a href="https://docs.nestjs.com/controllers" target="_blank" rel="noopener noreferrer"
-                            title="Official documentation about module controllers"><span
-                                class="icon ion-ios-information-circle-outline"></a></h3>
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <a href="../controllers/PaymentController.html">PaymentController</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+
 
 
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Module } from &#x27;@nestjs/common&#x27;;
-import { TypeOrmModule } from &#x27;@nestjs/typeorm&#x27;;
-import { Payment } from &#x27;./payment.entity&#x27;;
-import { PaymentController } from &#x27;./payment.controller&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller } from &#x27;@nestjs/common&#x27;;
 
-@Module({
-  imports: [TypeOrmModule.forFeature([Payment])],
-  controllers: [PaymentController],
-})
-export class PaymentModule {}
+@Controller(&#x27;payment&#x27;)
+export class PaymentController {}
 </code></pre>
     </div>
 </div>
-
 
 
 
@@ -194,8 +180,8 @@ export class PaymentModule {}
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
-            var COMPODOC_CURRENT_PAGE_URL = 'PaymentModule.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'controller';
+            var COMPODOC_CURRENT_PAGE_URL = 'PaymentController.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
