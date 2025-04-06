@@ -1,15 +1,10 @@
-POST http://localhost:3002/api/v1/paystack/initiate-payment
+POST http://localhost:3002/api/v1/product-variants/check-availability
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MmM4Y2ZlYi04OTdmLTQ2ZDctOGI3NS03YTdjNWJhMDFkYTEiLCJlbWFpbCI6ImZhdm91cmVqaW01NkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc0Mzg5NDYzMywiZXhwIjoxNzQzODk4MjMzLCJhdWQiOiJsb2NhbGhvc3Q6MzAwMSIsImlzcyI6ImxvY2FsaG9zdDozMDAxIn0.6bpx6Fg6QR4HDqMFs_5GnEiFHo05CBBWvYNUrEp-LxE
 
 {
-    "deliveryPicker": "Ejim Favour",
-    "deliveryAddress": "Lekki phase 1, Lagos",
-    "discountId": "f9e23267-239d-4745-b30b-30f6ce64f384",
-    "products": [
+     "products": [
         {
             "productId": "0fbdbc3e-3046-412d-ab05-e1f5b0331239",
-            "price": 200,
             "variants": [
                 {
                     "id": "340f380d-3d81-4d76-acf9-15caf0b47ce2",
@@ -27,7 +22,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MmM4Y2ZlY
         },
          {
             "productId": "9bcffcbd-4455-4661-a15b-972626c2f5b0",
-            "price": 4000,
             "variants": [
                 {
                     "id": "a60202f2-fa73-40db-b9a5-48dbb847a273",

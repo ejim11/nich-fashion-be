@@ -1,0 +1,102 @@
+POST http://localhost:3002/api/v1/bank-transfers/submit-tf-info
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MmM4Y2ZlYi04OTdmLTQ2ZDctOGI3NS03YTdjNWJhMDFkYTEiLCJlbWFpbCI6ImZhdm91cmVqaW01NkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc0Mzk3ODkyNywiZXhwIjoxNzQzOTgyNTI3LCJhdWQiOiJsb2NhbGhvc3Q6MzAwMSIsImlzcyI6ImxvY2FsaG9zdDozMDAxIn0.QglCdQP1u4ar-KxFcoX7liuEhVHQiqBNVgfxQYSx92s
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="deliveryPicker"
+
+Ejim Favour
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="deliveryAddress"
+
+Lekki phase 1, Lagos
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="discountId"
+
+f9e23267-239d-4745-b30b-30f6ce64f384
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="products[0][productId]"
+
+0fbdbc3e-3046-412d-ab05-e1f5b0331239
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="products[0][price]"
+
+200
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="products[0][variants][0][id]"
+
+340f380d-3d81-4d76-acf9-15caf0b47ce2
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="products[0][variants][0][color]"
+
+Grey
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="products[0][variants][0][size]"
+
+L
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="products[0][variants][0][quantity]"
+
+3
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="products[0][variants][1][id]"
+
+823e9f00-a69b-4de8-b872-c97bf5f250a6
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="products[0][variants][1][color]"
+
+Green
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="products[0][variants][1][size]"
+
+L
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="products[0][variants][1][quantity]"
+
+1
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="products[1][productId]"
+
+9bcffcbd-4455-4661-a15b-972626c2f5b0
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="products[1][price]"
+
+4000
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="products[1][variants][0][id]"
+
+a60202f2-fa73-40db-b9a5-48dbb847a273
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="products[1][variants][0][color]"
+
+Grey
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="products[1][variants][0][size]"
+
+L
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="products[1][variants][0][quantity]"
+
+1
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="products[1][variants][1][id]"
+
+d60fa9bb-67a4-4f70-a361-b9b20f5a68b9
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="products[1][variants][1][color]"
+
+red
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="products[1][variants][1][size]"
+
+XL
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="products[1][variants][1][quantity]"
+
+4
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="test-image.png"
+Content-Type: image/png
+
+< ./test-image.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW--

@@ -1,39 +1,39 @@
 POST http://localhost:3002/api/v1/products
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNWJjMzZiNC1mYTc2LTQxOTMtYjBhOC0zZmU2ZDExZjQ1Y2IiLCJlbWFpbCI6ImZlamltMTg4QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0MzYzMjQzMywiZXhwIjoxNzQzNjM2MDMzLCJhdWQiOiJsb2NhbGhvc3Q6MzAwMSIsImlzcyI6ImxvY2FsaG9zdDozMDAxIn0.eOlABPB9Ba4MS_JG30IKkDNRq3eSkwlJw3RAoWFSwvw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNWJjMzZiNC1mYTc2LTQxOTMtYjBhOC0zZmU2ZDExZjQ1Y2IiLCJlbWFpbCI6ImZlamltMTg4QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0Mzk2MDA2MSwiZXhwIjoxNzQzOTYzNjYxLCJhdWQiOiJsb2NhbGhvc3Q6MzAwMSIsImlzcyI6ImxvY2FsaG9zdDozMDAxIn0.vpPB-SOXLgfetxED0zFH71G420R18OvHX989_SDN18k
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="name"
 
-Jack jeans
+Slyn blouses
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="price"
 
-4000
+35000
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="discount"
 
-15
+10
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="category"
 
-jean
+blouse
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="dressStyle"
 
-outdoor
+office
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="clothType"
 
-trouser
+blouse
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="material"
 
-jean
+cotton
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="brand"
 
-nike
+slyn
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="shortDescription"
 
@@ -41,7 +41,7 @@ Comfortable and stylish Nike t-shirt for everyday wear
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="longDescription"
 
-A premium cotton t-shirt from Nike, perfect for casual outings. Soft, breathable, and designed for comfort.
+A premium cotton blouse from syn, perfect for office. Soft, breathable, and designed for comfort.
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="variants[0][color]"
 
