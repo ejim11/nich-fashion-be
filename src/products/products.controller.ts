@@ -48,8 +48,7 @@ export class ProductsController {
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(
     FileFieldsInterceptor(
-      // Dynamically generate interceptor fields
-      Array.from({ length: 10 }, (_, i) => ({
+      Array.from({ length: 6 }, (_, i) => ({
         name: `variants[${i}][images]`,
         maxCount: 6,
       })),
