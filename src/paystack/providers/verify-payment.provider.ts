@@ -18,6 +18,8 @@ import { Order } from 'src/orders/order.entity';
 import { ProductsService } from 'src/products/providers/products.service';
 import { DiscountUsage } from 'src/discounts-usage/discounts-usage.entity';
 import { MailService } from 'src/mail/providers/mail.service';
+import { ProductVariant } from 'src/product-variants/product-variants.entity';
+import { PaymentVariant } from 'src/payment/payment-variant.entity';
 
 @Injectable()
 export class VerifyPaymentProvider {
@@ -92,6 +94,23 @@ export class VerifyPaymentProvider {
         discount,
       } = response.data.data.metadata;
 
+      // get all product variants
+      const prdVariants = await Promise.all(
+        products
+          .map((prd) => prd.variants)
+          .flat()
+          .map(async (vr) => {
+            const variant = await queryRunner.manager.findOne(ProductVariant, {
+              where: { id: vr.id },
+            });
+
+            return {
+              variant,
+              quantity: vr.quantity,
+            };
+          }),
+      );
+
       const prdsDb = await Promise.all(
         products
           .map((prd) => prd.productId)
@@ -113,17 +132,27 @@ export class VerifyPaymentProvider {
         // Update payment status
         payment.status = paymentStatus.SUCCESS;
 
-        console.log('createing order');
         // create order
         const order = await queryRunner.manager.save(Order, {
           userId: user.id,
           deliveryAddress: deliveryAddress,
           totalAmount: totalAmount,
           deliveryPicker: deliveryPicker,
-          products: prdsDb,
+          payment: payment,
         });
 
-        // if there is a discount the add it to the discount usage
+        // create payment variants from the product variants
+        for (const variant of prdVariants) {
+          console.log('variantId: ', variant.variant.id);
+          // create payment variant
+          await queryRunner.manager.save(PaymentVariant, {
+            paymentId: payment.id,
+            variantId: variant.variant.id,
+            quantity: variant.quantity,
+          });
+        }
+
+        // if user used discount then add it to the discount usage
         if (discount.id) {
           // create the discount usage
           const discountUsage = await queryRunner.manager.save(DiscountUsage, {
