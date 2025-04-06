@@ -16,6 +16,7 @@ import { paymentStatus } from 'src/payment/enums/paymentStatus.enum';
 import { User } from 'src/users/user.entity';
 import { ProductVariantsService } from 'src/product-variants/providers/product-variants.service';
 import { Discount } from 'src/discounts/discounts.entity';
+import { PaymentMethod } from 'src/payment/enums/payment-method.enum';
 
 @Injectable()
 export class InitiatePaymentProvider {
@@ -93,35 +94,6 @@ export class InitiatePaymentProvider {
       initiatePaymentDto.deliveryPicker ??
       `${buyer.firstName} ${buyer.lastName}`;
 
-    // Iterate through each product in the request
-    for (const product of initiatePaymentDto.products) {
-      const { productId, variants } = product;
-
-      // Iterate through each variant the user wants to buy
-      for (const variantDto of variants) {
-        const { id: variantId, quantity } = variantDto;
-
-        // check availability
-        await this.productVariantsService.checkVariantAvailability(
-          queryRunner.manager,
-          variantId,
-          productId,
-          quantity,
-        );
-      }
-    }
-
-    // get all product variants
-    const prdVariants = await Promise.all(
-      initiatePaymentDto.products
-        .map((prd) => prd.variants)
-        .flat()
-        .map(
-          async (vr) =>
-            await this.productVariantsService.findProductVariantById(vr.id),
-        ),
-    );
-
     // calculate the total amount
     let totalAmount = initiatePaymentDto.products
       .map((prd) => {
@@ -140,7 +112,26 @@ export class InitiatePaymentProvider {
 
     // initialize payment
     let response;
+
     try {
+      // Iterate through each product in the request
+      for (const product of initiatePaymentDto.products) {
+        const { productId, variants } = product;
+
+        // Iterate through each variant the user wants to buy
+        for (const variantDto of variants) {
+          const { id: variantId, quantity } = variantDto;
+
+          // check availability
+          await this.productVariantsService.checkVariantAvailability(
+            queryRunner.manager,
+            variantId,
+            productId,
+            quantity,
+          );
+        }
+      }
+
       response = await axios.post(
         `${this.paystackConfiguration.baseUrl}/transaction/initialize`,
         {
@@ -164,10 +155,10 @@ export class InitiatePaymentProvider {
         userId: buyer.id,
         amount: totalAmount,
         provider: 'paystack',
+        method: PaymentMethod.ONLINE,
         providerReference: response.data.data.reference,
         status: paymentStatus.PENDING,
         authorizationUrl: response.data.data.authorization_url,
-        variants: prdVariants,
       });
 
       // if successful commit
