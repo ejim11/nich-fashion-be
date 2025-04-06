@@ -29,6 +29,7 @@ import { DeliveryStatesModule } from './delivery-states/delivery-states.module';
 import { PaystackModule } from './paystack/paystack.module';
 import { PaymentModule } from './payment/payment.module';
 import { OrdersModule } from './orders/orders.module';
+import { BankTransfersModule } from './bank-transfers/bank-transfers.module';
 
 /**
  * app environment
@@ -85,6 +86,7 @@ const ENV = process.env.NODE_ENV;
     PaystackModule,
     PaymentModule,
     OrdersModule,
+    BankTransfersModule,
   ],
   controllers: [AppController],
   providers: [
