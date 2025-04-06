@@ -71,9 +71,11 @@ export class CreateProductProvider {
 
       // loop through the array of files and upload them
       for (let i = 0; i < variantsImages.length; i++) {
+        const fileDir = `products/${product.name}/variant-${i}`;
+
         const urls = await Promise.all(
           variantsImages[i].map(
-            async (file) => await this.uploadsService.uploadFile(file),
+            async (file) => await this.uploadsService.uploadFile(file, fileDir),
           ),
         );
         storedImagesUrls.push(urls);
