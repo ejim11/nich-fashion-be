@@ -6,6 +6,7 @@ import {
 import { EntityManager, Repository } from 'typeorm';
 import { ProductVariant } from '../product-variants.entity';
 import { InjectRepository } from '@nestjs/typeorm';
+import { ProductsWithVariantsDto } from '../dto/products-with-variants.dto';
 
 @Injectable()
 export class ProductVariantsService {
@@ -128,6 +129,50 @@ export class ProductVariantsService {
       variant.quantity += quantity;
       variant.soldOut = false; // Reset soldOut if quantity becomes positive
       await manager.save(variant);
+    }
+  }
+
+  public async checkvVariantAvailabilityForTransfers(
+    productsWithVariantsDto: ProductsWithVariantsDto,
+  ) {
+    // Iterate through each product in the request
+    for (const product of productsWithVariantsDto.products) {
+      const { productId, variants } = product;
+
+      // Iterate through each variant the user wants to buy
+      for (const variantDto of variants) {
+        const { id: variantId, quantity } = variantDto;
+
+        const variant = await this.productVariantRepository.findOne({
+          where: { id: variantId },
+        });
+
+        // Check if the variant exists
+        if (!variant) {
+          throw new BadRequestException(
+            `Variant with ID ${variantId} not found for product ${productId}`,
+          );
+        }
+
+        // Check if the variant is sold out
+        if (variant.soldOut) {
+          throw new BadRequestException(
+            `Variant ${variantId} (color: ${variant.color}, size: ${variant.size}) is sold out`,
+          );
+        }
+
+        // Optional: Check if the requested quantity exceeds available stock
+        if (quantity > variant.quantity) {
+          throw new BadRequestException(
+            `Requested quantity (${quantity}) for variant ${variantId} exceeds available stock (${variant.quantity})`,
+          );
+        }
+
+        return {
+          allAvailable: true,
+          message: 'variants are available',
+        };
+      }
     }
   }
 }
