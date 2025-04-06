@@ -1,3 +1,4 @@
+import { PaymentVariant } from 'src/payment/payment-variant.entity';
 import { ProductImage } from 'src/product-images/product-image.entity';
 import { Product } from 'src/products/product.entity';
 import {
@@ -37,4 +38,7 @@ export class ProductVariant {
     eager: true,
   })
   images?: ProductImage[];
+
+  @OneToMany(() => PaymentVariant, (paymentVariant) => paymentVariant.variant)
+  paymentVariants: PaymentVariant[];
 }
