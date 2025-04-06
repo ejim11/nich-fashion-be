@@ -30,7 +30,7 @@ export class UploadsService {
    * @param file
    * @returns url for image file
    */
-  public async uploadFile(file: Express.Multer.File) {
+  public async uploadFile(file: Express.Multer.File, fileDir: string) {
     // throw error for unsupported mimetype
     if (!['image/jpeg', 'image/png', 'image/jpg'].includes(file.mimetype)) {
       throw new BadRequestException('mime type not supported');
@@ -38,7 +38,7 @@ export class UploadsService {
 
     try {
       // upload the file to the aws s3 bucket and a url has been generated
-      const name = await this.uploadToAwsProvider.fileUpload(file);
+      const name = await this.uploadToAwsProvider.fileUpload(file, fileDir);
 
       return `${this.configService.get('appConfig.awsCloudFrontUrl')}/${name}`;
     } catch (error) {

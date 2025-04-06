@@ -22,15 +22,18 @@ export class UploadToAwsProvider {
    * @param file
    * @returns stored file
    */
-  public async fileUpload(file: Express.Multer.File) {
+  public async fileUpload(file: Express.Multer.File, fileDir: string) {
     const s3 = new S3();
+
+    const folderName = `uploads/${fileDir}`; // Example: uploads/variants/123
+    const fileKey = `${folderName}/${this.generateFileName(file)}`;
 
     try {
       const uploadResult = await s3
         .upload({
           Bucket: this.configService.get('appConfig.awsBucketName'),
           Body: file.buffer,
-          Key: this.generateFileName(file),
+          Key: fileKey,
           ContentType: file.mimetype,
         })
         .promise();
