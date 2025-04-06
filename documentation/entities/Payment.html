@@ -157,10 +157,21 @@
                             </li>
                             <li>
                                     <span class="modifier"></span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#method" >method</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#paymentVariants" >paymentVariants</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Optional</span>
                                 <a href="#provider" >provider</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
+                                    <span class="modifier">Optional</span>
                                 <a href="#providerReference" >providerReference</a>
                             </li>
                             <li>
@@ -174,11 +185,6 @@
                             <li>
                                     <span class="modifier"></span>
                                 <a href="#userId" >userId</a>
-                            </li>
-                            <li>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                <a href="#variants" >variants</a>
                             </li>
                         </ul>
                     </td>
@@ -227,7 +233,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/payment/payment.entity.ts:38</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/payment/payment.entity.ts:41</a></div>
                         </td>
                     </tr>
 
@@ -264,7 +270,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/payment/payment.entity.ts:35</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/payment/payment.entity.ts:38</a></div>
                         </td>
                     </tr>
 
@@ -300,7 +306,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/payment/payment.entity.ts:44</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/payment/payment.entity.ts:54</a></div>
                         </td>
                     </tr>
 
@@ -336,7 +342,80 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/payment/payment.entity.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/payment/payment.entity.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="method"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>method</b></span>
+                        <a href="#method"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../entitys/Payment.html" target="_self" >PaymentMethod</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @Column({enum: PaymentMethod, nullable: true, type: &#x27;enum&#x27;})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/payment/payment.entity.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paymentVariants"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>paymentVariants</b></span>
+                        <a href="#paymentVariants"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../entitys/Payment.html" target="_self" >PaymentVariant[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @OneToMany(undefined, paymentVariant &#x3D;&gt; paymentVariant.payment)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/payment/payment.entity.ts:68</a></div>
                         </td>
                     </tr>
 
@@ -350,6 +429,7 @@
                     <a name="provider"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier">Optional</span>
                         <span ><b>provider</b></span>
                         <a href="#provider"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -366,13 +446,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @Column()<br />
+                            @Column({nullable: true})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/payment/payment.entity.ts:29</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/payment/payment.entity.ts:32</a></div>
                         </td>
                     </tr>
 
@@ -386,6 +466,7 @@
                     <a name="providerReference"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier">Optional</span>
                         <span ><b>providerReference</b></span>
                         <a href="#providerReference"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -402,13 +483,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @Column({unique: true})<br />
+                            @Column({unique: true, nullable: true})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/payment/payment.entity.ts:32</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/payment/payment.entity.ts:35</a></div>
                         </td>
                     </tr>
 
@@ -444,7 +525,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/payment/payment.entity.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/payment/payment.entity.ts:29</a></div>
                         </td>
                     </tr>
 
@@ -480,7 +561,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/payment/payment.entity.ts:47</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/payment/payment.entity.ts:57</a></div>
                         </td>
                     </tr>
 
@@ -516,44 +597,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/payment/payment.entity.ts:41</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="variants"></a>
-                    <span class="name">
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
-                        <span ><b>variants</b></span>
-                        <a href="#variants"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>ProductVariant[]</code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <b>Decorators : </b>
-                        <br />
-                        <code>
-                            @ManyToMany(undefined)<br />@JoinTable({name: &#x27;payment_variants&#x27;, joinColumn: undefined, inverseJoinColumn: undefined})<br />
-                        </code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/payment/payment.entity.ts:55</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/payment/payment.entity.ts:44</a></div>
                         </td>
                     </tr>
 
@@ -569,13 +613,16 @@
   Column,
   CreateDateColumn,
   Entity,
-  JoinTable,
-  ManyToMany,
+  // JoinTable,
+  // ManyToMany,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from &#x27;typeorm&#x27;;
 import { paymentStatus } from &#x27;./enums/paymentStatus.enum&#x27;;
-import { ProductVariant } from &#x27;src/product-variants/product-variants.entity&#x27;;
+// import { ProductVariant } from &#x27;src/product-variants/product-variants.entity&#x27;;
+import { PaymentMethod } from &#x27;./enums/payment-method.enum&#x27;;
+import { PaymentVariant } from &#x27;./payment-variant.entity&#x27;;
 
 /**
  * payment entity
@@ -592,11 +639,11 @@ export class Payment {
   })
   status: paymentStatus;
 
-  @Column()
-  provider: string;
+  @Column({ nullable: true })
+  provider?: string;
 
-  @Column({ unique: true })
-  providerReference: string;
+  @Column({ unique: true, nullable: true })
+  providerReference?: string;
 
   @Column({ nullable: true })
   authorizationUrl?: string;
@@ -607,19 +654,29 @@ export class Payment {
   @Column({ nullable: false })
   userId: string;
 
+  @Column({
+    enum: PaymentMethod,
+    nullable: true,
+    type: &#x27;enum&#x27;,
+  })
+  method?: PaymentMethod;
+
   @CreateDateColumn()
   createdAt: Date;
 
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @ManyToMany(() &#x3D;&gt; ProductVariant)
-  @JoinTable({
-    name: &#x27;payment_variants&#x27;,
-    joinColumn: { name: &#x27;paymentId&#x27;, referencedColumnName: &#x27;id&#x27; },
-    inverseJoinColumn: { name: &#x27;variantId&#x27;, referencedColumnName: &#x27;id&#x27; },
-  })
-  variants: ProductVariant[];
+  // @ManyToMany(() &#x3D;&gt; ProductVariant)
+  // @JoinTable({
+  //   name: &#x27;payment_variants&#x27;,
+  //   joinColumn: { name: &#x27;paymentId&#x27;, referencedColumnName: &#x27;id&#x27; },
+  //   inverseJoinColumn: { name: &#x27;variantId&#x27;, referencedColumnName: &#x27;id&#x27; },
+  // })
+  // variants: ProductVariant[];
+
+  @OneToMany(() &#x3D;&gt; PaymentVariant, (paymentVariant) &#x3D;&gt; paymentVariant.payment)
+  paymentVariants: PaymentVariant[];
 }
 </code></pre>
     </div>

@@ -380,9 +380,11 @@ export class CreateProductProvider {
 
       // loop through the array of files and upload them
       for (let i &#x3D; 0; i &lt; variantsImages.length; i++) {
+        const fileDir &#x3D; &#x60;products/${product.name}/variant-${i}&#x60;;
+
         const urls &#x3D; await Promise.all(
           variantsImages[i].map(
-            async (file) &#x3D;&gt; await this.uploadsService.uploadFile(file),
+            async (file) &#x3D;&gt; await this.uploadsService.uploadFile(file, fileDir),
           ),
         );
         storedImagesUrls.push(urls);

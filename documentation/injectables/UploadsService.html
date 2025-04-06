@@ -236,7 +236,7 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>uploadFile(file: Express.Multer.File)</code>
+                    <code>uploadFile(file: Express.Multer.File, fileDir: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -270,6 +270,18 @@
                                                 <td>file</td>
                                             <td>
                                                         <code>Express.Multer.File</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>fileDir</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
 
                                             <td>
@@ -331,7 +343,7 @@ export class UploadsService {
    * @param file
    * @returns url for image file
    */
-  public async uploadFile(file: Express.Multer.File) {
+  public async uploadFile(file: Express.Multer.File, fileDir: string) {
     // throw error for unsupported mimetype
     if (![&#x27;image/jpeg&#x27;, &#x27;image/png&#x27;, &#x27;image/jpg&#x27;].includes(file.mimetype)) {
       throw new BadRequestException(&#x27;mime type not supported&#x27;);
@@ -339,7 +351,7 @@ export class UploadsService {
 
     try {
       // upload the file to the aws s3 bucket and a url has been generated
-      const name &#x3D; await this.uploadToAwsProvider.fileUpload(file);
+      const name &#x3D; await this.uploadToAwsProvider.fileUpload(file, fileDir);
 
       return &#x60;${this.configService.get(&#x27;appConfig.awsCloudFrontUrl&#x27;)}/${name}&#x60;;
     } catch (error) {

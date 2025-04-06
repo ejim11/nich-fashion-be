@@ -172,7 +172,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/paystack/providers/verify-payment.provider.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/paystack/providers/verify-payment.provider.ts:25</a></div>
                             </td>
                         </tr>
 
@@ -285,8 +285,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="56"
-                                    class="link-to-prism">src/paystack/providers/verify-payment.provider.ts:56</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="58"
+                                    class="link-to-prism">src/paystack/providers/verify-payment.provider.ts:58</a></div>
                         </td>
                     </tr>
 
@@ -329,8 +329,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="206"
-                                    class="link-to-prism">src/paystack/providers/verify-payment.provider.ts:206</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="235"
+                                    class="link-to-prism">src/paystack/providers/verify-payment.provider.ts:235</a></div>
                         </td>
                     </tr>
 
@@ -426,8 +426,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="65"
-                                    class="link-to-prism">src/paystack/providers/verify-payment.provider.ts:65</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="67"
+                                    class="link-to-prism">src/paystack/providers/verify-payment.provider.ts:67</a></div>
                         </td>
                     </tr>
 
@@ -502,6 +502,8 @@ import { Order } from &#x27;src/orders/order.entity&#x27;;
 import { ProductsService } from &#x27;src/products/providers/products.service&#x27;;
 import { DiscountUsage } from &#x27;src/discounts-usage/discounts-usage.entity&#x27;;
 import { MailService } from &#x27;src/mail/providers/mail.service&#x27;;
+import { ProductVariant } from &#x27;src/product-variants/product-variants.entity&#x27;;
+import { PaymentVariant } from &#x27;src/payment/payment-variant.entity&#x27;;
 
 @Injectable()
 export class VerifyPaymentProvider {
@@ -576,6 +578,23 @@ export class VerifyPaymentProvider {
         discount,
       } &#x3D; response.data.data.metadata;
 
+      // get all product variants
+      const prdVariants &#x3D; await Promise.all(
+        products
+          .map((prd) &#x3D;&gt; prd.variants)
+          .flat()
+          .map(async (vr) &#x3D;&gt; {
+            const variant &#x3D; await queryRunner.manager.findOne(ProductVariant, {
+              where: { id: vr.id },
+            });
+
+            return {
+              variant,
+              quantity: vr.quantity,
+            };
+          }),
+      );
+
       const prdsDb &#x3D; await Promise.all(
         products
           .map((prd) &#x3D;&gt; prd.productId)
@@ -597,17 +616,27 @@ export class VerifyPaymentProvider {
         // Update payment status
         payment.status &#x3D; paymentStatus.SUCCESS;
 
-        console.log(&#x27;createing order&#x27;);
         // create order
         const order &#x3D; await queryRunner.manager.save(Order, {
           userId: user.id,
           deliveryAddress: deliveryAddress,
           totalAmount: totalAmount,
           deliveryPicker: deliveryPicker,
-          products: prdsDb,
+          payment: payment,
         });
 
-        // if there is a discount the add it to the discount usage
+        // create payment variants from the product variants
+        for (const variant of prdVariants) {
+          console.log(&#x27;variantId: &#x27;, variant.variant.id);
+          // create payment variant
+          await queryRunner.manager.save(PaymentVariant, {
+            paymentId: payment.id,
+            variantId: variant.variant.id,
+            quantity: variant.quantity,
+          });
+        }
+
+        // if user used discount then add it to the discount usage
         if (discount.id) {
           // create the discount usage
           const discountUsage &#x3D; await queryRunner.manager.save(DiscountUsage, {

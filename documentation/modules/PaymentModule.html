@@ -143,9 +143,10 @@
 import { TypeOrmModule } from &#x27;@nestjs/typeorm&#x27;;
 import { Payment } from &#x27;./payment.entity&#x27;;
 import { PaymentController } from &#x27;./payment.controller&#x27;;
+import { PaymentVariant } from &#x27;./payment-variant.entity&#x27;;
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Payment])],
+  imports: [TypeOrmModule.forFeature([Payment, PaymentVariant])],
   controllers: [PaymentController],
 })
 export class PaymentModule {}

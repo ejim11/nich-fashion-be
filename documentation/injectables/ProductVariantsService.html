@@ -143,6 +143,11 @@
                             <li>
                                     <span class="modifier">Public</span>
                                     <span class="modifier">Async</span>
+                                <a href="#checkvVariantAvailabilityForTransfers" >checkvVariantAvailabilityForTransfers</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
                                 <a href="#findProductVariantById" >findProductVariantById</a>
                             </li>
                             <li>
@@ -172,12 +177,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(productVariantRepository: Repository<ProductVariant>)</code>
+<code>constructor(productVariantRepository: Repository<ProductVariant>, dataSource: DataSource)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/product-variants/providers/product-variants.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/product-variants/providers/product-variants.service.ts:12</a></div>
                             </td>
                         </tr>
 
@@ -199,6 +204,18 @@
                                                   
                                                         <td>
                                                                     <code>Repository&lt;ProductVariant&gt;</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dataSource</td>
+                                                  
+                                                        <td>
+                                                                    <code>DataSource</code>
                                                         </td>
                                                   
                                                     <td>
@@ -243,8 +260,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="60"
-                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:60</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="66"
+                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:66</a></div>
                         </td>
                     </tr>
 
@@ -330,6 +347,76 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="checkvVariantAvailabilityForTransfers"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                        <span ><b>checkvVariantAvailabilityForTransfers</b></span>
+                        <a href="#checkvVariantAvailabilityForTransfers"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>checkvVariantAvailabilityForTransfers(productsWithVariantsDto: <a href="../entitys/Product.html" target="_self">ProductsWithVariantsDto</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="140"
+                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:140</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>productsWithVariantsDto</td>
+                                            <td>
+                                                            <code><a href="../entitys/Product.html" target="_self" >ProductsWithVariantsDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="findProductVariantById"></a>
                     <span class="name">
                             <span class="modifier">Public</span>
@@ -349,8 +436,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="26"
-                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:26</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="32"
+                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:32</a></div>
                         </td>
                     </tr>
 
@@ -431,8 +518,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="110"
-                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:110</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="116"
+                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:116</a></div>
                         </td>
                     </tr>
 
@@ -537,8 +624,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="48"
-                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:48</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="54"
+                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:54</a></div>
                         </td>
                     </tr>
 
@@ -596,9 +683,10 @@
   Injectable,
   NotFoundException,
 } from &#x27;@nestjs/common&#x27;;
-import { EntityManager, Repository } from &#x27;typeorm&#x27;;
+import { DataSource, EntityManager, Repository } from &#x27;typeorm&#x27;;
 import { ProductVariant } from &#x27;../product-variants.entity&#x27;;
 import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
+import { ProductsWithVariantsDto } from &#x27;../dto/products-with-variants.dto&#x27;;
 
 @Injectable()
 export class ProductVariantsService {
@@ -608,6 +696,11 @@ export class ProductVariantsService {
      */
     @InjectRepository(ProductVariant)
     private readonly productVariantRepository: Repository&lt;ProductVariant&gt;,
+
+    /**
+     * Injecting datasource
+     */
+    private readonly dataSource: DataSource,
   ) {}
 
   /**
@@ -721,6 +814,50 @@ export class ProductVariantsService {
       variant.quantity +&#x3D; quantity;
       variant.soldOut &#x3D; false; // Reset soldOut if quantity becomes positive
       await manager.save(variant);
+    }
+  }
+
+  public async checkvVariantAvailabilityForTransfers(
+    productsWithVariantsDto: ProductsWithVariantsDto,
+  ) {
+    // Iterate through each product in the request
+    for (const product of productsWithVariantsDto.products) {
+      const { productId, variants } &#x3D; product;
+
+      // Iterate through each variant the user wants to buy
+      for (const variantDto of variants) {
+        const { id: variantId, quantity } &#x3D; variantDto;
+
+        const variant &#x3D; await this.productVariantRepository.findOne({
+          where: { id: variantId },
+        });
+
+        // Check if the variant exists
+        if (!variant) {
+          throw new BadRequestException(
+            &#x60;Variant with ID ${variantId} not found for product ${productId}&#x60;,
+          );
+        }
+
+        // Check if the variant is sold out
+        if (variant.soldOut) {
+          throw new BadRequestException(
+            &#x60;Variant ${variantId} (color: ${variant.color}, size: ${variant.size}) is sold out&#x60;,
+          );
+        }
+
+        // Optional: Check if the requested quantity exceeds available stock
+        if (quantity &gt; variant.quantity) {
+          throw new BadRequestException(
+            &#x60;Requested quantity (${quantity}) for variant ${variantId} exceeds available stock (${variant.quantity})&#x60;,
+          );
+        }
+
+        return {
+          allAvailable: true,
+          message: &#x27;variants are available&#x27;,
+        };
+      }
     }
   }
 }

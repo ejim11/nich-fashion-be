@@ -228,7 +228,7 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>fileUpload(file: Express.Multer.File)</code>
+                    <code>fileUpload(file: Express.Multer.File, fileDir: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -262,6 +262,18 @@
                                                 <td>file</td>
                                             <td>
                                                         <code>Express.Multer.File</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>fileDir</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
 
                                             <td>
@@ -307,8 +319,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="49"
-                                    class="link-to-prism">src/uploads/providers/upload-to-aws.provider.ts:49</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="52"
+                                    class="link-to-prism">src/uploads/providers/upload-to-aws.provider.ts:52</a></div>
                         </td>
                     </tr>
 
@@ -392,15 +404,18 @@ export class UploadToAwsProvider {
    * @param file
    * @returns stored file
    */
-  public async fileUpload(file: Express.Multer.File) {
+  public async fileUpload(file: Express.Multer.File, fileDir: string) {
     const s3 &#x3D; new S3();
+
+    const folderName &#x3D; &#x60;uploads/${fileDir}&#x60;; // Example: uploads/variants/123
+    const fileKey &#x3D; &#x60;${folderName}/${this.generateFileName(file)}&#x60;;
 
     try {
       const uploadResult &#x3D; await s3
         .upload({
           Bucket: this.configService.get(&#x27;appConfig.awsBucketName&#x27;),
           Body: file.buffer,
-          Key: this.generateFileName(file),
+          Key: fileKey,
           ContentType: file.mimetype,
         })
         .promise();
