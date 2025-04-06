@@ -177,7 +177,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(productVariantRepository: Repository<ProductVariant>, dataSource: DataSource)</code>
+<code>constructor(productVariantRepository: Repository<ProductVariant>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -204,18 +204,6 @@
                                                   
                                                         <td>
                                                                     <code>Repository&lt;ProductVariant&gt;</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>dataSource</td>
-                                                  
-                                                        <td>
-                                                                    <code>DataSource</code>
                                                         </td>
                                                   
                                                     <td>
@@ -260,8 +248,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="66"
-                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:66</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="61"
+                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:61</a></div>
                         </td>
                     </tr>
 
@@ -366,8 +354,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="140"
-                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:140</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="135"
+                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:135</a></div>
                         </td>
                     </tr>
 
@@ -436,8 +424,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="32"
-                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:32</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="27"
+                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:27</a></div>
                         </td>
                     </tr>
 
@@ -518,8 +506,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="116"
-                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:116</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="111"
+                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:111</a></div>
                         </td>
                     </tr>
 
@@ -624,8 +612,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="54"
-                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:54</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="49"
+                                    class="link-to-prism">src/product-variants/providers/product-variants.service.ts:49</a></div>
                         </td>
                     </tr>
 
@@ -683,7 +671,7 @@
   Injectable,
   NotFoundException,
 } from &#x27;@nestjs/common&#x27;;
-import { DataSource, EntityManager, Repository } from &#x27;typeorm&#x27;;
+import { EntityManager, Repository } from &#x27;typeorm&#x27;;
 import { ProductVariant } from &#x27;../product-variants.entity&#x27;;
 import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
 import { ProductsWithVariantsDto } from &#x27;../dto/products-with-variants.dto&#x27;;
@@ -696,11 +684,6 @@ export class ProductVariantsService {
      */
     @InjectRepository(ProductVariant)
     private readonly productVariantRepository: Repository&lt;ProductVariant&gt;,
-
-    /**
-     * Injecting datasource
-     */
-    private readonly dataSource: DataSource,
   ) {}
 
   /**
