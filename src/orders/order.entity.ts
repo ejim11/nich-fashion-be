@@ -2,15 +2,17 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  JoinTable,
-  ManyToMany,
+  JoinColumn,
+  // JoinTable,
+  // ManyToMany,
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { OrderStatus } from './enums/order-status.enum';
-import { Product } from 'src/products/product.entity';
+// import { Product } from 'src/products/product.entity';
 import { DiscountUsage } from 'src/discounts-usage/discounts-usage.entity';
+import { Payment } from 'src/payment/payment.entity';
 
 @Entity()
 export class Order {
@@ -58,11 +60,15 @@ export class Order {
   @Column()
   totalAmount: number;
 
-  @ManyToMany(() => Product)
-  @JoinTable({
-    name: 'orders_products',
-    joinColumn: { name: 'orderId', referencedColumnName: 'id' },
-    inverseJoinColumn: { name: 'productId', referencedColumnName: 'id' },
-  })
-  products: Product[];
+  // @ManyToMany(() => Product)
+  // @JoinTable({
+  //   name: 'orders_products',
+  //   joinColumn: { name: 'orderId', referencedColumnName: 'id' },
+  //   inverseJoinColumn: { name: 'productId', referencedColumnName: 'id' },
+  // })
+  // products: Product[];
+
+  @OneToOne(() => Payment, { eager: true })
+  @JoinColumn()
+  payment: Payment;
 }
