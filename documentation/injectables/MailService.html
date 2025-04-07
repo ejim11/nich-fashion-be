@@ -643,8 +643,8 @@ export class MailService {
   public async sendSubscriberMail(subscriber: Subscriber): Promise&lt;void&gt; {
     await this.mailerService.sendMail({
       to: subscriber.email,
-      from: &#x60;Ticket Hive -Team  &lt;${&#x27;favourejim56@gmail.com&#x27;}&gt;&#x60;,
-      subject: &#x60;Welcome to Ticket Hive&#x27;s Newsletter! 🎉&#x60;,
+      from: &#x60;Nich Fashion - Team  &lt;${&#x27;admininvestor@brackifi-investor.io&#x27;}&gt;&#x60;,
+      subject: &#x60;Welcome to Nich Fashion&#x27;s Newsletter! 🎉&#x60;,
       template: path.join(ROOT_PATH, &#x27;/src/mail/templates/subscription.ejs&#x27;),
       context: {
         email: subscriber.email,

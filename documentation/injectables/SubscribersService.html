@@ -150,6 +150,11 @@
                             <li>
                                     <span class="modifier">Public</span>
                                     <span class="modifier">Async</span>
+                                <a href="#findAllSubscribers" >findAllSubscribers</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
                                 <a href="#unsubscribeEmail" >unsubscribeEmail</a>
                             </li>
                         </ul>
@@ -170,12 +175,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(subscriberRepository: <a href="../entitys/Subscriber.html" target="_self">Repository&lt;Subscriber&gt;</a>, mailService: <a href="../injectables/MailService.html" target="_self">MailService</a>)</code>
+<code>constructor(subscriberRepository: <a href="../entitys/Subscriber.html" target="_self">Repository&lt;Subscriber&gt;</a>, mailService: <a href="../injectables/MailService.html" target="_self">MailService</a>, findAllSubscribersProviders: <a href="../entitys/Subscriber.html" target="_self">FindAllSubscribersProvider</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/subscribers/providers/subscribers.service.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/subscribers/providers/subscribers.service.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -211,6 +216,18 @@
                                                   
                                                         <td>
                                                                         <code><a href="../injectables/MailService.html" target="_self" >MailService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>findAllSubscribersProviders</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../entitys/Subscriber.html" target="_self" >FindAllSubscribersProvider</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -255,8 +272,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="36"
-                                    class="link-to-prism">src/subscribers/providers/subscribers.service.ts:36</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="43"
+                                    class="link-to-prism">src/subscribers/providers/subscribers.service.ts:43</a></div>
                         </td>
                     </tr>
 
@@ -309,6 +326,76 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="findAllSubscribers"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                        <span ><b>findAllSubscribers</b></span>
+                        <a href="#findAllSubscribers"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findAllSubscribers(subscriberQuery: <a href="../entitys/Subscriber.html" target="_self">GetSubscribersDto</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="73"
+                                    class="link-to-prism">src/subscribers/providers/subscribers.service.ts:73</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>subscriberQuery</td>
+                                            <td>
+                                                            <code><a href="../entitys/Subscriber.html" target="_self" >GetSubscribersDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="unsubscribeEmail"></a>
                     <span class="name">
                             <span class="modifier">Public</span>
@@ -321,15 +408,15 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>unsubscribeEmail(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    <code>unsubscribeEmail(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="55"
-                                    class="link-to-prism">src/subscribers/providers/subscribers.service.ts:55</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="62"
+                                    class="link-to-prism">src/subscribers/providers/subscribers.service.ts:62</a></div>
                         </td>
                     </tr>
 
@@ -354,7 +441,7 @@
                                         <tr>
                                                 <td>id</td>
                                             <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
 
                                             <td>
@@ -390,6 +477,8 @@ import { Repository } from &#x27;typeorm&#x27;;
 import { Subscriber } from &#x27;../subscriber.entity&#x27;;
 import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
 import { MailService } from &#x27;src/mail/providers/mail.service&#x27;;
+import { FindAllSubscribersProvider } from &#x27;./find-all-subscribers.provider&#x27;;
+import { GetSubscribersDto } from &#x27;../dtos/get-subscribers.dto&#x27;;
 
 /**
  * service for the subscriber module
@@ -412,6 +501,11 @@ export class SubscribersService {
      * injecting the mail service
      */
     private readonly mailService: MailService,
+
+    /**
+     * injecting the find all subscribers provider
+     */
+    private readonly findAllSubscribersProviders: FindAllSubscribersProvider,
   ) {}
 
   /**
@@ -438,7 +532,7 @@ export class SubscribersService {
    * @param id
    * @returns message that subscriber has unsubscribed from the newsletter
    */
-  public async unsubscribeEmail(id: number) {
+  public async unsubscribeEmail(id: string) {
     try {
       await this.subscriberRepository.delete(id);
       return {
@@ -447,6 +541,10 @@ export class SubscribersService {
     } catch (error) {
       throw new RequestTimeoutException(error);
     }
+  }
+
+  public async findAllSubscribers(subscriberQuery: GetSubscribersDto) {
+    return await this.findAllSubscribersProviders.findAll(subscriberQuery);
   }
 }
 </code></pre>
