@@ -4,6 +4,8 @@ import { Repository } from 'typeorm';
 import { Subscriber } from '../subscriber.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MailService } from 'src/mail/providers/mail.service';
+import { FindAllSubscribersProvider } from './find-all-subscribers.provider';
+import { GetSubscribersDto } from '../dtos/get-subscribers.dto';
 
 /**
  * service for the subscriber module
@@ -26,6 +28,11 @@ export class SubscribersService {
      * injecting the mail service
      */
     private readonly mailService: MailService,
+
+    /**
+     * injecting the find all subscribers provider
+     */
+    private readonly findAllSubscribersProviders: FindAllSubscribersProvider,
   ) {}
 
   /**
@@ -52,7 +59,7 @@ export class SubscribersService {
    * @param id
    * @returns message that subscriber has unsubscribed from the newsletter
    */
-  public async unsubscribeEmail(id: number) {
+  public async unsubscribeEmail(id: string) {
     try {
       await this.subscriberRepository.delete(id);
       return {
@@ -61,5 +68,9 @@ export class SubscribersService {
     } catch (error) {
       throw new RequestTimeoutException(error);
     }
+  }
+
+  public async findAllSubscribers(subscriberQuery: GetSubscribersDto) {
+    return await this.findAllSubscribersProviders.findAll(subscriberQuery);
   }
 }
