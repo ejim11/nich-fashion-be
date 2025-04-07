@@ -11,15 +11,15 @@ import { ConfigType } from '@nestjs/config';
 import { DataSource } from 'typeorm';
 import * as crypto from 'crypto';
 import axios from 'axios';
-import { Payment } from 'src/payment/payment.entity';
-import { paymentStatus } from 'src/payment/enums/paymentStatus.enum';
+import { Payment } from 'src/payments/payment.entity';
+import { paymentStatus } from 'src/payments/enums/paymentStatus.enum';
 import { ProductVariantsService } from 'src/product-variants/providers/product-variants.service';
 import { Order } from 'src/orders/order.entity';
 import { ProductsService } from 'src/products/providers/products.service';
 import { DiscountUsage } from 'src/discounts-usage/discounts-usage.entity';
 import { MailService } from 'src/mail/providers/mail.service';
 import { ProductVariant } from 'src/product-variants/product-variants.entity';
-import { PaymentVariant } from 'src/payment/payment-variant.entity';
+import { PaymentVariant } from 'src/payments/payment-variant.entity';
 
 @Injectable()
 export class VerifyPaymentProvider {
