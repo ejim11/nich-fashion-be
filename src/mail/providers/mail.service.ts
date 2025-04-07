@@ -83,8 +83,8 @@ export class MailService {
   public async sendSubscriberMail(subscriber: Subscriber): Promise<void> {
     await this.mailerService.sendMail({
       to: subscriber.email,
-      from: `Ticket Hive -Team  <${'favourejim56@gmail.com'}>`,
-      subject: `Welcome to Ticket Hive's Newsletter! 🎉`,
+      from: `Nich Fashion - Team  <${'admininvestor@brackifi-investor.io'}>`,
+      subject: `Welcome to Nich Fashion's Newsletter! 🎉`,
       template: path.join(ROOT_PATH, '/src/mail/templates/subscription.ejs'),
       context: {
         email: subscriber.email,
