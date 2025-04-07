@@ -27,7 +27,7 @@ import { DiscountsModule } from './discounts/discounts.module';
 import { DiscountsUsageModule } from './discounts-usage/discounts-usage.module';
 import { DeliveryStatesModule } from './delivery-states/delivery-states.module';
 import { PaystackModule } from './paystack/paystack.module';
-import { PaymentModule } from './payment/payment.module';
+import { PaymentsModule } from './payments/payments.module';
 import { OrdersModule } from './orders/orders.module';
 import { BankTransfersModule } from './bank-transfers/bank-transfers.module';
 
@@ -84,7 +84,7 @@ const ENV = process.env.NODE_ENV;
     DiscountsUsageModule,
     DeliveryStatesModule,
     PaystackModule,
-    PaymentModule,
+    PaymentsModule,
     OrdersModule,
     BankTransfersModule,
   ],
