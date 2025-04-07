@@ -11,12 +11,12 @@ import { ConfigService, ConfigType } from '@nestjs/config';
 import { DataSource } from 'typeorm';
 import axios from 'axios';
 import { UsersService } from 'src/users/providers/users.service';
-import { Payment } from 'src/payment/payment.entity';
-import { paymentStatus } from 'src/payment/enums/paymentStatus.enum';
+import { Payment } from 'src/payments/payment.entity';
+import { paymentStatus } from 'src/payments/enums/paymentStatus.enum';
 import { User } from 'src/users/user.entity';
 import { ProductVariantsService } from 'src/product-variants/providers/product-variants.service';
 import { Discount } from 'src/discounts/discounts.entity';
-import { PaymentMethod } from 'src/payment/enums/payment-method.enum';
+import { PaymentMethod } from 'src/payments/enums/payment-method.enum';
 
 @Injectable()
 export class InitiatePaymentProvider {
