@@ -6,6 +6,7 @@ import { BankTransfer } from './bank-transfer.entity';
 import { SaveBankTransferProvider } from './providers/save-bank-transfer.provider';
 import { ProductVariantsModule } from 'src/product-variants/product-variants.module';
 import { UploadsModule } from 'src/uploads/uploads.module';
+import { ConfirmBankTransferProvider } from './providers/confirm-bank-transfer.provider';
 
 @Module({
   imports: [
@@ -14,6 +15,10 @@ import { UploadsModule } from 'src/uploads/uploads.module';
     TypeOrmModule.forFeature([BankTransfer]),
   ],
   controllers: [BankTransfersController],
-  providers: [BankTransfersService, SaveBankTransferProvider],
+  providers: [
+    BankTransfersService,
+    SaveBankTransferProvider,
+    ConfirmBankTransferProvider,
+  ],
 })
 export class BankTransfersModule {}
