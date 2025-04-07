@@ -1,4 +1,4 @@
-import { Payment } from 'src/payment/payment.entity';
+import { Payment } from 'src/payments/payment.entity';
 import {
   Column,
   CreateDateColumn,
@@ -29,7 +29,7 @@ export class BankTransfer {
   @Column({ nullable: false })
   amount: number;
 
-  @OneToOne(() => Payment)
+  @OneToOne(() => Payment, { eager: true })
   @JoinColumn()
   payment: Payment;
 
