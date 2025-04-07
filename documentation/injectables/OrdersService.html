@@ -122,18 +122,432 @@
 
 
 
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#findAll" >findAll</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#findOrderById" >findOrderById</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#updateOrder" >updateOrder</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
 
 
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(ordersRepository: <a href="../entitys/Order.html" target="_self">Repository&lt;Order&gt;</a>, findAllOrdersProvider: <a href="../entitys/Order.html" target="_self">FindAllOrdersProvider</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/orders/providers/orders.service.ts:15</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>ordersRepository</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../entitys/Order.html" target="_self" >Repository&lt;Order&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>findAllOrdersProvider</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../entitys/Order.html" target="_self" >FindAllOrdersProvider</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findAll"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                        <span ><b>findAll</b></span>
+                        <a href="#findAll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findAll(orderQuery: <a href="../entitys/Order.html" target="_self">GetOrdersDto</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="88"
+                                    class="link-to-prism">src/orders/providers/orders.service.ts:88</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>orderQuery</td>
+                                            <td>
+                                                            <code><a href="../entitys/Order.html" target="_self" >GetOrdersDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/Paginated.html" target="_self" >Promise&lt;Paginated&lt;Order&gt;&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>paginated orders</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findOrderById"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                        <span ><b>findOrderById</b></span>
+                        <a href="#findOrderById"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findOrderById(orderId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="59"
+                                    class="link-to-prism">src/orders/providers/orders.service.ts:59</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>orderId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateOrder"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                        <span ><b>updateOrder</b></span>
+                        <a href="#updateOrder"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateOrder(patchOrderDto: <a href="../entitys/Order.html" target="_self">PatchOrderDto</a>, orderId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="29"
+                                    class="link-to-prism">src/orders/providers/orders.service.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>patchOrderDto</td>
+                                            <td>
+                                                            <code><a href="../entitys/Order.html" target="_self" >PatchOrderDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>orderId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
 
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  BadRequestException,
+  Injectable,
+  RequestTimeoutException,
+} from &#x27;@nestjs/common&#x27;;
+import { Repository } from &#x27;typeorm&#x27;;
+import { Order } from &#x27;../order.entity&#x27;;
+import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
+import { PatchOrderDto } from &#x27;../dtos/patch-order.dto&#x27;;
+import { FindAllOrdersProvider } from &#x27;./find-all-orders.provider&#x27;;
+import { GetOrdersDto } from &#x27;../dtos/get-orders.dto&#x27;;
+import { Paginated } from &#x27;src/common/pagination/interfaces/paginated.interface&#x27;;
 
 @Injectable()
-export class OrdersService {}
+export class OrdersService {
+  constructor(
+    /**
+     * injecting the orders repository
+     */
+    @InjectRepository(Order)
+    private readonly ordersRepository: Repository&lt;Order&gt;,
+
+    /**
+     * injecting the find all orders provider
+     */
+    private readonly findAllOrdersProvider: FindAllOrdersProvider,
+  ) {}
+
+  public async updateOrder(patchOrderDto: PatchOrderDto, orderId: string) {
+    let order;
+    // find the order
+    try {
+      order &#x3D; await this.ordersRepository.findOneBy({
+        id: orderId,
+      });
+    } catch (err) {
+      throw new RequestTimeoutException(err);
+    }
+    if (!order) {
+      throw new BadRequestException(&#x27;Order does not exist&#x27;);
+    }
+    // update order
+    order &#x3D; { ...order, ...patchOrderDto };
+
+    try {
+      await this.ordersRepository.save(order);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error: any) {
+      throw new RequestTimeoutException(
+        &#x27;Unable to process your request at the moment, please try later&#x27;,
+        {
+          description: &#x27;Error connecting to the database&#x27;,
+        },
+      );
+    }
+    return order;
+  }
+
+  public async findOrderById(orderId: string) {
+    let order: Order;
+
+    try {
+      order &#x3D; await this.ordersRepository.findOne({
+        where: { id: orderId },
+      });
+    } catch (error) {
+      console.log(error);
+      throw new RequestTimeoutException(
+        &#x27;Unable to process your request at the moment, please try later&#x27;,
+        {
+          description: &#x27;Error connecting to the database&#x27;,
+        },
+      );
+    }
+
+    if (!order) {
+      throw new BadRequestException(&#x27;The bank order does not exist&#x27;);
+    }
+
+    return order;
+  }
+
+  /**
+   * @function get all orders or all orders from a user
+   * @param orderQuery
+   * @returns paginated orders
+   */
+  public async findAll(orderQuery: GetOrdersDto): Promise&lt;Paginated&lt;Order&gt;&gt; {
+    return await this.findAllOrdersProvider.findAll(orderQuery);
+  }
+}
 </code></pre>
     </div>
 

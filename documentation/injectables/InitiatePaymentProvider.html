@@ -404,12 +404,12 @@ import { ConfigService, ConfigType } from &#x27;@nestjs/config&#x27;;
 import { DataSource } from &#x27;typeorm&#x27;;
 import axios from &#x27;axios&#x27;;
 import { UsersService } from &#x27;src/users/providers/users.service&#x27;;
-import { Payment } from &#x27;src/payment/payment.entity&#x27;;
-import { paymentStatus } from &#x27;src/payment/enums/paymentStatus.enum&#x27;;
+import { Payment } from &#x27;src/payments/payment.entity&#x27;;
+import { paymentStatus } from &#x27;src/payments/enums/paymentStatus.enum&#x27;;
 import { User } from &#x27;src/users/user.entity&#x27;;
 import { ProductVariantsService } from &#x27;src/product-variants/providers/product-variants.service&#x27;;
 import { Discount } from &#x27;src/discounts/discounts.entity&#x27;;
-import { PaymentMethod } from &#x27;src/payment/enums/payment-method.enum&#x27;;
+import { PaymentMethod } from &#x27;src/payments/enums/payment-method.enum&#x27;;
 
 @Injectable()
 export class InitiatePaymentProvider {

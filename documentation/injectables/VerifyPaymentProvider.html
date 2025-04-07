@@ -495,15 +495,15 @@ import { ConfigType } from &#x27;@nestjs/config&#x27;;
 import { DataSource } from &#x27;typeorm&#x27;;
 import * as crypto from &#x27;crypto&#x27;;
 import axios from &#x27;axios&#x27;;
-import { Payment } from &#x27;src/payment/payment.entity&#x27;;
-import { paymentStatus } from &#x27;src/payment/enums/paymentStatus.enum&#x27;;
+import { Payment } from &#x27;src/payments/payment.entity&#x27;;
+import { paymentStatus } from &#x27;src/payments/enums/paymentStatus.enum&#x27;;
 import { ProductVariantsService } from &#x27;src/product-variants/providers/product-variants.service&#x27;;
 import { Order } from &#x27;src/orders/order.entity&#x27;;
 import { ProductsService } from &#x27;src/products/providers/products.service&#x27;;
 import { DiscountUsage } from &#x27;src/discounts-usage/discounts-usage.entity&#x27;;
 import { MailService } from &#x27;src/mail/providers/mail.service&#x27;;
 import { ProductVariant } from &#x27;src/product-variants/product-variants.entity&#x27;;
-import { PaymentVariant } from &#x27;src/payment/payment-variant.entity&#x27;;
+import { PaymentVariant } from &#x27;src/payments/payment-variant.entity&#x27;;
 
 @Injectable()
 export class VerifyPaymentProvider {
