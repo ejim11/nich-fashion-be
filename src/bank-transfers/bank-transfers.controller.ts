@@ -1,6 +1,8 @@
 import {
   Body,
   Controller,
+  Param,
+  Patch,
   Post,
   UploadedFile,
   UseInterceptors,
@@ -22,7 +24,13 @@ export class BankTransfersController {
     private readonly bankTransfersService: BankTransfersService,
   ) {}
 
-  // Submit bank tf and products bought details
+  /**
+   * @function Submits bank tf and products bought details
+   * @param createBankTransferDto
+   * @param user
+   * @param file
+   * @returns bank transfer details
+   */
   @UseInterceptors(FileInterceptor('file'))
   @Roles(Role.USER)
   @Post('submit-tf-info')
@@ -37,5 +45,11 @@ export class BankTransfersController {
       file,
     );
   }
+
   // confirm bank tf: only admin
+  @Patch('/:transferId/confirm-transfer')
+  @Roles(Role.ADMIN)
+  public confirmBankTransfer(@Param('transferId') transferId: string) {
+    return this, this.bankTransfersService.confirmBankTransfer(transferId);
+  }
 }
