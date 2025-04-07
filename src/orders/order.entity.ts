@@ -12,7 +12,7 @@ import {
 import { OrderStatus } from './enums/order-status.enum';
 // import { Product } from 'src/products/product.entity';
 import { DiscountUsage } from 'src/discounts-usage/discounts-usage.entity';
-import { Payment } from 'src/payment/payment.entity';
+import { Payment } from 'src/payments/payment.entity';
 
 @Entity()
 export class Order {
