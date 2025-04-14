@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { PaginationQueryDto } from '../dtos/pagination-query.dto';
-import { ObjectLiteral, Repository } from 'typeorm';
+import { ObjectLiteral, SelectQueryBuilder } from 'typeorm';
 
 // inorder to inject a request to a provider
 import { Request } from 'express';
@@ -33,54 +33,43 @@ export class PaginationProvider {
    */
   public async paginationQuery<T extends ObjectLiteral>(
     paginationQuery: PaginationQueryDto,
-    repository: Repository<T>,
-    options?: any,
+    queryBuilder: SelectQueryBuilder<T>,
   ): Promise<Paginated<T>> {
-    const results = await repository.find({
-      // no of items to skip in one query
-      skip: (paginationQuery.page - 1) * paginationQuery.limit,
-      // the no items to take in one query
-      take: paginationQuery.limit,
-      relations: options.relations,
-      select: options.select,
-      where: options.where,
-    });
+    const { limit, page } = paginationQuery;
 
-    /**
-     * Create the request URLS
-     */
+    // Apply pagination to the query
+    const paginatedQuery = queryBuilder.skip((page - 1) * limit).take(limit);
+
+    // Execute the query to get results
+    const results = await paginatedQuery.getMany();
+
+    // Get total items (clone the query to avoid modifying the original)
+    const totalItems = await queryBuilder.getCount();
+
+    // Calculate pagination metadata
+    const totalPages = Math.ceil(totalItems / limit);
+    const nextPage = page >= totalPages ? page : page + 1;
+    const prevPage = page <= 1 ? page : page - 1;
+
+    // Create the request URLs
     const baseURL =
       this.request.protocol + '://' + this.request.headers.host + '/';
-
     const newUrl = new URL(this.request.url, baseURL);
-
-    // console.log(newUrl);
-
-    const totalItems = await repository.count();
-    const totalPages = Math.ceil(totalItems / paginationQuery.limit);
-    const nextPage =
-      paginationQuery.page === totalPages
-        ? paginationQuery.page
-        : paginationQuery.page + 1;
-    const prevPage =
-      paginationQuery.page === 1
-        ? paginationQuery.page
-        : paginationQuery.page - 1;
 
     const finalResponse: Paginated<T> = {
       data: results,
       meta: {
-        itemsPerPage: paginationQuery.limit,
+        itemsPerPage: limit,
         totalItems: totalItems,
-        currentPage: paginationQuery.page,
+        currentPage: page,
         totalPages: totalPages,
       },
       links: {
-        first: `${newUrl.origin}${newUrl.pathname}?limit=${paginationQuery.limit}&page=1`,
-        last: `${newUrl.origin}${newUrl.pathname}?limit=${paginationQuery.limit}&page=${totalPages}`,
-        current: `${newUrl.origin}${newUrl.pathname}?limit=${paginationQuery.limit}&page=${paginationQuery.page}`,
-        next: `${newUrl.origin}${newUrl.pathname}?limit=${paginationQuery.limit}&page=${nextPage}`,
-        previous: `${newUrl.origin}${newUrl.pathname}?limit=${paginationQuery.limit}&page=${prevPage}`,
+        first: `${newUrl.origin}${newUrl.pathname}?limit=${limit}&page=1`,
+        last: `${newUrl.origin}${newUrl.pathname}?limit=${limit}&page=${totalPages}`,
+        current: `${newUrl.origin}${newUrl.pathname}?limit=${limit}&page=${page}`,
+        next: `${newUrl.origin}${newUrl.pathname}?limit=${limit}&page=${nextPage}`,
+        previous: `${newUrl.origin}${newUrl.pathname}?limit=${limit}&page=${prevPage}`,
       },
     };
 
