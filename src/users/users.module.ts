@@ -24,9 +24,9 @@ import { ClearOtpAndExpiryTimeProvider } from './providers/clear-otp-and-expiry-
   ],
   controllers: [UsersController],
   imports: [
+    PaginationModule,
     forwardRef(() => AuthModule),
     TypeOrmModule.forFeature([User]),
-    PaginationModule,
   ],
   exports: [UsersService],
 })
