@@ -54,6 +54,10 @@ class GetProductsBaseDto {
   @IsString()
   @IsOptional()
   dressStyle?: string;
+
+  @IsOptional()
+  @IsString()
+  sort?: 'newest' | 'oldest' | 'most_purchased';
 }
 
 /**
