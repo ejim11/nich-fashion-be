@@ -119,7 +119,7 @@ export class CreateProductProvider {
       await queryRunner.commitTransaction();
 
       // return product
-      return savedProduct;
+      return { ...savedProduct, variants: savedVariants };
     } catch (error) {
       // if unsuccessful rollback
       // we rollback the txn here if it is not successful
