@@ -1,2 +1,2 @@
-GET http://localhost:3002/api/v1/products
+GET http://localhost:3002/api/v1/products?category=flux&sort=most_purchased&limit=4
 Content-Type: application/json

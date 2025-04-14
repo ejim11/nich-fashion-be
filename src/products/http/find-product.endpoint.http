@@ -1,2 +1,2 @@
-GET http://localhost:3002/api/v1/products/0fbdbc3e-3046-412d-ab05-e1f5b0331239
+GET http://localhost:3002/api/v1/products/36317226-16e8-4e67-ad34-989ae70a578d
 Content-Type: application/json

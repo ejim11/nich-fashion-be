@@ -1,84 +1,227 @@
 POST http://localhost:3002/api/v1/products
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNWJjMzZiNC1mYTc2LTQxOTMtYjBhOC0zZmU2ZDExZjQ1Y2IiLCJlbWFpbCI6ImZlamltMTg4QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0Mzk2MDA2MSwiZXhwIjoxNzQzOTYzNjYxLCJhdWQiOiJsb2NhbGhvc3Q6MzAwMSIsImlzcyI6ImxvY2FsaG9zdDozMDAxIn0.vpPB-SOXLgfetxED0zFH71G420R18OvHX989_SDN18k
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNWJjMzZiNC1mYTc2LTQxOTMtYjBhOC0zZmU2ZDExZjQ1Y2IiLCJlbWFpbCI6ImZlamltMTg4QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0NDI4ODI5NiwiZXhwIjoxNzQ0MjkxODk2LCJhdWQiOiJsb2NhbGhvc3Q6MzAwMSIsImlzcyI6ImxvY2FsaG9zdDozMDAxIn0.sP9NCcv61PJjrFWE0lVoBhFRJcXUz48Sh9lPiMSj9iY
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="name"
 
-Slyn blouses
+OVERSIZED COZY HOODIE
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="price"
 
-35000
+40000
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="discount"
 
-10
+22
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="category"
 
-blouse
+Prism
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="dressStyle"
 
-office
+Party
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="clothType"
 
-blouse
+hoodie
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="material"
 
-cotton
+fleece
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="brand"
 
-slyn
+chill
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="shortDescription"
 
-Comfortable and stylish Nike t-shirt for everyday wear
+Warm and bold OVERSIZED COZY HOODIE for party vibes
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="longDescription"
 
-A premium cotton blouse from syn, perfect for office. Soft, breathable, and designed for comfort.
+A plush fleece OVERSIZED COZY HOODIE from chill, ideal for party nights. Soft, spacious, and designed to turn heads with effortless style.
+
+# Turquoise variants (S, M, XL)
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="variants[0][color]"
 
-red
+Turquoise
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="variants[0][size]"
 
-XL
+S
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="variants[0][quantity]"
 
-50
-------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="variants[0][images]"; filename="test-image-4.png"
-Content-Type: image/png
-
-< ./test-image-4.png
+30
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="variants[0][images]"; filename="test-image-5.png"
 Content-Type: image/png
 
 < ./test-image-5.png
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[0][images]"; filename="test-image-2.png"
+Content-Type: image/png
+
+< ./test-image-2.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="variants[1][color]"
 
-Grey
+Turquoise
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="variants[1][size]"
 
-L
+M
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="variants[1][quantity]"
 
-30
+40
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="variants[1][images]"; filename="test-image-6.png"
+Content-Disposition: form-data; name="variants[1][images]"; filename="test-image-8.png"
+Content-Type: image/png
+
+< ./test-image-8.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[1][images]"; filename="test-image-4.png"
+Content-Type: image/png
+
+< ./test-image-4.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[2][color]"
+
+Turquoise
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[2][size]"
+
+XL
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[2][quantity]"
+
+50
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[2][images]"; filename="test-image-1.png"
+Content-Type: image/png
+
+< ./test-image-1.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[2][images]"; filename="test-image-6.png"
 Content-Type: image/png
 
 < ./test-image-6.png
+
+# Plum variants (S, M, L)
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[3][color]"
+
+Plum
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[3][size]"
+
+S
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[3][quantity]"
+
+35
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[3][images]"; filename="test-image-3.png"
+Content-Type: image/png
+
+< ./test-image-3.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[3][images]"; filename="test-image-7.png"
+Content-Type: image/png
+
+< ./test-image-7.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[4][color]"
+
+Plum
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[4][size]"
+
+M
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[4][quantity]"
+
+45
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[4][images]"; filename="test-image-6.png"
+Content-Type: image/png
+
+< ./test-image-6.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[4][images]"; filename="test-image-2.png"
+Content-Type: image/png
+
+< ./test-image-2.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[5][color]"
+
+Plum
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[5][size]"
+
+L
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[5][quantity]"
+
+40
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[5][images]"; filename="test-image-4.png"
+Content-Type: image/png
+
+< ./test-image-4.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[5][images]"; filename="test-image-5.png"
+Content-Type: image/png
+
+< ./test-image-5.png
+
+# Mustard variants (M, L)
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[6][color]"
+
+Mustard
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[6][size]"
+
+M
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[6][quantity]"
+
+25
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[6][images]"; filename="test-image-7.png"
+Content-Type: image/png
+
+< ./test-image-7.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[6][images]"; filename="test-image-1.png"
+Content-Type: image/png
+
+< ./test-image-1.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[7][color]"
+
+Mustard
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[7][size]"
+
+L
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[7][quantity]"
+
+20
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[7][images]"; filename="test-image-3.png"
+Content-Type: image/png
+
+< ./test-image-3.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="variants[7][images]"; filename="test-image-8.png"
+Content-Type: image/png
+
+< ./test-image-8.png
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
