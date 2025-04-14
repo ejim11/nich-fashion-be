@@ -334,7 +334,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="../entitys/Product.html" target="_self" >Promise&lt;Product&gt;</a></code>
+                            <b>Returns : </b>    <code>unknown</code>
 
                         </div>
                             <div class="io-description">
@@ -698,7 +698,7 @@ export class ProductsService {
   public async createProduct(
     createProductDto: CreateProductDto,
     files: { [key: string]: Express.Multer.File[] },
-  ): Promise&lt;Product&gt; {
+  ) {
     return this.createProductProvider.createProduct(createProductDto, files);
   }
 

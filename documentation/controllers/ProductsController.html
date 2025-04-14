@@ -685,9 +685,9 @@ export class ProductsController {
   @ApiConsumes(&#x27;multipart/form-data&#x27;)
   @UseInterceptors(
     FileFieldsInterceptor(
-      Array.from({ length: 6 }, (_, i) &#x3D;&gt; ({
+      Array.from({ length: 30 }, (_, i) &#x3D;&gt; ({
         name: &#x60;variants[${i}][images]&#x60;,
-        maxCount: 6,
+        maxCount: 30,
       })),
     ),
   )

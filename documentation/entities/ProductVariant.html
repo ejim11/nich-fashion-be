@@ -285,7 +285,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/product-variants/product-variants.entity.ts:40</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/product-variants/product-variants.entity.ts:41</a></div>
                         </td>
                     </tr>
 
@@ -321,7 +321,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/product-variants/product-variants.entity.ts:43</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/product-variants/product-variants.entity.ts:44</a></div>
                         </td>
                     </tr>
 
@@ -352,13 +352,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ManyToOne(undefined, product &#x3D;&gt; product.variants, {onDelete: &#x27;CASCADE&#x27;})<br />@JoinColumn()<br />
+                            @ManyToOne(undefined, product &#x3D;&gt; product.variants, {onDelete: &#x27;CASCADE&#x27;, eager: false})<br />@JoinColumn()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/product-variants/product-variants.entity.ts:34</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/product-variants/product-variants.entity.ts:35</a></div>
                         </td>
                     </tr>
 
@@ -509,6 +509,7 @@ export class ProductVariant {
 
   @ManyToOne(() &#x3D;&gt; Product, (product) &#x3D;&gt; product.variants, {
     onDelete: &#x27;CASCADE&#x27;,
+    eager: false,
   })
   @JoinColumn()
   product: Product;

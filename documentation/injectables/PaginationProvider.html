@@ -231,7 +231,7 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>paginationQuery(paginationQuery: <a href="../classes/PaginationQueryDto.html" target="_self">PaginationQueryDto</a>, repository: Repository<T>, options?: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    <code>paginationQuery(paginationQuery: <a href="../classes/PaginationQueryDto.html" target="_self">PaginationQueryDto</a>, queryBuilder: SelectQueryBuilder<T>)</code>
                 </td>
             </tr>
 
@@ -282,25 +282,13 @@
 
                                         </tr>
                                         <tr>
-                                                <td>repository</td>
+                                                <td>queryBuilder</td>
                                             <td>
-                                                        <code>Repository&lt;T&gt;</code>
+                                                        <code>SelectQueryBuilder&lt;T&gt;</code>
                                             </td>
 
                                             <td>
                                                     No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>options</td>
-                                            <td>
-                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                            </td>
-
-                                            <td>
-                                                    Yes
                                             </td>
 
 
@@ -328,7 +316,7 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, Inject } from &#x27;@nestjs/common&#x27;;
 import { PaginationQueryDto } from &#x27;../dtos/pagination-query.dto&#x27;;
-import { ObjectLiteral, Repository } from &#x27;typeorm&#x27;;
+import { ObjectLiteral, SelectQueryBuilder } from &#x27;typeorm&#x27;;
 
 // inorder to inject a request to a provider
 import { Request } from &#x27;express&#x27;;
@@ -361,54 +349,43 @@ export class PaginationProvider {
    */
   public async paginationQuery&lt;T extends ObjectLiteral&gt;(
     paginationQuery: PaginationQueryDto,
-    repository: Repository&lt;T&gt;,
-    options?: any,
+    queryBuilder: SelectQueryBuilder&lt;T&gt;,
   ): Promise&lt;Paginated&lt;T&gt;&gt; {
-    const results &#x3D; await repository.find({
-      // no of items to skip in one query
-      skip: (paginationQuery.page - 1) * paginationQuery.limit,
-      // the no items to take in one query
-      take: paginationQuery.limit,
-      relations: options.relations,
-      select: options.select,
-      where: options.where,
-    });
+    const { limit, page } &#x3D; paginationQuery;
 
-    /**
-     * Create the request URLS
-     */
+    // Apply pagination to the query
+    const paginatedQuery &#x3D; queryBuilder.skip((page - 1) * limit).take(limit);
+
+    // Execute the query to get results
+    const results &#x3D; await paginatedQuery.getMany();
+
+    // Get total items (clone the query to avoid modifying the original)
+    const totalItems &#x3D; await queryBuilder.getCount();
+
+    // Calculate pagination metadata
+    const totalPages &#x3D; Math.ceil(totalItems / limit);
+    const nextPage &#x3D; page &gt;&#x3D; totalPages ? page : page + 1;
+    const prevPage &#x3D; page &lt;&#x3D; 1 ? page : page - 1;
+
+    // Create the request URLs
     const baseURL &#x3D;
       this.request.protocol + &#x27;://&#x27; + this.request.headers.host + &#x27;/&#x27;;
-
     const newUrl &#x3D; new URL(this.request.url, baseURL);
-
-    // console.log(newUrl);
-
-    const totalItems &#x3D; await repository.count();
-    const totalPages &#x3D; Math.ceil(totalItems / paginationQuery.limit);
-    const nextPage &#x3D;
-      paginationQuery.page &#x3D;&#x3D;&#x3D; totalPages
-        ? paginationQuery.page
-        : paginationQuery.page + 1;
-    const prevPage &#x3D;
-      paginationQuery.page &#x3D;&#x3D;&#x3D; 1
-        ? paginationQuery.page
-        : paginationQuery.page - 1;
 
     const finalResponse: Paginated&lt;T&gt; &#x3D; {
       data: results,
       meta: {
-        itemsPerPage: paginationQuery.limit,
+        itemsPerPage: limit,
         totalItems: totalItems,
-        currentPage: paginationQuery.page,
+        currentPage: page,
         totalPages: totalPages,
       },
       links: {
-        first: &#x60;${newUrl.origin}${newUrl.pathname}?limit&#x3D;${paginationQuery.limit}&amp;page&#x3D;1&#x60;,
-        last: &#x60;${newUrl.origin}${newUrl.pathname}?limit&#x3D;${paginationQuery.limit}&amp;page&#x3D;${totalPages}&#x60;,
-        current: &#x60;${newUrl.origin}${newUrl.pathname}?limit&#x3D;${paginationQuery.limit}&amp;page&#x3D;${paginationQuery.page}&#x60;,
-        next: &#x60;${newUrl.origin}${newUrl.pathname}?limit&#x3D;${paginationQuery.limit}&amp;page&#x3D;${nextPage}&#x60;,
-        previous: &#x60;${newUrl.origin}${newUrl.pathname}?limit&#x3D;${paginationQuery.limit}&amp;page&#x3D;${prevPage}&#x60;,
+        first: &#x60;${newUrl.origin}${newUrl.pathname}?limit&#x3D;${limit}&amp;page&#x3D;1&#x60;,
+        last: &#x60;${newUrl.origin}${newUrl.pathname}?limit&#x3D;${limit}&amp;page&#x3D;${totalPages}&#x60;,
+        current: &#x60;${newUrl.origin}${newUrl.pathname}?limit&#x3D;${limit}&amp;page&#x3D;${page}&#x60;,
+        next: &#x60;${newUrl.origin}${newUrl.pathname}?limit&#x3D;${limit}&amp;page&#x3D;${nextPage}&#x60;,
+        previous: &#x60;${newUrl.origin}${newUrl.pathname}?limit&#x3D;${limit}&amp;page&#x3D;${prevPage}&#x60;,
       },
     };
 

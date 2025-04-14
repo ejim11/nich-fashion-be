@@ -144,6 +144,10 @@ injectable</p>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cleanQuery" >cleanQuery</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Public</span>
                                     <span class="modifier">Async</span>
                                 <a href="#clearOtpAndExpiryTime" >clearOtpAndExpiryTime</a>
@@ -206,12 +210,12 @@ injectable</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(createUserProvider: <a href="../injectables/CreateUsersProvider.html" target="_self">CreateUsersProvider</a>, findOneUserByEmailProvider: <a href="../injectables/FindOneUserByEmailProvider.html" target="_self">FindOneUserByEmailProvider</a>, storeOtpAndExpiresProvider: <a href="../injectables/StoreOtpAndExpireProvider.html" target="_self">StoreOtpAndExpireProvider</a>, findUserByOtpAndExpiresProvider: <a href="../injectables/FindUserByOtpAndExpiryTimeProvider.html" target="_self">FindUserByOtpAndExpiryTimeProvider</a>, findOneByIdProvider: <a href="../injectables/FindOneByIdProvider.html" target="_self">FindOneByIdProvider</a>, paginationprovider: <a href="../injectables/PaginationProvider.html" target="_self">PaginationProvider</a>, usersRepository: <a href="../entitys/User.html" target="_self">Repository&lt;User&gt;</a>, clearOtpAndExpiryTimeProvider: <a href="../injectables/ClearOtpAndExpiryTimeProvider.html" target="_self">ClearOtpAndExpiryTimeProvider</a>)</code>
+<code>constructor(createUserProvider: <a href="../injectables/CreateUsersProvider.html" target="_self">CreateUsersProvider</a>, findOneUserByEmailProvider: <a href="../injectables/FindOneUserByEmailProvider.html" target="_self">FindOneUserByEmailProvider</a>, storeOtpAndExpiresProvider: <a href="../injectables/StoreOtpAndExpireProvider.html" target="_self">StoreOtpAndExpireProvider</a>, findUserByOtpAndExpiresProvider: <a href="../injectables/FindUserByOtpAndExpiryTimeProvider.html" target="_self">FindUserByOtpAndExpiryTimeProvider</a>, findOneByIdProvider: <a href="../injectables/FindOneByIdProvider.html" target="_self">FindOneByIdProvider</a>, paginationProvider: <a href="../injectables/PaginationProvider.html" target="_self">PaginationProvider</a>, usersRepository: <a href="../entitys/User.html" target="_self">Repository&lt;User&gt;</a>, clearOtpAndExpiryTimeProvider: <a href="../injectables/ClearOtpAndExpiryTimeProvider.html" target="_self">ClearOtpAndExpiryTimeProvider</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/users/providers/users.service.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/users/providers/users.service.ts:28</a></div>
                             </td>
                         </tr>
 
@@ -291,7 +295,7 @@ injectable</p>
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>paginationprovider</td>
+                                                        <td>paginationProvider</td>
                                                   
                                                         <td>
                                                                         <code><a href="../injectables/PaginationProvider.html" target="_self" >PaginationProvider</a></code>
@@ -344,6 +348,83 @@ injectable</p>
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="cleanQuery"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cleanQuery</b></span>
+                        <a href="#cleanQuery"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cleanQuery(query: <a href="../classes/GetUsersDto.html" target="_self">GetUsersDto</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="223"
+                                    class="link-to-prism">src/users/providers/users.service.ts:223</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Helper method to clean query by removing undefined parameters</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>query</td>
+                                            <td>
+                                                            <code><a href="../classes/GetUsersDto.html" target="_self" >GetUsersDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>The input query object</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../classes/GetUsersDto.html" target="_self" >GetUsersDto</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Cleaned query object</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="clearOtpAndExpiryTime"></a>
                     <span class="name">
                             <span class="modifier">Public</span>
@@ -363,8 +444,8 @@ injectable</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="126"
-                                    class="link-to-prism">src/users/providers/users.service.ts:126</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="127"
+                                    class="link-to-prism">src/users/providers/users.service.ts:127</a></div>
                         </td>
                     </tr>
 
@@ -436,8 +517,8 @@ injectable</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="87"
-                                    class="link-to-prism">src/users/providers/users.service.ts:87</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="88"
+                                    class="link-to-prism">src/users/providers/users.service.ts:88</a></div>
                         </td>
                     </tr>
 
@@ -509,8 +590,8 @@ injectable</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="168"
-                                    class="link-to-prism">src/users/providers/users.service.ts:168</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="177"
+                                    class="link-to-prism">src/users/providers/users.service.ts:177</a></div>
                         </td>
                     </tr>
 
@@ -582,8 +663,8 @@ injectable</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="144"
-                                    class="link-to-prism">src/users/providers/users.service.ts:144</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="145"
+                                    class="link-to-prism">src/users/providers/users.service.ts:145</a></div>
                         </td>
                     </tr>
 
@@ -655,8 +736,8 @@ injectable</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="96"
-                                    class="link-to-prism">src/users/providers/users.service.ts:96</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="97"
+                                    class="link-to-prism">src/users/providers/users.service.ts:97</a></div>
                         </td>
                     </tr>
 
@@ -728,8 +809,8 @@ injectable</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="135"
-                                    class="link-to-prism">src/users/providers/users.service.ts:135</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="136"
+                                    class="link-to-prism">src/users/providers/users.service.ts:136</a></div>
                         </td>
                     </tr>
 
@@ -801,8 +882,8 @@ injectable</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="115"
-                                    class="link-to-prism">src/users/providers/users.service.ts:115</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="116"
+                                    class="link-to-prism">src/users/providers/users.service.ts:116</a></div>
                         </td>
                     </tr>
 
@@ -874,8 +955,8 @@ injectable</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="106"
-                                    class="link-to-prism">src/users/providers/users.service.ts:106</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="107"
+                                    class="link-to-prism">src/users/providers/users.service.ts:107</a></div>
                         </td>
                     </tr>
 
@@ -959,8 +1040,8 @@ injectable</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="179"
-                                    class="link-to-prism">src/users/providers/users.service.ts:179</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="188"
+                                    class="link-to-prism">src/users/providers/users.service.ts:188</a></div>
                         </td>
                     </tr>
 
@@ -1027,6 +1108,7 @@ injectable</p>
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
   BadRequestException,
   Injectable,
+  NotFoundException,
   RequestTimeoutException,
 } from &#x27;@nestjs/common&#x27;;
 import { CreateUsersProvider } from &#x27;./create-users.provider&#x27;;
@@ -1091,7 +1173,7 @@ export class UsersService {
     /**
      * injecting the pagination provider
      */
-    private readonly paginationprovider: PaginationProvider,
+    private readonly paginationProvider: PaginationProvider,
 
     /**
      * injecting the user repository
@@ -1168,21 +1250,29 @@ export class UsersService {
    * @returns all users
    */
   public async findAll(userQuery: GetUsersDto): Promise&lt;Paginated&lt;User&gt;&gt; {
+    // Clean the query to remove undefined parameters
+    const cleanedQuery &#x3D; this.cleanQuery(userQuery);
+    const { limit, page } &#x3D; cleanedQuery;
+
+    // Build the query
+    const queryBuilder &#x3D; this.usersRepository.createQueryBuilder(&#x27;user&#x27;);
+
+    // Apply email filter if provided
+    // if (email) {
+    //   queryBuilder &#x3D; queryBuilder.where(&#x27;user.email LIKE :email&#x27;, {
+    //     email: &#x60;%${email}%&#x60;,
+    //   });
+    // }
+
     try {
-      const user &#x3D; this.paginationprovider.paginationQuery(
-        {
-          limit: userQuery.limit,
-          page: userQuery.page,
-        },
-        this.usersRepository,
-        {
-          relations: null,
-        },
+      const users &#x3D; await this.paginationProvider.paginationQuery(
+        { limit, page },
+        queryBuilder,
       );
 
-      return user;
+      return users;
     } catch (error) {
-      throw new RequestTimeoutException(error);
+      throw new NotFoundException(error.message || &#x27;Users not found&#x27;);
     }
   }
 
@@ -1230,6 +1320,21 @@ export class UsersService {
       );
     }
     return user;
+  }
+
+  /**
+   * Helper method to clean query by removing undefined parameters
+   * @param query The input query object
+   * @returns Cleaned query object
+   */
+  private cleanQuery(query: GetUsersDto): GetUsersDto {
+    return Object.fromEntries(
+      Object.entries(query).filter(
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        ([_, value]) &#x3D;&gt;
+          value !&#x3D;&#x3D; &#x27;undefined&#x27; &amp;&amp; value !&#x3D;&#x3D; undefined &amp;&amp; value !&#x3D;&#x3D; &#x27;&#x27;,
+      ),
+    ) as GetUsersDto;
   }
 }
 </code></pre>

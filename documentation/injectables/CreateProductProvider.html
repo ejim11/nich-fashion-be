@@ -290,7 +290,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="../entitys/Product.html" target="_self" >Promise&lt;Product&gt;</a></code>
+                            <b>Returns : </b>    <code>unknown</code>
 
                         </div>
                             <div class="io-description">
@@ -342,7 +342,7 @@ export class CreateProductProvider {
   public async createProduct(
     createProductDto: CreateProductDto,
     images: { [key: string]: Express.Multer.File[] },
-  ): Promise&lt;Product&gt; {
+  ) {
     // start query transaction
     // create Query Runner instance
     const queryRunner &#x3D; this.dataSource.createQueryRunner();
@@ -428,7 +428,7 @@ export class CreateProductProvider {
       await queryRunner.commitTransaction();
 
       // return product
-      return savedProduct;
+      return { ...savedProduct, variants: savedVariants };
     } catch (error) {
       // if unsuccessful rollback
       // we rollback the txn here if it is not successful
