@@ -49,7 +49,7 @@ export class ProductsService {
   public async createProduct(
     createProductDto: CreateProductDto,
     files: { [key: string]: Express.Multer.File[] },
-  ): Promise<Product> {
+  ) {
     return this.createProductProvider.createProduct(createProductDto, files);
   }
 
