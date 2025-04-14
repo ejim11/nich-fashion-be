@@ -1,6 +1,7 @@
 import {
   BadRequestException,
   Injectable,
+  NotFoundException,
   RequestTimeoutException,
 } from '@nestjs/common';
 import { CreateUsersProvider } from './create-users.provider';
@@ -65,7 +66,7 @@ export class UsersService {
     /**
      * injecting the pagination provider
      */
-    private readonly paginationprovider: PaginationProvider,
+    private readonly paginationProvider: PaginationProvider,
 
     /**
      * injecting the user repository
@@ -142,21 +143,29 @@ export class UsersService {
    * @returns all users
    */
   public async findAll(userQuery: GetUsersDto): Promise<Paginated<User>> {
+    // Clean the query to remove undefined parameters
+    const cleanedQuery = this.cleanQuery(userQuery);
+    const { limit, page } = cleanedQuery;
+
+    // Build the query
+    const queryBuilder = this.usersRepository.createQueryBuilder('user');
+
+    // Apply email filter if provided
+    // if (email) {
+    //   queryBuilder = queryBuilder.where('user.email LIKE :email', {
+    //     email: `%${email}%`,
+    //   });
+    // }
+
     try {
-      const user = this.paginationprovider.paginationQuery(
-        {
-          limit: userQuery.limit,
-          page: userQuery.page,
-        },
-        this.usersRepository,
-        {
-          relations: null,
-        },
+      const users = await this.paginationProvider.paginationQuery(
+        { limit, page },
+        queryBuilder,
       );
 
-      return user;
+      return users;
     } catch (error) {
-      throw new RequestTimeoutException(error);
+      throw new NotFoundException(error.message || 'Users not found');
     }
   }
 
@@ -204,5 +213,20 @@ export class UsersService {
       );
     }
     return user;
+  }
+
+  /**
+   * Helper method to clean query by removing undefined parameters
+   * @param query The input query object
+   * @returns Cleaned query object
+   */
+  private cleanQuery(query: GetUsersDto): GetUsersDto {
+    return Object.fromEntries(
+      Object.entries(query).filter(
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        ([_, value]) =>
+          value !== 'undefined' && value !== undefined && value !== '',
+      ),
+    ) as GetUsersDto;
   }
 }

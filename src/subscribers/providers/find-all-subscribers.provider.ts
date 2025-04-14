@@ -18,7 +18,7 @@ export class FindAllSubscribersProvider {
      * injecting the orders repository
      */
     @InjectRepository(Subscriber)
-    private readonly ordersRepository: Repository<Subscriber>,
+    private readonly subscribersRepository: Repository<Subscriber>,
   ) {}
 
   /**
@@ -29,23 +29,45 @@ export class FindAllSubscribersProvider {
   public async findAll(
     subscriberQuery: GetSubscribersDto,
   ): Promise<Paginated<Subscriber>> {
-    const { limit, page } = subscriberQuery;
+    // Clean the query to remove undefined parameters
+    const cleanedQuery = this.cleanQuery(subscriberQuery);
+    const { limit, page } = cleanedQuery;
 
-    const options = {};
+    // Build the query
+    const queryBuilder =
+      this.subscribersRepository.createQueryBuilder('subscriber');
+
+    // Apply email filter if provided
+    // if (email) {
+    //   queryBuilder = queryBuilder.where('subscriber.email LIKE :email', {
+    //     email: `%${email}%`,
+    //   });
+    // }
 
     try {
-      const products = await this.paginationProvider.paginationQuery(
-        {
-          limit: limit,
-          page: page,
-        },
-        this.ordersRepository,
-        options,
+      const subscribers = await this.paginationProvider.paginationQuery(
+        { limit, page },
+        queryBuilder,
       );
 
-      return products;
+      return subscribers;
     } catch (error) {
-      throw new NotFoundException(error);
+      throw new NotFoundException(error.message || 'Subscribers not found');
     }
+  }
+
+  /**
+   * Helper method to clean query by removing undefined parameters
+   * @param query The input query object
+   * @returns Cleaned query object
+   */
+  private cleanQuery(query: GetSubscribersDto): GetSubscribersDto {
+    return Object.fromEntries(
+      Object.entries(query).filter(
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        ([_, value]) =>
+          value !== 'undefined' && value !== undefined && value !== '',
+      ),
+    ) as GetSubscribersDto;
   }
 }
