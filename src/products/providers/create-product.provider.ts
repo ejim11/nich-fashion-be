@@ -33,7 +33,7 @@ export class CreateProductProvider {
   public async createProduct(
     createProductDto: CreateProductDto,
     images: { [key: string]: Express.Multer.File[] },
-  ): Promise<Product> {
+  ) {
     // start query transaction
     // create Query Runner instance
     const queryRunner = this.dataSource.createQueryRunner();
