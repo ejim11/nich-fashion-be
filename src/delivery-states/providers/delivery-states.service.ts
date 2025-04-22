@@ -71,7 +71,9 @@ export class DeliveryStatesService {
      * Handle the delivery state does not exist
      */
     if (!deliveryState) {
-      throw new BadRequestException('The delivery state does not exist');
+      return {
+        message: 'The delivery state does not exist',
+      };
     }
     return deliveryState;
   }
