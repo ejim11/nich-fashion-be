@@ -44,6 +44,14 @@ export class OtpSigninProvider {
         id: user.id,
         email: user.email,
         role: user.role,
+        city: user.city,
+        country: user.country,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        phoneNumber: user.phoneNumber,
+        state: user.state,
+        streetAddress: user.streetAddress,
+        zipCode: user.zipCode,
       },
     };
   }
