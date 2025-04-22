@@ -94,22 +94,6 @@ export class InitiatePaymentProvider {
       initiatePaymentDto.deliveryPicker ??
       `${buyer.firstName} ${buyer.lastName}`;
 
-    // calculate the total amount
-    let totalAmount = initiatePaymentDto.products
-      .map((prd) => {
-        // loop through inner variants
-        const totalQty = prd.variants
-          .map((vr) => vr.quantity)
-          .reduce((acc, cur) => cur + acc, 0);
-
-        return prd.price * totalQty;
-      })
-      .reduce((acc, cur) => acc + cur, 0);
-
-    totalAmount = initiatePaymentDto.discountId
-      ? totalAmount - (discount.percentOff / 100) * totalAmount
-      : totalAmount;
-
     // initialize payment
     let response;
 
@@ -141,11 +125,11 @@ export class InitiatePaymentProvider {
             user: buyer,
             deliveryAddress,
             deliveryPicker,
-            totalAmount,
+            totalAmount: initiatePaymentDto.totalAmount,
             discount: discount ?? {},
           },
-          amount: totalAmount * 100,
-          callback_url: `${this.configService.get('appConfig.host')}/collections?success=yes`,
+          amount: initiatePaymentDto.totalAmount * 100,
+          callback_url: `${this.configService.get('appConfig.host')}/orders?success=yes`,
         }, // Paystack accepts amounts in kobo
         { headers: this.getAuthHeader() },
       );
@@ -153,7 +137,7 @@ export class InitiatePaymentProvider {
       // Create payment record
       await queryRunner.manager.save(Payment, {
         userId: buyer.id,
-        amount: totalAmount,
+        amount: initiatePaymentDto.totalAmount,
         provider: 'paystack',
         method: PaymentMethod.ONLINE,
         providerReference: response.data.data.reference,
