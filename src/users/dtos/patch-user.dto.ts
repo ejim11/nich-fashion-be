@@ -9,7 +9,7 @@ export class PatchUserDto extends PartialType(CreateUserDto) {
 
   @IsOptional()
   @IsString()
-  lasttName?: string;
+  lastName?: string;
 
   @IsOptional()
   @IsString()
