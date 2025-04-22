@@ -65,7 +65,9 @@ export class ApplyForDiscountProvider {
     );
 
     if (usageCount >= discount.usageLimit) {
-      return null;
+      return {
+        message: 'You have used this promo code already',
+      };
     }
 
     return discount;
