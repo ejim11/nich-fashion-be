@@ -76,6 +76,24 @@ export class MailService {
     });
   }
 
+  public async sendContactUsMail(
+    name: string,
+    email: string,
+    message: string,
+  ): Promise<void> {
+    await this.mailerService.sendMail({
+      to: 'fejim188@gmail.com',
+      from: `Nich Fashion Message  <${'admininvestor@brackifi-investor.io'}>`,
+      subject: ` Incoming Message From ${name}`,
+      template: path.join(ROOT_PATH, '/src/mail/templates/contactUs.ejs'),
+      context: {
+        name: name,
+        email: email,
+        message: message,
+      },
+    });
+  }
+
   /**
    * function for sending mail to user when they subscribe to the newsletter
    * @param subscriber
