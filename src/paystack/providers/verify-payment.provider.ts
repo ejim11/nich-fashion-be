@@ -153,7 +153,7 @@ export class VerifyPaymentProvider {
         }
 
         // if user used discount then add it to the discount usage
-        if (discount.id) {
+        if (discount && discount.id) {
           // create the discount usage
           const discountUsage = await queryRunner.manager.save(DiscountUsage, {
             user: user,
@@ -198,6 +198,8 @@ export class VerifyPaymentProvider {
       await queryRunner.manager.save(Payment, payment);
 
       await queryRunner.commitTransaction();
+
+      console.log('Reached here');
 
       // send a mail to the user
       try {
