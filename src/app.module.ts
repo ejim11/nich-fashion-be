@@ -30,6 +30,7 @@ import { PaystackModule } from './paystack/paystack.module';
 import { PaymentsModule } from './payments/payments.module';
 import { OrdersModule } from './orders/orders.module';
 import { BankTransfersModule } from './bank-transfers/bank-transfers.module';
+import { ContactUsModule } from './contact-us/contact-us.module';
 
 /**
  * app environment
@@ -87,6 +88,7 @@ const ENV = process.env.NODE_ENV;
     PaymentsModule,
     OrdersModule,
     BankTransfersModule,
+    ContactUsModule,
   ],
   controllers: [AppController],
   providers: [
