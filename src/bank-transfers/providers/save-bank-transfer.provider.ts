@@ -79,22 +79,6 @@ export class SaveBankTransferProvider {
       createBankTransferDto.deliveryPicker ??
       `${buyer.firstName} ${buyer.lastName}`;
 
-    // calculate the total amount
-    let totalAmount = createBankTransferDto.products
-      .map((prd) => {
-        // loop through inner variants
-        const totalQty = prd.variants
-          .map((vr) => vr.quantity)
-          .reduce((acc, cur) => cur + acc, 0);
-
-        return prd.price * totalQty;
-      })
-      .reduce((acc, cur) => acc + cur, 0);
-
-    totalAmount = createBankTransferDto.discountId
-      ? totalAmount - (discount.percentOff / 100) * totalAmount
-      : totalAmount;
-
     try {
       const fileDir = `bank-transfers/${buyer.firstName}-${buyer.id}`;
       const proofImgUrl = await this.uploadsService.uploadFile(file, fileDir);
@@ -131,7 +115,7 @@ export class SaveBankTransferProvider {
       // Create payment record
       const payment = await queryRunner.manager.save(Payment, {
         userId: buyer.id,
-        amount: totalAmount,
+        amount: createBankTransferDto.totalAmount,
         method: PaymentMethod.TRANSFER,
         status: paymentStatus.PENDING,
       });
@@ -140,7 +124,7 @@ export class SaveBankTransferProvider {
       const order = await queryRunner.manager.save(Order, {
         userId: buyer.id,
         deliveryAddress: deliveryAddress,
-        totalAmount: totalAmount,
+        totalAmount: createBankTransferDto.totalAmount,
         deliveryPicker: deliveryPicker,
         payment: payment,
       });
@@ -173,7 +157,7 @@ export class SaveBankTransferProvider {
       }
 
       // if user used discount then add it to the discount usage
-      if (discount.id) {
+      if (discount && discount.id) {
         // create the discount usage
         const discountUsage = await queryRunner.manager.save(DiscountUsage, {
           user: buyer,
@@ -197,7 +181,7 @@ export class SaveBankTransferProvider {
       const bankTransfer = await queryRunner.manager.save(BankTransfer, {
         userId: buyer.id,
         imageProof: proofImgUrl,
-        amount: totalAmount,
+        amount: createBankTransferDto.totalAmount,
         payment: payment,
       });
 
