@@ -1,0 +1,8 @@
+POST http://localhost:3002/api/v1/contact-us
+Content-Type: application/json
+
+{
+    "name": "Frank Holders",
+    "email": "fejim199@gmail.com",
+    "message": "Thanks for your service"
+}
