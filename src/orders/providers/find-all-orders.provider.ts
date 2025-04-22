@@ -39,6 +39,8 @@ export class FindAllOrdersProvider {
       queryBuilder = queryBuilder.where('order.userId = :userId', { userId });
     }
 
+    queryBuilder = queryBuilder.orderBy('order.createdAt', 'DESC');
+
     try {
       const orders = await this.paginationProvider.paginationQuery(
         { limit, page },
