@@ -40,6 +40,10 @@ export class InitiatePaymentDto {
   @IsOptional()
   discountId?: string;
 
+  @IsInt()
+  @IsNotEmpty()
+  totalAmount: number;
+
   @IsArray()
   @IsNotEmpty()
   @ValidateNested({ each: true })
