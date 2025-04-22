@@ -71,22 +71,22 @@ export class FindAllProductsProvider {
         name: cleanedQuery['name']
           ? Like(`%${cleanedQuery['name'].split('-').join(' ')}%`)
           : null,
-        variants: {
-          color: cleanedQuery['colors']
-            ? In(cleanedQuery['colors'].split(','))
-            : null,
-          size: cleanedQuery['sizes']
-            ? In(cleanedQuery['sizes'].split(','))
-            : null,
-        },
+        // variants: {
+        //   color: cleanedQuery['colors']
+        //     ? In(cleanedQuery['colors'].split(','))
+        //     : null,
+        //   size: cleanedQuery['sizes']
+        //     ? In(cleanedQuery['sizes'].toUpperCase().split(','))
+        //     : null,
+        // },
       };
 
-      if (
-        conditions.variants.color === null &&
-        conditions.variants.size === null
-      ) {
-        conditions.variants = null;
-      }
+      // if (
+      //   conditions.variants.color === null &&
+      //   conditions.variants.size === null
+      // ) {
+      //   conditions.variants = null;
+      // }
 
       const filteredConditions = Object.fromEntries(
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -259,7 +259,35 @@ export class FindAllProductsProvider {
 
     if (checkWhereOptions) {
       whereOptions.forEach((condition) => {
-        queryBuilder = queryBuilder.andWhere(condition);
+        if (cleanedQuery['colors'] || cleanedQuery['sizes']) {
+          // Add non-variant conditions first
+          if (Object.keys(condition).length > 0) {
+            queryBuilder = queryBuilder.andWhere(condition);
+          }
+
+          // Handle variant color condition
+          if (cleanedQuery['colors']) {
+            queryBuilder = queryBuilder.andWhere(
+              'variants.color IN (:...colors)',
+              {
+                colors: cleanedQuery['colors'].split(','),
+              },
+            );
+          }
+
+          // Handle variant size condition
+          if (cleanedQuery['sizes']) {
+            queryBuilder = queryBuilder.andWhere(
+              'variants.size IN (:...sizes)',
+              {
+                sizes: cleanedQuery['sizes'].toUpperCase().split(','),
+              },
+            );
+          }
+        } else {
+          // Handle conditions that don't involve variants
+          queryBuilder = queryBuilder.andWhere(condition);
+        }
       });
     }
 
