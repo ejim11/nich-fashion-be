@@ -127,6 +127,7 @@ export class InitiatePaymentProvider {
             deliveryPicker,
             totalAmount: initiatePaymentDto.totalAmount,
             discount: discount ?? {},
+            shippingMethod: initiatePaymentDto.shippingMethod,
           },
           amount: initiatePaymentDto.totalAmount * 100,
           callback_url: `${this.configService.get('appConfig.host')}/orders?success=yes`,

@@ -92,6 +92,7 @@ export class VerifyPaymentProvider {
         deliveryPicker,
         totalAmount,
         discount,
+        shippingMethod,
       } = response.data.data.metadata;
 
       // get all product variants
@@ -139,6 +140,7 @@ export class VerifyPaymentProvider {
           totalAmount: totalAmount,
           deliveryPicker: deliveryPicker,
           payment: payment,
+          shippingMethod: shippingMethod,
         });
 
         // create payment variants from the product variants
