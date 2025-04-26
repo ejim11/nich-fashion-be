@@ -3,12 +3,14 @@
 import { Type } from 'class-transformer';
 import {
   IsArray,
+  IsEnum,
   IsInt,
   IsNotEmpty,
   IsOptional,
   IsString,
   ValidateNested,
 } from 'class-validator';
+import { ShippingMethod } from 'src/orders/enums/shipping-method.enum';
 import { PatchProductVariantDto } from 'src/product-variants/dto/patch-product-variant.dto';
 
 class ProductWithVariantDto {
@@ -43,6 +45,10 @@ export class InitiatePaymentDto {
   @IsInt()
   @IsNotEmpty()
   totalAmount: number;
+
+  @IsEnum(ShippingMethod)
+  @IsNotEmpty()
+  shippingMethod: ShippingMethod;
 
   @IsArray()
   @IsNotEmpty()
