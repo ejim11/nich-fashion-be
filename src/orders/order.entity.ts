@@ -13,6 +13,7 @@ import { OrderStatus } from './enums/order-status.enum';
 // import { Product } from 'src/products/product.entity';
 import { DiscountUsage } from 'src/discounts-usage/discounts-usage.entity';
 import { Payment } from 'src/payments/payment.entity';
+import { ShippingMethod } from './enums/shipping-method.enum';
 
 @Entity()
 export class Order {
@@ -32,6 +33,14 @@ export class Order {
     nullable: false,
   })
   orderStatus: OrderStatus;
+
+  @Column({
+    type: 'enum',
+    enum: ShippingMethod,
+    default: ShippingMethod.DELIVERY,
+    nullable: false,
+  })
+  shippingMethod: ShippingMethod;
 
   @Column({ nullable: true })
   carrier?: string;
