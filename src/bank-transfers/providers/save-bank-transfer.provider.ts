@@ -127,6 +127,7 @@ export class SaveBankTransferProvider {
         totalAmount: createBankTransferDto.totalAmount,
         deliveryPicker: deliveryPicker,
         payment: payment,
+        shippingMethod: createBankTransferDto.shippingMethod,
       });
 
       // get all product variants
