@@ -58,12 +58,12 @@ const ENV = process.env.NODE_ENV;
           password: configService.get('database.password'),
           host: configService.get('database.host'),
           database: configService.get('database.name'),
-          // ssl:
-          //   process.env.NODE_ENV === 'development'
-          //     ? false
-          //     : {
-          //         rejectUnauthorized: false,
-          //       },
+          ssl:
+            process.env.NODE_ENV === 'development'
+              ? false
+              : {
+                  rejectUnauthorized: false,
+                },
           logging: process.env.NODE_ENV !== 'production',
         };
       },
