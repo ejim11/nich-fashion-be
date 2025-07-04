@@ -55,7 +55,7 @@ export class SignInProvider {
     }
 
     // generate otp
-    const otp = randomInt(1000, 1000000);
+    const otp = randomInt(100000, 999999);
 
     const hashedOtp = crypto
       .createHash('sha256')
