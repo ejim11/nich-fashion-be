@@ -201,8 +201,6 @@ export class VerifyPaymentProvider {
 
       await queryRunner.commitTransaction();
 
-      console.log('Reached here');
-
       // send a mail to the user
       try {
         await this.mailService.sendProductPurchaseMail(user, prdsDb);
