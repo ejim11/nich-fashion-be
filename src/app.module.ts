@@ -31,6 +31,7 @@ import { PaymentsModule } from './payments/payments.module';
 import { OrdersModule } from './orders/orders.module';
 import { BankTransfersModule } from './bank-transfers/bank-transfers.module';
 import { ContactUsModule } from './contact-us/contact-us.module';
+import { AggregateModule } from './aggregate/aggregate.module';
 
 /**
  * app environment
@@ -89,6 +90,7 @@ const ENV = process.env.NODE_ENV;
     OrdersModule,
     BankTransfersModule,
     ContactUsModule,
+    AggregateModule,
   ],
   controllers: [AppController],
   providers: [
