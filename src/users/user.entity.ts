@@ -1,5 +1,11 @@
 import { Role } from 'src/auth/enums/role-type.enum';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 /**
  * user entity for user table in the database
@@ -90,4 +96,12 @@ export class User {
     nullable: true,
   })
   otpExpire?: Date;
+
+  @CreateDateColumn({ type: 'timestamp' })
+  createdAt: Date;
+
+  @UpdateDateColumn({
+    type: 'timestamp',
+  })
+  updatedAt: Date;
 }
