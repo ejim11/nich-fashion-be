@@ -1,2 +1,2 @@
-GET http://localhost:3002/api/v1/products?colors=Black
+GET http://localhost:3002/api/v1/products?sort=last_updated_variant&category=flux
 Content-Type: application/json
