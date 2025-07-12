@@ -1,4 +1,4 @@
-import { IsOptional, IsString } from 'class-validator';
+import { IsIn, IsOptional, IsString } from 'class-validator';
 import { IntersectionType } from '@nestjs/swagger';
 import { PaginationQueryDto } from 'src/common/pagination/dtos/pagination-query.dto';
 
@@ -57,7 +57,8 @@ class GetProductsBaseDto {
 
   @IsOptional()
   @IsString()
-  sort?: 'newest' | 'oldest' | 'most_purchased';
+  @IsIn(['newest', 'oldest', 'most_purchased', 'last_updated_variant'])
+  sort?: 'newest' | 'oldest' | 'most_purchased' | 'last_updated_variant';
 }
 
 /**
