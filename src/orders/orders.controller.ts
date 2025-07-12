@@ -14,22 +14,23 @@ export class OrdersController {
     private readonly ordersService: OrdersService,
   ) {}
 
-  @Patch('/:orderId')
-  @Roles(Role.ADMIN)
-  public updateOrder(
-    @Body() patchOrderDto: PatchOrderDto,
-    @Param('orderId') orderId: string,
-  ) {
-    return this.ordersService.updateOrder(patchOrderDto, orderId);
-  }
-
   @Get('/:orderId')
   public findOrderById(@Param('orderId') orderId: string) {
     return this.ordersService.findOrderById(orderId);
   }
 
+  // @Roles(Role.ADMIN)
   @Get('')
   public findAllOrders(@Query() orderQuery: GetOrdersDto) {
     return this.ordersService.findAll(orderQuery);
+  }
+
+  @Roles(Role.ADMIN)
+  @Patch('/:orderId')
+  public updateOrder(
+    @Body() patchOrderDto: PatchOrderDto,
+    @Param('orderId') orderId: string,
+  ) {
+    return this.ordersService.updateOrder(patchOrderDto, orderId);
   }
 }

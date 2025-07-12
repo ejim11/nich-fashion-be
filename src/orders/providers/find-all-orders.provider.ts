@@ -32,7 +32,9 @@ export class FindAllOrdersProvider {
     const { limit, page, userId } = cleanedQuery;
 
     // Build the query
-    let queryBuilder = this.ordersRepository.createQueryBuilder('order');
+    let queryBuilder = this.ordersRepository
+      .createQueryBuilder('order')
+      .leftJoinAndSelect('order.user', 'user');
 
     // Apply userId filter if provided
     if (userId) {

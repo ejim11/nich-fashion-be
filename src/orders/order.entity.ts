@@ -3,6 +3,7 @@ import {
   CreateDateColumn,
   Entity,
   JoinColumn,
+  ManyToOne,
   // JoinTable,
   // ManyToMany,
   OneToOne,
@@ -14,6 +15,7 @@ import { OrderStatus } from './enums/order-status.enum';
 import { DiscountUsage } from 'src/discounts-usage/discounts-usage.entity';
 import { Payment } from 'src/payments/payment.entity';
 import { ShippingMethod } from './enums/shipping-method.enum';
+import { User } from 'src/users/user.entity';
 
 @Entity()
 export class Order {
@@ -54,11 +56,12 @@ export class Order {
   @Column()
   deliveryPicker: string;
 
-  @Column({ nullable: true })
-  estimatedDeliveryDate?: Date;
-
-  @Column()
+  @Column({ nullable: true, type: 'uuid' })
   userId: string;
+
+  @ManyToOne(() => User, { eager: true, nullable: true })
+  @JoinColumn({ name: 'userId' })
+  user: User;
 
   @Column('decimal', { nullable: true })
   discountApplied?: number;
@@ -80,4 +83,7 @@ export class Order {
   @OneToOne(() => Payment, { eager: true })
   @JoinColumn()
   payment: Payment;
+
+  @Column({ nullable: true })
+  estimatedDeliveryDate?: Date;
 }
