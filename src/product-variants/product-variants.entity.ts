@@ -3,11 +3,13 @@ import { ProductImage } from 'src/product-images/product-image.entity';
 import { Product } from 'src/products/product.entity';
 import {
   Column,
+  CreateDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity()
@@ -41,4 +43,10 @@ export class ProductVariant {
 
   @OneToMany(() => PaymentVariant, (paymentVariant) => paymentVariant.variant)
   paymentVariants: PaymentVariant[];
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 }
