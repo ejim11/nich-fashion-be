@@ -1,5 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsEnum, IsNotEmpty, MaxLength } from 'class-validator';
+import {
+  IsEmail,
+  IsEnum,
+  IsNotEmpty,
+  IsOptional,
+  MaxLength,
+} from 'class-validator';
 import { Role } from '../enums/role-type.enum';
 
 /**
@@ -26,6 +32,6 @@ export class SignInDto {
     example: 'Admin',
   })
   @IsEnum(Role)
-  @IsNotEmpty()
-  role: Role;
+  @IsOptional()
+  role?: Role;
 }
